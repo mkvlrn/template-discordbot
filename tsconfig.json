@@ -1,0 +1,8 @@
+{
+  "extends": "@mkvlrn/config/tsconfig-node",
+  "compilerOptions": {
+    "rootDir": "./",
+    "baseUrl": "./",
+    "paths": { "~/*": ["./src/*"], "#/*": ["./test/*"] }
+  }
+}

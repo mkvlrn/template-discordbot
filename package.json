@@ -1,0 +1,53 @@
+{
+  "name": "template-discordbot",
+  "description": "A template for discord bots using discord.js",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "author": "Mike Valeriano <mkvlrn@proton.me>",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mkvlrn/template-discordbot"
+  },
+  "keywords": [
+    "node",
+    "esm",
+    "discord",
+    "bot",
+    "template"
+  ],
+  "scripts": {
+    "build": "node --import @swc-node/register/esm-register --env-file=.env scripts/build.ts",
+    "dev": "node --import @swc-node/register/esm-register --env-file=.env --watch src/main.ts",
+    "start": "node --env-file=.env dist/main.js",
+    "test": "vitest --run",
+    "test:cov": "vitest run --coverage",
+    "lint": "eslint --fix src/**/*.ts test/**/*.ts",
+    "format": "prettier --write src test",
+    "typecheck": "tsc --noEmit",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "@mkvlrn/config": "^1.0.4",
+    "@swc-node/register": "^1.10.9",
+    "@swc/core": "^1.7.40",
+    "@types/node": "^22.8.4",
+    "@vitest/coverage-v8": "^2.1.4",
+    "eslint": "^9.13.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "pino-pretty": "^11.3.0",
+    "prettier": "^3.3.3",
+    "tsc-alias": "^1.8.10",
+    "typescript": "^5.6.3",
+    "vite-tsconfig-paths": "^5.0.1",
+    "vitest": "^2.1.4"
+  },
+  "dependencies": {
+    "discord.js": "^14.16.3",
+    "pino": "^9.5.0"
+  }
+}

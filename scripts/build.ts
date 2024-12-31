@@ -1,14 +1,20 @@
-import child_process from "node:child_process";
+// biome-ignore lint/correctness/noNodejsModules: this is a backend script
 import fs from "node:fs/promises";
-import util from "node:util";
+// biome-ignore lint/correctness/noNodejsModules: this is a backend script
+import { resolve } from "node:path";
 import swc from "@swc/core";
-import tscAlias from "tsc-alias";
+import tsConfig from "../tsconfig.json" assert { type: "json" };
 
-const out = "./dist";
-const execAsync = util.promisify(child_process.exec);
+const REGEX_SRC = /^src\//;
+const REGEX_TS = /\.ts$/;
+const REGEX_OUTPUT_PATH = /\/[^/]+$/;
+const OUT = "./build";
+
+const { paths } = tsConfig.compilerOptions;
+const baseUrl = resolve(process.cwd(), tsConfig.compilerOptions.baseUrl);
 
 // clean up old output
-await fs.rm(out, { recursive: true, force: true });
+await fs.rm(OUT, { recursive: true, force: true });
 
 // get all entry points
 const files: string[] = [];
@@ -21,11 +27,9 @@ await Promise.all(
   files.map(async (file) => {
     const { code } = await swc.transformFile(file, {
       jsc: {
-        parser: {
-          syntax: "typescript",
-          decorators: true,
-          dynamicImport: true,
-        },
+        baseUrl,
+        paths,
+        parser: { syntax: "typescript", decorators: true, dynamicImport: true },
         target: "esnext",
         transform: {
           decoratorMetadata: true,
@@ -37,22 +41,8 @@ await Promise.all(
       },
     });
 
-    const outputPath = `${out}/${file.replace(/^src\//, "").replace(/\.ts$/, ".js")}`;
-    await fs.mkdir(outputPath.replace(/\/[^/]+$/, ""), { recursive: true });
+    const outputPath = `${OUT}/${file.replace(REGEX_SRC, "").replace(REGEX_TS, ".js")}`;
+    await fs.mkdir(outputPath.replace(REGEX_OUTPUT_PATH, ""), { recursive: true });
     await fs.writeFile(outputPath, code);
   }),
 );
-
-// create full temp config because tsc-alias doesn't like extended configs
-// https://github.com/justkey007/tsc-alias/issues/230
-await execAsync("tsc --showConfig > tsconfig.temp.json");
-
-// replace aliases with actual paths and add .js extensions
-await tscAlias.replaceTscAliasPaths({
-  outDir: out,
-  resolveFullPaths: true,
-  configFile: "tsconfig.temp.json",
-});
-
-// clean up temp config
-await fs.rm("tsconfig.temp.json");

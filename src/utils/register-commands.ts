@@ -1,6 +1,6 @@
-import { type RequestData, REST, Routes } from "discord.js";
+import { REST, type RequestData, Routes } from "discord.js";
 import type { Logger } from "pino";
-import type { Command } from "~/utils/create-command";
+import type { Command } from "~/utils/create-command.js";
 
 export async function registerCommands(
   logger: Logger,

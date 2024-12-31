@@ -5,10 +5,10 @@ import {
   type GuildChannel,
   type InteractionReplyOptions,
 } from "discord.js";
-import { createLogger } from "~/utils/create-logger";
-import { loadCommands } from "~/utils/load-commands";
-import { loadEnvironment } from "~/utils/load-environment";
-import { registerCommands } from "~/utils/register-commands";
+import { createLogger } from "~/utils/create-logger.js";
+import { loadCommands } from "~/utils/load-commands.js";
+import { loadEnvironment } from "~/utils/load-environment.js";
+import { registerCommands } from "~/utils/register-commands.js";
 
 const { botToken, botClientId, serverId, devMode } = loadEnvironment();
 
@@ -21,9 +21,10 @@ bot.once(Events.ClientReady, (client) => {
   logger.info(`Logged in as ${client.user.displayName}`);
 });
 
-// eslint-disable-next-line @typescript-eslint/no-misused-promises
 bot.on(Events.InteractionCreate, async (interaction) => {
-  if (!interaction.isCommand()) return;
+  if (!interaction.isCommand()) {
+    return;
+  }
 
   const command = commands.get(interaction.commandName);
   if (!command) {

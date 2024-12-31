@@ -1,10 +1,11 @@
-import { CommandInteraction } from "discord.js";
+import type { CommandInteraction } from "discord.js";
 import { describe, expect, it, vi } from "vitest";
-import { Command, createCommand } from "~/utils/create-command";
+import { type Command, createCommand } from "~/utils/create-command.js";
 
 describe("createCommand", () => {
   vi.mock("discord.js", () => {
     return {
+      // biome-ignore lint/style/useNamingConvention: type expects it
       SlashCommandBuilder: vi.fn().mockImplementation(() => {
         return {
           setName: vi.fn().mockReturnThis(),
@@ -23,9 +24,7 @@ describe("createCommand", () => {
 
     expect(command).toHaveProperty("data");
     expect(command).toHaveProperty("execute");
-    // eslint-disable-next-line @typescript-eslint/unbound-method
     expect(command.data.setName).toHaveBeenCalledWith(name);
-    // eslint-disable-next-line @typescript-eslint/unbound-method
     expect(command.data.setDescription).toHaveBeenCalledWith(description);
     expect(command.execute).toBe(execute);
   });

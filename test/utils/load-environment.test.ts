@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { loadEnvironment } from "~/utils/load-environment";
+import { loadEnvironment } from "~/utils/load-environment.js";
 
 describe("loadEnvironment", () => {
   it("should return the environment variables when all are defined", () => {
@@ -22,10 +22,8 @@ describe("loadEnvironment", () => {
     vi.stubEnv("BOT_TOKEN", "test-bot-token");
     vi.stubEnv("BOT_CLIENT_ID", "test-client-id");
     vi.stubEnv("SERVER_ID", "test-server-id");
-    // eslint-disable-next-line unicorn/no-useless-undefined
     vi.stubEnv("DEV_MODE", undefined);
 
-    // eslint-disable-next-line unicorn/consistent-function-scoping
     const act = () => loadEnvironment();
 
     expect(act).toThrow("Missing required environment variables");

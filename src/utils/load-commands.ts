@@ -1,8 +1,11 @@
+// biome-ignore lint/correctness/noNodejsModules: cli script
 import fs from "node:fs/promises";
+// biome-ignore lint/correctness/noNodejsModules: cli script
 import path from "node:path";
+// biome-ignore lint/correctness/noNodejsModules: cli script
 import url from "node:url";
 import type { Logger } from "pino";
-import { type Command, createCommand } from "~/utils/create-command";
+import { type Command, createCommand } from "~/utils/create-command.js";
 
 export async function loadCommands(logger: Logger) {
   const commands = new Map<string, Command>();

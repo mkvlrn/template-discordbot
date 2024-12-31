@@ -1,10 +1,12 @@
 import type { Dirent } from "node:fs";
+// biome-ignore lint/correctness/noNodejsModules: cli script
 import fs from "node:fs/promises";
+// biome-ignore lint/correctness/noNodejsModules: cli script
 import path from "node:path";
 import type { Logger } from "pino";
 import { describe, expect, it, vi } from "vitest";
-import { createCommand } from "~/utils/create-command";
-import { loadCommands } from "~/utils/load-commands";
+import { createCommand } from "~/utils/create-command.js";
+import { loadCommands } from "~/utils/load-commands.js";
 
 vi.mock("node:fs/promises");
 vi.mock("node:path");

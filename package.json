@@ -1,6 +1,6 @@
 {
   "name": "template-discordbot",
-  "description": "A template for discord bots using discord.js",
+  "description": "An esm nodejs template for discord bots using discord.js",
   "version": "1.0.0",
   "license": "MIT",
   "private": true,
@@ -10,14 +10,22 @@
     "type": "git",
     "url": "git@github.com:mkvlrn/template-discordbot"
   },
-  "keywords": ["node", "esm", "discord", "bot", "template"],
+  "keywords": [
+    "node",
+    "esm",
+    "discord",
+    "bot",
+    "template"
+  ],
   "scripts": {
-    "build": "node --import @swc-node/register/esm-register --env-file=.env scripts/build.ts",
-    "dev": "node --import @swc-node/register/esm-register --env-file=.env --watch src/main.ts",
+    "swc": "node --import @swc-node/register/esm-register",
+    "prebuild": "rm -rf build",
+    "build": "npx swc src -d ./build --strip-leading-paths",
+    "dev": "npm run swc -- --watch --env-file=.env src/main.ts",
     "start": "node --env-file=.env build/main.js",
-    "test": "node --import @swc-node/register/esm-register scripts/test.ts",
-    "test:cov": "node --import @swc-node/register/esm-register scripts/test.ts --coverage",
-    "tidy": "npx @biomejs/biome check --write scripts src test",
+    "test": "npm run swc -- scripts/test.ts",
+    "test:cov": "npm run swc -- scripts/test.ts --coverage",
+    "tidy": "npm run swc -- scripts/tidy.ts",
     "typecheck": "npx tsc --noEmit",
     "prepare": "npx husky"
   },
@@ -26,8 +34,9 @@
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
     "@swc-node/register": "^1.10.9",
+    "@swc/cli": "^0.5.2",
     "@swc/core": "^1.10.4",
-    "@types/node": "^22.10.2",
+    "@types/node": "^22.10.3",
     "@vitest/coverage-v8": "^2.1.8",
     "husky": "^9.1.7",
     "pino-pretty": "^13.0.0",
@@ -40,6 +49,8 @@
     "pino": "^9.6.0"
   },
   "commitlint": {
-    "extends": ["@commitlint/config-conventional"]
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }

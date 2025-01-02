@@ -4,7 +4,7 @@ import { type Mock, describe, expect, it, vi } from "vitest";
 import type { Command } from "~/utils/create-command";
 import { registerCommands } from "~/utils/register-commands";
 
-vi.mock("discord", () => ({
+vi.mock("discord.js", () => ({
   // biome-ignore lint/style/useNamingConvention: type expects it
   REST: vi.fn().mockReturnValue({
     setToken: vi.fn().mockReturnThis(),

@@ -5,10 +5,10 @@ import {
   type GuildChannel,
   type InteractionReplyOptions,
 } from "discord.js";
-import { createLogger } from "~/utils/create-logger.js";
-import { loadCommands } from "~/utils/load-commands.js";
-import { loadEnvironment } from "~/utils/load-environment.js";
-import { registerCommands } from "~/utils/register-commands.js";
+import { createLogger } from "~/utils/create-logger";
+import { loadCommands } from "~/utils/load-commands";
+import { loadEnvironment } from "~/utils/load-environment";
+import { registerCommands } from "~/utils/register-commands";
 
 const { botToken, botClientId, serverId, devMode } = loadEnvironment();
 

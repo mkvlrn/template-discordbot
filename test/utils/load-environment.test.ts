@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { loadEnvironment } from "~/utils/load-environment.js";
+import { loadEnvironment } from "~/utils/load-environment";
 
 describe("loadEnvironment", () => {
   it("should return the environment variables when all are defined", () => {

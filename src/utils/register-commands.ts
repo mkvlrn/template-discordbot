@@ -1,6 +1,6 @@
 import { REST, type RequestData, Routes } from "discord.js";
 import type { Logger } from "pino";
-import type { Command } from "~/utils/create-command.js";
+import type { Command } from "~/utils/create-command";
 
 export async function registerCommands(
   logger: Logger,
@@ -15,7 +15,10 @@ export async function registerCommands(
   const rest = new REST().setToken(botToken);
 
   try {
-    await rest.put(Routes.applicationGuildCommands(botClientId, serverId), payload);
+    await rest.put(
+      Routes.applicationGuildCommands(botClientId, serverId),
+      payload,
+    );
     logger.info("Registered commands to server");
   } catch (error) {
     logger.error((error as Error).message);

@@ -1,9 +1,9 @@
 import type { CommandInteraction } from "discord.js";
 import { describe, expect, it, vi } from "vitest";
-import { type Command, createCommand } from "~/utils/create-command.js";
+import { type Command, createCommand } from "~/utils/create-command";
 
 describe("createCommand", () => {
-  vi.mock("discord.js", () => {
+  vi.mock("discord", () => {
     return {
       // biome-ignore lint/style/useNamingConvention: type expects it
       SlashCommandBuilder: vi.fn().mockImplementation(() => {

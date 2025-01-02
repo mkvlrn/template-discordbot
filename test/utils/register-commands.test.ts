@@ -1,10 +1,10 @@
 import { REST, Routes } from "discord.js";
 import type { Logger } from "pino";
 import { type Mock, describe, expect, it, vi } from "vitest";
-import type { Command } from "~/utils/create-command.js";
-import { registerCommands } from "~/utils/register-commands.js";
+import type { Command } from "~/utils/create-command";
+import { registerCommands } from "~/utils/register-commands";
 
-vi.mock("discord.js", () => ({
+vi.mock("discord", () => ({
   // biome-ignore lint/style/useNamingConvention: type expects it
   REST: vi.fn().mockReturnValue({
     setToken: vi.fn().mockReturnThis(),
@@ -40,14 +40,25 @@ describe("registerCommands", () => {
     (restInstance.put as Mock).mockResolvedValue(undefined);
     (Routes.applicationGuildCommands as Mock).mockReturnValue("test-route");
 
-    await registerCommands(mockLogger, commands, botToken, botClientId, serverId);
+    await registerCommands(
+      mockLogger,
+      commands,
+      botToken,
+      botClientId,
+      serverId,
+    );
 
     expect(restInstance.setToken).toHaveBeenCalledWith(botToken);
-    expect(Routes.applicationGuildCommands).toHaveBeenCalledWith(botClientId, serverId);
+    expect(Routes.applicationGuildCommands).toHaveBeenCalledWith(
+      botClientId,
+      serverId,
+    );
     expect(restInstance.put).toHaveBeenCalledWith("test-route", {
       body: expect.any(Array),
     });
-    expect(mockLogger.info).toHaveBeenCalledWith("Registered commands to server");
+    expect(mockLogger.info).toHaveBeenCalledWith(
+      "Registered commands to server",
+    );
   });
 
   it("should log and throw an error if registration fails", async () => {

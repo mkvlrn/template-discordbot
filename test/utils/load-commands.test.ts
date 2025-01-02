@@ -5,8 +5,8 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import type { Logger } from "pino";
 import { describe, expect, it, vi } from "vitest";
-import { createCommand } from "~/utils/create-command.js";
-import { loadCommands } from "~/utils/load-commands.js";
+import { createCommand } from "~/utils/create-command";
+import { loadCommands } from "~/utils/load-commands";
 
 vi.mock("node:fs/promises");
 vi.mock("node:path");
@@ -50,6 +50,8 @@ describe("loadCommands", () => {
       "Description for command2",
       expect.any(Function),
     );
-    expect(mockLogger.info).toHaveBeenCalledWith("Loaded commands: command1, command2");
+    expect(mockLogger.info).toHaveBeenCalledWith(
+      "Loaded commands: command1, command2",
+    );
   });
 });

@@ -1,6 +1,6 @@
 import type { CommandInteraction } from "discord.js";
 import { describe, expect, it, vi } from "vitest";
-import { execute } from "~/commands/ping.js";
+import { execute } from "~/commands/ping";
 
 describe("ping command", () => {
   it("should reply with 'Pong!'", async () => {

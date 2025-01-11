@@ -1,4 +1,4 @@
-name: checks
+name: integration-e2e
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  run-checks:
+  integration-e2e:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,8 +19,5 @@ jobs:
           cache: "yarn"
       - run: yarn install
       - run: |
-          # add node_modules/.bin to PATH
-          export PATH=$(pwd)/node_modules/.bin:$PATH
-
-          # run the pre-push hook directly
-          bash .husky/pre-push
+          yarn test:integration
+          yarn test:e2e

@@ -1,9 +1,10 @@
 import type { CommandInteraction } from "discord.js";
+import { createCommand } from "~/modules/command";
 
-export const name = "ping";
-
-export const description = "Ping the bot";
-
-export async function execute(interaction: CommandInteraction) {
+const name = "ping";
+const description = "Ping the bot";
+async function execute(interaction: CommandInteraction) {
   await interaction.reply("Pong!");
 }
+
+export const command = createCommand(name, description, execute);

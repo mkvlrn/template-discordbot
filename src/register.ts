@@ -1,25 +1,52 @@
-import { loadCommands, registerCommands } from "~/modules/command";
+import { REST, Routes, type Guild, type RequestData } from "discord.js";
+import { loadCommands } from "~/modules/command";
 import { ENV } from "~/modules/environment";
 import { logger } from "~/modules/logger";
 
-const errorMessage =
-  "Invalid arguments. Expected: register [serverId] or register global";
-const commands = await loadCommands();
-let serverId: string | undefined;
+const errorMessage = "Invalid arguments. Expected: 'register <serverId>' or 'register global'";
 
+// errors out if there's no args - must be exactly one
 const args = process.argv.slice(2);
-if (args.length !== 1) {
+if (args.length !== 1 || args[0] === undefined) {
   logger.error(errorMessage);
   process.exit(1);
 }
 
-if (args[0] !== "global") {
-  serverId = args[0];
-  if (serverId?.trim() === "") {
-    logger.error(errorMessage);
+// errors out if the arg is not "global" or is an empty string
+const serverId = args[0].trim();
+if (serverId !== "global" && serverId === "") {
+  logger.error(errorMessage);
+  process.exit(1);
+}
+
+const restClient = new REST().setToken(ENV.botToken);
+let target = "globally";
+if (serverId !== "global") {
+  try {
+    const guild = (await restClient.get(Routes.guild(serverId))) as Guild;
+    target = `server '${guild.name}' (${serverId})`;
+  } catch (error) {
+    logger.error((error as Error).message);
     process.exit(1);
   }
 }
 
-logger.info(`Registering commands to ${serverId ?? "all servers"}`);
-await registerCommands(commands, ENV.botToken, ENV.botClientId, serverId);
+logger.info(`Registering commands ${target}`);
+const commands = await loadCommands();
+
+const payload: RequestData = {
+  body: Array.from(commands, ([_, command]) => command.data.toJSON()),
+};
+
+const route =
+  serverId === "global"
+    ? Routes.applicationCommands(ENV.botClientId)
+    : Routes.applicationGuildCommands(ENV.botClientId, serverId);
+
+try {
+  await restClient.put(route, payload);
+  logger.info(`Commands registered ${target}: ${[...commands.keys()].join(", ")}`);
+} catch (error) {
+  logger.error((error as Error).message);
+  throw error;
+}

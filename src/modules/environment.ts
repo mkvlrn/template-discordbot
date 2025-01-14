@@ -12,14 +12,12 @@ const schema = z.object({
     .transform((v) => v === "true"),
 });
 
-const { botToken, botClientId, devMode, serverId } = process.env;
-const envFile = { botToken, botClientId, devMode, serverId };
+const { botToken, botClientId, devMode } = process.env;
+const envFile = { botToken, botClientId, devMode };
 
 const result = schema.safeParse(envFile);
 if (!result.success) {
-  throw new Error(
-    `Invalid environment: ${result.error.errors.map((e) => e.message).join(", ")}`,
-  );
+  throw new Error(`Invalid environment: ${result.error.errors.map((e) => e.message).join(", ")}`);
 }
 
 export const ENV = result.data;

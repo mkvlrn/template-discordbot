@@ -1,15 +1,8 @@
-import type {
-  GuildChannel,
-  Interaction,
-  InteractionReplyOptions,
-} from "discord.js";
+import type { GuildChannel, Interaction, InteractionReplyOptions } from "discord.js";
 import type { Command } from "~/modules/command";
 import { logger } from "~/modules/logger";
 
-export async function interact(
-  interaction: Interaction,
-  commands: Map<string, Command>,
-) {
+export async function interact(interaction: Interaction, commands: Map<string, Command>) {
   if (!interaction.isCommand()) {
     return;
   }

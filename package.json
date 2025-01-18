@@ -21,23 +21,24 @@
     "test": "vitest",
     "test:integration": "vitest --config test/integration/vitest.config.ts",
     "test:e2e": "vitest --config test/e2e/vitest.config.ts",
-    "tidy": "biome check --fix --no-errors-on-unmatched --verbose",
-    "typecheck": "tsc --noEmit && echo 'tsc passed'",
+    "tidy:ci": "biome check --no-errors-on-unmatched",
+    "tidy": "yarn tidy:ci --fix --verbose",
+    "typecheck": "tsc --noEmit",
     "prepare": "husky"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
-    "@types/node": "^22.10.6",
-    "@vitest/coverage-v8": "^2.1.8",
+    "@types/node": "^22.10.7",
+    "@vitest/coverage-v8": "^3.0.2",
     "husky": "^9.1.7",
     "pino-pretty": "^13.0.0",
     "tsc-alias": "^1.8.10",
     "tsx": "^4.19.2",
     "typescript": "^5.7.3",
     "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^2.1.8"
+    "vitest": "^3.0.2"
   },
   "dependencies": {
     "discord.js": "^14.17.3",

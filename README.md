@@ -34,9 +34,9 @@ Runs the built project.
 
 Registers all bot commands in `./commands` to the specified discord server or globally. Read more [here](https://discordjs.guide/creating-your-bot/command-deployment.html#registering-slash-commands).
 
-### `yarn test`, `yarn test:integration`, `yarn test:e2e`
+### `yarn test`, `yarn test:e2e`
 
-Runs unit/integration/e2e tests with vitest.
+Runs tests with vitest.
 
 ### `yarn tidy`
 
@@ -44,7 +44,7 @@ Runs biome in fix mode (only [safe fixes](https://biomejs.dev/linter/#safe-fixes
 
 ### `yarn typecheck`
 
-Runs typechecking using tsc and the `tsconfig.json` file, which is not the one used to build the project.
+Runs type checking using tsc and the `tsconfig.json` file, which is not the one used to build the project.
 
 ## that tsconfig.json seems very strict and opinionated
 

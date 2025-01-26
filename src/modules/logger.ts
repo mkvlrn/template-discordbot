@@ -10,7 +10,7 @@ const transport: LoggerOptions["transport"] = {
         translateTime: "yyyy-mm-dd hh:MM:ss TT",
         destination: ENV.devMode ? "" : "./logs/error.log",
       }
-    : { sourceToken: ENV.logtrailToken },
+    : { sourceToken: ENV.logtailToken },
 };
 
 export const logger = pino({

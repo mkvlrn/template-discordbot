@@ -11,10 +11,11 @@ const schema = z.object({
     })
     .transform((v) => v === "true"),
   logtailToken: z.string({}).optional(),
+  logLevel: z.enum(["trace", "debug", "info", "warn", "error", "fatal", "silent"]).optional(),
 });
 
-const { botToken, botClientId, devMode, logtailToken } = process.env;
-const envFile = { botToken, botClientId, devMode, logtailToken };
+const { botToken, botClientId, devMode, logtailToken, logLevel } = process.env;
+const envFile = { botToken, botClientId, devMode, logtailToken, logLevel };
 
 const result = schema.safeParse(envFile);
 if (!result.success) {

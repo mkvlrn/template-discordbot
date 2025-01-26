@@ -10,11 +10,11 @@ const schema = z.object({
       message: "Dev mode (devMode) must be either true or false",
     })
     .transform((v) => v === "true"),
-  logtrailToken: z.string({}).optional(),
+  logtailToken: z.string({}).optional(),
 });
 
-const { botToken, botClientId, devMode } = process.env;
-const envFile = { botToken, botClientId, devMode };
+const { botToken, botClientId, devMode, logtailToken } = process.env;
+const envFile = { botToken, botClientId, devMode, logtailToken };
 
 const result = schema.safeParse(envFile);
 if (!result.success) {

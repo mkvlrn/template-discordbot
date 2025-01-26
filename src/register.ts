@@ -1,5 +1,5 @@
 import { REST, Routes, type Guild, type RequestData } from "discord.js";
-import { loadCommands } from "~/modules/command";
+import { commands } from "~/commands/_commands";
 import { ENV } from "~/modules/environment";
 import { logger } from "~/modules/logger";
 
@@ -32,7 +32,6 @@ if (serverId !== "global") {
 }
 
 logger.info(`Registering commands ${target}`);
-const commands = await loadCommands();
 
 const payload: RequestData = {
   body: Array.from(commands, ([_, command]) => command.data.toJSON()),

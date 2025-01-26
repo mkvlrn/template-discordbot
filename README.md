@@ -9,6 +9,7 @@ Uses:
 - [vitest](https://github.com/vitest-dev/vitest) for tests
 - [commitlint](https://github.com/conventional-changelog/commitlint) for linting commit messages
 - [husky](https://github.com/typicode/husky) for git hooks
+- [tsup](https://github.com/egoist/tsup) for building
 
 ## prerequisites
 

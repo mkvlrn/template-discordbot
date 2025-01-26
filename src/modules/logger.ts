@@ -14,6 +14,6 @@ const transport: LoggerOptions["transport"] = {
 };
 
 export const logger = pino({
-  level: ENV.devMode ? "trace" : "error",
+  level: "trace",
   transport,
 });

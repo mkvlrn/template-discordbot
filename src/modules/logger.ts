@@ -1,21 +1,19 @@
 import { pino, type LoggerOptions } from "pino";
 import { ENV } from "~/modules/environment";
 
-const { devMode } = ENV;
-
 const transport: LoggerOptions["transport"] = {
-  target: devMode ? "pino-pretty" : "@logtail/pino",
-  options: devMode
+  target: ENV.devMode ? "pino-pretty" : "@logtail/pino",
+  options: ENV.devMode
     ? {
-        colorize: devMode,
-        ignore: devMode ? "pid,hostname" : "",
+        colorize: ENV.devMode,
+        ignore: ENV.devMode ? "pid,hostname" : "",
         translateTime: "yyyy-mm-dd hh:MM:ss TT",
-        destination: devMode ? "" : "./logs/error.log",
+        destination: ENV.devMode ? "" : "./logs/error.log",
       }
-    : {},
+    : { sourceToken: ENV.logtrailToken },
 };
 
 export const logger = pino({
-  level: devMode ? "trace" : "error",
+  level: ENV.devMode ? "trace" : "error",
   transport,
 });

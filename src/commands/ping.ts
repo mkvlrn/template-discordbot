@@ -7,4 +7,4 @@ async function execute(interaction: CommandInteraction) {
   await interaction.reply("Pong!");
 }
 
-export const command = createCommand(name, description, execute);
+export const ping = createCommand(name, description, execute);

@@ -1,5 +1,5 @@
+import { createCommand } from "#modules/command.ts";
 import type { CommandInteraction } from "discord.js";
-import { createCommand } from "~/modules/command";
 
 const name = "ping";
 const description = "Ping the bot";

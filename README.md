@@ -21,7 +21,7 @@ Uses:
 
 ### `yarn dev`
 
-Runs the project in watch mode, automatically restarting on changes. Uses [tsx](https://github.com/privatenumber/tsx) to run the typescript code without transpiling to `./build`.
+Runs the project in watch mode.
 
 ### `yarn build`
 
@@ -31,21 +31,17 @@ Builds/transpiles the code to `./build`.
 
 Runs the built project.
 
-### `yarn register <serverId>`, `yarn register global`
-
-Registers all bot commands in `./commands` to the specified discord server or globally. Read more [here](https://discordjs.guide/creating-your-bot/command-deployment.html#registering-slash-commands).
-
 ### `yarn test`, `yarn test:e2e`
 
 Runs tests with vitest.
 
 ### `yarn tidy`
 
-Runs biome in fix mode (only [safe fixes](https://biomejs.dev/linter/#safe-fixes)) to lint and format the project. Not only `./src`, but also all "loose" config files around root (js, ts, json, jsonc) or other directories.
+Runs biome in fix mode (only [safe fixes](https://biomejs.dev/linter/#safe-fixes)) to lint and format the project.
 
 ### `yarn typecheck`
 
-Runs type checking using tsc and the `tsconfig.json` file, which is not the one used to build the project.
+Runs type checking using tsc.
 
 ## that tsconfig.json seems very strict and opinionated
 

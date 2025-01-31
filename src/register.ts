@@ -1,7 +1,7 @@
+import { commands } from "#commands/_commands.ts";
+import { ENV } from "#modules/environment.ts";
+import { logger } from "#modules/logger.ts";
 import { REST, Routes, type Guild, type RequestData } from "discord.js";
-import { commands } from "~/commands/_commands";
-import { ENV } from "~/modules/environment";
-import { logger } from "~/modules/logger";
 
 const errorMessage = "Invalid arguments. Expected: 'register <serverId>' or 'register global'";
 

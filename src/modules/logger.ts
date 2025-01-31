@@ -1,5 +1,5 @@
+import { ENV } from "#modules/environment.ts";
 import { pino } from "pino";
-import { ENV } from "~/modules/environment";
 
 export const logger = pino({
   level: ENV.logLevel as pino.Level,

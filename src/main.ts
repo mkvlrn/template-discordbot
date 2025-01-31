@@ -1,8 +1,8 @@
+import { commands } from "#commands/_commands.ts";
+import { interact } from "#modules/bot.ts";
+import { ENV } from "#modules/environment.ts";
+import { logger } from "#modules/logger.ts";
 import { Client, Events, GatewayIntentBits } from "discord.js";
-import { commands } from "~/commands/_commands";
-import { interact } from "~/modules/bot";
-import { ENV } from "~/modules/environment";
-import { logger } from "~/modules/logger";
 
 const bot = new Client({ intents: [GatewayIntentBits.Guilds] });
 

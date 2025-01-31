@@ -12,7 +12,7 @@
   },
   "keywords": ["node", "esm", "discord", "discord.js", "bot", "template"],
   "engines": {
-    "node": ">=23.6.0"
+    "node": "23"
   },
   "imports": {
     "#*": "./src/*"

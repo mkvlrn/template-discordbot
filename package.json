@@ -11,9 +11,6 @@
     "url": "git@github.com:mkvlrn/template-discordbot"
   },
   "keywords": ["node", "esm", "discord", "discord.js", "bot", "template"],
-  "engines": {
-    "node": "23"
-  },
   "imports": {
     "#*": "./src/*"
   },

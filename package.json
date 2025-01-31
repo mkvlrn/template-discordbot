@@ -18,7 +18,7 @@
     "prebuild": "rm -rf build",
     "build": "tsup",
     "dev": "node --env-file=.env --watch src/main.ts",
-    "start": "node --env-file=.env build/main.js",
+    "start": "node build/main.js",
     "register": "node --env-file=.env src/register.ts",
     "test:ci": "yarn test --bail=1 --reporter=default && yarn test:e2e --bail=1 --reporter=default",
     "test": "vitest",

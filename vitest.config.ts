@@ -6,15 +6,15 @@ export default defineConfig({
   },
 
   test: {
-    include: ["./src/**/*.test.{ts,tsx}"],
+    include: ["src/**/*.test.{ts,tsx}"],
     reporters: ["verbose"],
     watch: false,
     coverage: {
       all: true,
       clean: true,
       cleanOnRerun: true,
-      include: ["./src"],
-      exclude: ["./src/**/*.test.{ts,tsx}", "./src/main.ts"],
+      include: ["src"],
+      exclude: ["src/**/*.test.{ts,tsx}", "src/main.ts"],
     },
     environment: "node",
     passWithNoTests: true,

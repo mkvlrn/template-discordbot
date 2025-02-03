@@ -10,7 +10,7 @@ import {
   type InteractionReplyOptions,
 } from "discord.js";
 
-export type Bot = {
+type Bot = {
   client: Client;
   commands: Map<string, Command>;
 };

@@ -11,16 +11,13 @@
     "url": "git@github.com:mkvlrn/template-discordbot"
   },
   "keywords": ["node", "esm", "discord", "discord.js", "bot", "template"],
-  "engines": {
-    "node": ">=22.13.1"
-  },
   "imports": {
     "#*": "./src/*"
   },
   "scripts": {
     "prebuild": "rm -rf build",
     "build": "tsup",
-    "dev": "node --env-file-if-exists=.env --experimental-strip-types --watch src/main.ts",
+    "dev": "node --env-file-if-exists=.env --watch src/main.ts",
     "start": "node --env-file-if-exists=.env build/main.js",
     "register": "node --env-file-if-exists=.env src/register.ts",
     "test:ci": "yarn test --bail=1 --reporter=default && yarn test:e2e --bail=1 --reporter=default",

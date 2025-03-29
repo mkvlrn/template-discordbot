@@ -6,6 +6,9 @@
     // importing ts files
     "allowImportingTsExtensions": true,
 
+    // no funny business
+    "erasableSyntaxOnly": true,
+
     // hella strict
     // https://whatislove.dev/articles/the-strictest-typescript-config/
     "allowJs": false,

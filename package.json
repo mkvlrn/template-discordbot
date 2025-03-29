@@ -12,7 +12,7 @@
   },
   "keywords": ["node", "esm", "discord", "discord.js", "bot", "template"],
   "engines": {
-    "node": ">=22.13"
+    "node": ">=23.6"
   },
   "imports": {
     "#*": "./src/*"
@@ -20,7 +20,7 @@
   "scripts": {
     "prebuild": "rm -rf build",
     "build": "tsup",
-    "dev": "node --env-file-if-exists=.env --experimental-strip-types --watch src/main.ts",
+    "dev": "node --env-file-if-exists=.env --watch src/main.ts",
     "start": "node --env-file-if-exists=.env build/main.js",
     "register": "node --env-file-if-exists=.env src/register.ts",
     "test:ci": "yarn test --bail=1 --reporter=default && yarn test:e2e --bail=1 --reporter=default",
@@ -33,17 +33,17 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@commitlint/cli": "^19.7.1",
-    "@commitlint/config-conventional": "^19.7.1",
-    "@types/node": "^22.13.4",
-    "@vitest/coverage-v8": "^3.0.5",
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "@types/node": "^22.13.14",
+    "@vitest/coverage-v8": "^3.0.9",
     "husky": "^9.1.7",
     "pino-pretty": "^13.0.0",
-    "tsup": "^8.3.6",
-    "tsx": "^4.19.2",
-    "typescript": "^5.7.3",
+    "tsup": "^8.4.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2",
     "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^3.0.5"
+    "vitest": "^3.0.9"
   },
   "dependencies": {
     "@logtail/pino": "^0.5.2",

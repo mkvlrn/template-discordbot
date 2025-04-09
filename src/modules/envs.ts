@@ -1,3 +1,6 @@
+// biome-ignore-start lint/correctness/noNodejsModules: hella needed here
+import process from "node:process";
+// biome-ignore-end lint/correctness/noNodejsModules: yeah
 import { z } from "zod";
 
 const schema = z.object({
@@ -14,8 +17,13 @@ const schema = z.object({
   logLevel: z.enum(["trace", "debug", "info", "warn", "error", "fatal", "silent"]).optional(),
 });
 
-const { botToken, botClientId, devMode, logtailToken, logLevel } = process.env;
-const envFile = { botToken, botClientId, devMode, logtailToken, logLevel };
+const envFile = {
+  botToken: process.env.botToken,
+  botClientId: process.env.botClientId,
+  devMode: process.env.devMode,
+  logtailToken: process.env.logtailToken,
+  logLevel: process.env.logLevel,
+};
 
 const result = schema.safeParse(envFile);
 if (!result.success) {

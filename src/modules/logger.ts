@@ -1,5 +1,5 @@
-import { ENV } from "#modules/envs.ts";
-import { pino, type Logger } from "pino";
+import { type Logger, pino } from "pino";
+import { ENV } from "#modules/envs";
 
 let logger: Logger;
 

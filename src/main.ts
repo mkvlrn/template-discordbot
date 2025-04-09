@@ -1,5 +1,5 @@
-import { getBot } from "#modules/bot.ts";
-import { ENV } from "#modules/envs.ts";
+import { getBot } from "#modules/bot";
+import { ENV } from "#modules/envs";
 
 const bot = await getBot();
 

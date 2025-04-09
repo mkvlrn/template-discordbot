@@ -1,6 +1,3 @@
-import { getCommands } from "#commands/_index.ts";
-import type { Command } from "#modules/command.ts";
-import { getLogger } from "#modules/logger.ts";
 import {
   Client,
   Events,
@@ -9,6 +6,9 @@ import {
   type Interaction,
   type InteractionReplyOptions,
 } from "discord.js";
+import { getCommands } from "#commands/_index";
+import type { Command } from "#modules/command";
+import { getLogger } from "#modules/logger";
 
 type Bot = {
   client: Client;
@@ -20,33 +20,7 @@ let client: Client;
 let commands: Map<string, Command>;
 let bot: Bot | undefined;
 
-export async function getBot(): Promise<Bot> {
-  if (!bot) {
-    client = new Client({ intents: [GatewayIntentBits.Guilds] });
-    commands = await getCommands();
-
-    client.once(Events.ClientReady, (client) => {
-      logger.info(`Logged in as ${client.user.displayName}`);
-    });
-
-    client.on(Events.InteractionCreate, async (interaction) => {
-      await interact(interaction);
-    });
-
-    client.on(Events.Error, (error) => {
-      logger.error(error, "Bot error");
-    });
-
-    bot = {
-      client,
-      commands,
-    };
-  }
-
-  return bot;
-}
-
-async function interact(interaction: Interaction) {
+async function interact(interaction: Interaction): Promise<void> {
   if (!interaction.isCommand()) {
     return;
   }
@@ -76,4 +50,30 @@ async function interact(interaction: Interaction) {
       ? interaction.followUp(reply)
       : interaction.reply(reply));
   }
+}
+
+export async function getBot(): Promise<Bot> {
+  if (!bot) {
+    client = new Client({ intents: [GatewayIntentBits.Guilds] });
+    commands = await getCommands();
+
+    client.once(Events.ClientReady, (client) => {
+      logger.info(`Logged in as ${client.user.displayName}`);
+    });
+
+    client.on(Events.InteractionCreate, async (interaction) => {
+      await interact(interaction);
+    });
+
+    client.on(Events.Error, (error) => {
+      logger.error(error, "Bot error");
+    });
+
+    bot = {
+      client: client,
+      commands: commands,
+    };
+  }
+
+  return bot;
 }

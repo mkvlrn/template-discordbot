@@ -12,6 +12,6 @@ export function createCommand(
 ): Command {
   return {
     data: new SlashCommandBuilder().setName(name).setDescription(description),
-    execute,
+    execute: execute,
   };
 }

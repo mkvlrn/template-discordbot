@@ -1,41 +1,11 @@
 {
+  "extends": "@mkvlrn/config/tsconfig-node",
   "compilerOptions": {
+    // imports from src as defined in package.json subpath
+    "customConditions": ["dev"],
+
     // type checking only
-    "noEmit": true,
-
-    // importing ts files
-    "allowImportingTsExtensions": true,
-
-    // no funny business
-    "erasableSyntaxOnly": true,
-
-    // hella strict
-    // https://whatislove.dev/articles/the-strictest-typescript-config/
-    "allowJs": false,
-    "exactOptionalPropertyTypes": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noUncheckedIndexedAccess": true,
-    "strict": true,
-    "strictNullChecks": true,
-
-    // esm, the node way
-    "esModuleInterop": true,
-    "isolatedModules": true,
-    "lib": ["ESNext"],
-    "module": "NodeNext",
-    "moduleDetection": "force",
-    "moduleResolution": "nodenext",
-    "target": "esnext",
-    "verbatimModuleSyntax": true,
-
-    // pnpm compatibility
-    "preserveSymlinks": true,
-
-    // importing json happens more often than you think
-    "resolveJsonModule": true,
-
-    // don't try to check for errors on imported libs
-    "skipLibCheck": true
+    "noEmit": true
   },
 
   "exclude": ["node_modules", "build", "coverage", "dist"]

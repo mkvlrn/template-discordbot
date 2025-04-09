@@ -1,29 +1,61 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-  "vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
-  "files": { "ignoreUnknown": true, "include": ["**/*"], "ignore": [] },
-  "formatter": {
-    "enabled": true,
-    "formatWithErrors": true,
-    "indentStyle": "space",
-    "lineWidth": 100
-  },
-  "organizeImports": { "enabled": false },
+  "$schema": "node_modules/@biomejs/biome/configuration_schema.json",
+  "extends": ["@mkvlrn/config/biome"],
   "linter": {
-    "enabled": true,
     "rules": {
-      "all": true,
-      "complexity": {
-        // this goes against typescript's noPropertyAccessFromIndexSignature
-        "useLiteralKeys": "off"
+      "nursery": {
+        // temporary because of subpath imports
+        // might be fixed, discussed: https://github.com/biomejs/biome/discussions/5603
+        "noUnresolvedImports": "off"
       }
     }
   },
   "overrides": [
     {
+      // dont sort keys in these because they're usually in a specific order for readability
+      "includes": ["**/biome.json", "**/biome.jsonc", "**/package.json", "**/tsconfig.json"],
+      "assist": {
+        "actions": {
+          "source": {
+            "useSortedKeys": "off"
+          }
+        }
+      }
+    },
+    {
+      // main.ts can console stuff out
+      "includes": ["src/main.ts"],
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noConsole": {
+              "level": "off"
+            }
+          }
+        }
+      }
+    },
+    {
       // some/most config files on root export defaults from them
-      "include": ["*.config.ts", "*.config.js"],
-      "linter": { "rules": { "style": { "noDefaultExport": "off" } } }
+      "includes": ["**/*.config.ts"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noDefaultExport": "off"
+          }
+        }
+      }
+    },
+    {
+      // test files and scripts can use node:modules
+      "includes": ["src/**/*.test.ts", "scripts/*.ts"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noNodejsModules": "off"
+          }
+        }
+      }
     }
   ]
 }

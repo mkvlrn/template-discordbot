@@ -6,9 +6,9 @@ import {
   type Interaction,
   type InteractionReplyOptions,
 } from "discord.js";
-import { getCommands } from "#commands/_index";
-import type { Command } from "#modules/command";
-import { getLogger } from "#modules/logger";
+import { getCommands } from "~/commands/_index.js";
+import type { Command } from "~/modules/command.js";
+import { getLogger } from "~/modules/logger.js";
 
 type Bot = {
   client: Client;

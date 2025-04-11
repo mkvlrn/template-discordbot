@@ -1,8 +1,8 @@
 import process from "node:process";
 import { type Guild, REST, type RequestData, Routes } from "discord.js";
-import { getCommands } from "#commands/_index";
-import { ENV } from "#modules/envs";
-import { getLogger } from "#modules/logger";
+import { getCommands } from "~/commands/_index.js";
+import { ENV } from "~/modules/envs.js";
+import { getLogger } from "~/modules/logger.js";
 
 const logger = getLogger();
 const commands = await getCommands();

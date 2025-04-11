@@ -1,5 +1,5 @@
 import type { CommandInteraction } from "discord.js";
-import { createCommand } from "#modules/command";
+import { createCommand } from "~/modules/command.js";
 
 async function execute(interaction: CommandInteraction): Promise<void> {
   await interaction.reply("Pong!");

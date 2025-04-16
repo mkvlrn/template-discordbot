@@ -16,50 +16,50 @@
   resolved "https://registry.yarnpkg.com/@babel/helper-validator-identifier/-/helper-validator-identifier-7.25.9.tgz#24b64e2c3ec7cd3b3c547729b8d16871f22cbdc7"
   integrity sha512-Ed61U6XJc3CVRfkERJWDz4dJwKe7iLmmJsbOGu9wSloNSFttHV0I8g6UAgb7qnK5ly5bGLPd4oXZlxCdANBOWQ==
 
-"@biomejs/biome@https://pkg.pr.new/biomejs/biome/@biomejs/biome@2d699e3":
+"@biomejs/biome@https://pkg.pr.new/biomejs/biome/@biomejs/biome@5f890fb":
   version "1.9.4"
-  resolved "https://pkg.pr.new/biomejs/biome/@biomejs/biome@2d699e3#ea1649adfccd7233116b436c8b8270eee71461e1"
+  resolved "https://pkg.pr.new/biomejs/biome/@biomejs/biome@5f890fb#75b7f3781227f0195d1bf7c876062c2054c28993"
   optionalDependencies:
-    "@biomejs/cli-darwin-arm64" "https://pkg.pr.new/biomejs/biome/@biomejs/cli-darwin-arm64@2d699e3"
-    "@biomejs/cli-darwin-x64" "https://pkg.pr.new/biomejs/biome/@biomejs/cli-darwin-x64@2d699e3"
-    "@biomejs/cli-linux-arm64" "https://pkg.pr.new/biomejs/biome/@biomejs/cli-linux-arm64@2d699e3"
-    "@biomejs/cli-linux-arm64-musl" "https://pkg.pr.new/biomejs/biome/@biomejs/cli-linux-arm64-musl@2d699e3"
-    "@biomejs/cli-linux-x64" "https://pkg.pr.new/biomejs/biome/@biomejs/cli-linux-x64@2d699e3"
-    "@biomejs/cli-linux-x64-musl" "https://pkg.pr.new/biomejs/biome/@biomejs/cli-linux-x64-musl@2d699e3"
-    "@biomejs/cli-win32-arm64" "https://pkg.pr.new/biomejs/biome/@biomejs/cli-win32-arm64@2d699e3"
-    "@biomejs/cli-win32-x64" "https://pkg.pr.new/biomejs/biome/@biomejs/cli-win32-x64@2d699e3"
+    "@biomejs/cli-darwin-arm64" "https://pkg.pr.new/biomejs/biome/@biomejs/cli-darwin-arm64@5f890fb"
+    "@biomejs/cli-darwin-x64" "https://pkg.pr.new/biomejs/biome/@biomejs/cli-darwin-x64@5f890fb"
+    "@biomejs/cli-linux-arm64" "https://pkg.pr.new/biomejs/biome/@biomejs/cli-linux-arm64@5f890fb"
+    "@biomejs/cli-linux-arm64-musl" "https://pkg.pr.new/biomejs/biome/@biomejs/cli-linux-arm64-musl@5f890fb"
+    "@biomejs/cli-linux-x64" "https://pkg.pr.new/biomejs/biome/@biomejs/cli-linux-x64@5f890fb"
+    "@biomejs/cli-linux-x64-musl" "https://pkg.pr.new/biomejs/biome/@biomejs/cli-linux-x64-musl@5f890fb"
+    "@biomejs/cli-win32-arm64" "https://pkg.pr.new/biomejs/biome/@biomejs/cli-win32-arm64@5f890fb"
+    "@biomejs/cli-win32-x64" "https://pkg.pr.new/biomejs/biome/@biomejs/cli-win32-x64@5f890fb"
 
-"@biomejs/cli-darwin-arm64@https://pkg.pr.new/biomejs/biome/@biomejs/cli-darwin-arm64@2d699e3":
+"@biomejs/cli-darwin-arm64@https://pkg.pr.new/biomejs/biome/@biomejs/cli-darwin-arm64@5f890fb":
   version "1.9.4"
-  resolved "https://pkg.pr.new/biomejs/biome/@biomejs/cli-darwin-arm64@2d699e3#09f513f7a67c4b363f647da1fbe4184a9df30c88"
+  resolved "https://pkg.pr.new/biomejs/biome/@biomejs/cli-darwin-arm64@5f890fb#2e63b5fa02a277dad27cc8261c252eb41e25d808"
 
-"@biomejs/cli-darwin-x64@https://pkg.pr.new/biomejs/biome/@biomejs/cli-darwin-x64@2d699e3":
+"@biomejs/cli-darwin-x64@https://pkg.pr.new/biomejs/biome/@biomejs/cli-darwin-x64@5f890fb":
   version "1.9.4"
-  resolved "https://pkg.pr.new/biomejs/biome/@biomejs/cli-darwin-x64@2d699e3#733e2625a1ba9910a25075aa0e2ec24539179140"
+  resolved "https://pkg.pr.new/biomejs/biome/@biomejs/cli-darwin-x64@5f890fb#0f837183187064c116bede1cb75006545cdf3fa2"
 
-"@biomejs/cli-linux-arm64-musl@https://pkg.pr.new/biomejs/biome/@biomejs/cli-linux-arm64-musl@2d699e3":
+"@biomejs/cli-linux-arm64-musl@https://pkg.pr.new/biomejs/biome/@biomejs/cli-linux-arm64-musl@5f890fb":
   version "1.9.4"
-  resolved "https://pkg.pr.new/biomejs/biome/@biomejs/cli-linux-arm64-musl@2d699e3#cc85c0a3de9209d9ceb3164b690f5ff8c5ca49db"
+  resolved "https://pkg.pr.new/biomejs/biome/@biomejs/cli-linux-arm64-musl@5f890fb#72347602043270cadf554928c7af32890d6e56fe"
 
-"@biomejs/cli-linux-arm64@https://pkg.pr.new/biomejs/biome/@biomejs/cli-linux-arm64@2d699e3":
+"@biomejs/cli-linux-arm64@https://pkg.pr.new/biomejs/biome/@biomejs/cli-linux-arm64@5f890fb":
   version "1.9.4"
-  resolved "https://pkg.pr.new/biomejs/biome/@biomejs/cli-linux-arm64@2d699e3#eef280c2178d82310d4c9dce3ddcd9293d3b12d1"
+  resolved "https://pkg.pr.new/biomejs/biome/@biomejs/cli-linux-arm64@5f890fb#08cd76580700f365b4a6f88c0525893fa1021599"
 
-"@biomejs/cli-linux-x64-musl@https://pkg.pr.new/biomejs/biome/@biomejs/cli-linux-x64-musl@2d699e3":
+"@biomejs/cli-linux-x64-musl@https://pkg.pr.new/biomejs/biome/@biomejs/cli-linux-x64-musl@5f890fb":
   version "1.9.4"
-  resolved "https://pkg.pr.new/biomejs/biome/@biomejs/cli-linux-x64-musl@2d699e3#451a8e4d21d4519bab62fc17914bdc6f19c7e468"
+  resolved "https://pkg.pr.new/biomejs/biome/@biomejs/cli-linux-x64-musl@5f890fb#ecf015186b8f1aaa60534c44e3dd26ef0f0c9c05"
 
-"@biomejs/cli-linux-x64@https://pkg.pr.new/biomejs/biome/@biomejs/cli-linux-x64@2d699e3":
+"@biomejs/cli-linux-x64@https://pkg.pr.new/biomejs/biome/@biomejs/cli-linux-x64@5f890fb":
   version "1.9.4"
-  resolved "https://pkg.pr.new/biomejs/biome/@biomejs/cli-linux-x64@2d699e3#1d7c16215305592e2f0692d3a8d32bd07f8b9fb7"
+  resolved "https://pkg.pr.new/biomejs/biome/@biomejs/cli-linux-x64@5f890fb#5c04855abcac5ede1968295df84424a691cfaebf"
 
-"@biomejs/cli-win32-arm64@https://pkg.pr.new/biomejs/biome/@biomejs/cli-win32-arm64@2d699e3":
+"@biomejs/cli-win32-arm64@https://pkg.pr.new/biomejs/biome/@biomejs/cli-win32-arm64@5f890fb":
   version "1.9.4"
-  resolved "https://pkg.pr.new/biomejs/biome/@biomejs/cli-win32-arm64@2d699e3#53893505043d8830ae3b14640449c77fa72ec2cc"
+  resolved "https://pkg.pr.new/biomejs/biome/@biomejs/cli-win32-arm64@5f890fb#8df3514b75828352374db7084f1ca4bf4e839fd6"
 
-"@biomejs/cli-win32-x64@https://pkg.pr.new/biomejs/biome/@biomejs/cli-win32-x64@2d699e3":
+"@biomejs/cli-win32-x64@https://pkg.pr.new/biomejs/biome/@biomejs/cli-win32-x64@5f890fb":
   version "1.9.4"
-  resolved "https://pkg.pr.new/biomejs/biome/@biomejs/cli-win32-x64@2d699e3#a2aca0048249f8fdd05344e0749ca5ecf6b383d8"
+  resolved "https://pkg.pr.new/biomejs/biome/@biomejs/cli-win32-x64@5f890fb#4555bd8c84c906ef687b855795cabb1fd6fd59b6"
 
 "@commitlint/cli@^19.8.0":
   version "19.8.0"
@@ -567,50 +567,47 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@logtail/core@^0.5.2":
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/@logtail/core/-/core-0.5.2.tgz#a5fb36731848fbb47a3b1176c643a405e40d674d"
-  integrity sha512-mkQqGFwtZ06x2xsj6kOiEZeLSlPeTDArNOEeB9Q1VHxduRHJFInG7soix8+P8xeaoJx+7itvbUySB0XBlnmLSA==
+"@logtail/core@^0.5.4":
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/@logtail/core/-/core-0.5.4.tgz#e6b956b42b93725d583d29226c10c650c47a5f8a"
+  integrity sha512-UlbxvUg5MDroqk6gEhtfKuuBShrvD/VaXl3T3jGU1U6I19Y1OwfB7e681LvH7RbsCAnOJFziM/7rMQib/CJTdg==
   dependencies:
-    "@logtail/tools" "^0.5.2"
-    "@logtail/types" "^0.5.2"
+    "@logtail/tools" "^0.5.4"
+    "@logtail/types" "^0.5.3"
     serialize-error "8.1.0"
 
-"@logtail/node@^0.5.2":
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/@logtail/node/-/node-0.5.2.tgz#f0d2462b6c43f6d7334858cb8769bf23162fe2e9"
-  integrity sha512-pSleAsbq61WdaMzYkmW+kdCfptIWmjhSvNoyAtFFuaIGNXFS2UEmnHPrvzrPxsFgBswePSGl/m1teHTeBxA+qg==
+"@logtail/node@^0.5.4":
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/@logtail/node/-/node-0.5.4.tgz#1def084f74ea42089d75fbced2dd89fd3219e651"
+  integrity sha512-PemcnkXRA3IBNTKKdELwhTNTmKluopuvGRKbd3ucNFYSmBGq+VBkxwISr43eS2cEidqHf0n9noGPS03PRhLlOw==
   dependencies:
-    "@logtail/core" "^0.5.2"
-    "@logtail/types" "^0.5.2"
+    "@logtail/core" "^0.5.4"
+    "@logtail/types" "^0.5.3"
     "@msgpack/msgpack" "^2.5.1"
     "@types/stack-trace" "^0.0.33"
-    cross-fetch "^4.0.0"
     minimatch "^9.0.5"
-    serialize-error "8.1.0"
     stack-trace "0.0.10"
 
-"@logtail/pino@^0.5.2":
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/@logtail/pino/-/pino-0.5.2.tgz#f30b11509aae984bb2a9dc50f4d4fcbd2df75404"
-  integrity sha512-Cf6nfMzwF0iNuHlr9mxcyGY1x/oZTCpaVXPSV6/YL2pzskQgclPIwkanCTV3ZIUA+SoY+nOv1nvsYtJXY+prug==
+"@logtail/pino@^0.5.4":
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/@logtail/pino/-/pino-0.5.4.tgz#33ea4de8aa768b9fde5da48fff8ed1413c516273"
+  integrity sha512-T5iv6/zyIfY3b+jpJyDk6kGipaTXx3R202pni/lM/biNuOjp2xVrK/zU6NfjSnW6v242cdthbyeY2IvbSM6B/w==
   dependencies:
-    "@logtail/node" "^0.5.2"
-    "@logtail/types" "^0.5.2"
+    "@logtail/node" "^0.5.4"
+    "@logtail/types" "^0.5.3"
     pino-abstract-transport "^1.0.0"
 
-"@logtail/tools@^0.5.2":
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/@logtail/tools/-/tools-0.5.2.tgz#b24f96f2bc65f86a928f915aa841f1ec15da2ff9"
-  integrity sha512-1Vg0rznoDYXWYDkz8orjKNTjK5f2eUubHN6tfJ2hHKCRRHy7y+TJpIlCQg3BilVcOvMIfiy4RbrcaFTHvDQWTQ==
+"@logtail/tools@^0.5.4":
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/@logtail/tools/-/tools-0.5.4.tgz#a52b515833e24f373ae372b56d8717ee8cf599a9"
+  integrity sha512-S0PtfWOVVgvb36q8mLksMw910mO2TahDaqIYnUM/ZEYX+AwqKRGov4zt/X33zHRzCFVpSKoZFv7bFs8TBie/pQ==
   dependencies:
-    "@logtail/types" "^0.5.2"
-    cross-fetch "^4.0.0"
+    "@logtail/types" "^0.5.3"
 
-"@logtail/types@^0.5.2":
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/@logtail/types/-/types-0.5.2.tgz#f5a53963df56a0dbed3e665f39ac1c2a092071d3"
-  integrity sha512-G3C3XjJPW/LJS0+sanzsNLLqXHAJkhdBR8h4zFUylOtUOevtlneenGNZFjEil+h/GOb3tUySvBuP2wl51gvf0A==
+"@logtail/types@^0.5.3":
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/@logtail/types/-/types-0.5.3.tgz#1b5f386fbd9c647bf390d3d0350cba8629bf4a99"
+  integrity sha512-5uKf1xQ7wRqSW0lYIwDpXdXcFHxPKH5EM22MoEjwTpd8suymOYuEdx9qCCHCYey4uOhPq7x6OkZf86bTO83JsA==
 
 "@mkvlrn/config@^2.0.5":
   version "2.0.5"
@@ -1057,13 +1054,6 @@ cosmiconfig@^9.0.0:
     import-fresh "^3.3.0"
     js-yaml "^4.1.0"
     parse-json "^5.2.0"
-
-cross-fetch@^4.0.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-4.1.0.tgz#8f69355007ee182e47fa692ecbaa37a52e43c3d2"
-  integrity sha512-uKm5PU+MHTootlWEY+mZ4vvXoCn4fLQxT9dSc1sXVMSFkINTJVN8cAQROpwcKm8bJ/c7rgZVIBWzH5T78sNZZw==
-  dependencies:
-    node-fetch "^2.7.0"
 
 cross-spawn@^7.0.0:
   version "7.0.6"
@@ -1656,13 +1646,6 @@ mz@^2.7.0:
     object-assign "^4.0.1"
     thenify-all "^1.0.0"
 
-node-fetch@^2.7.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.7.0.tgz#d0f0fa6e3e2dc1d27efcd8ad99d550bda94d187d"
-  integrity sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==
-  dependencies:
-    whatwg-url "^5.0.0"
-
 normalize-path@^3.0.0, normalize-path@~3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/normalize-path/-/normalize-path-3.0.0.tgz#0dcd69ff23a1c9b11fd0978316644a0388216a65"
@@ -2170,11 +2153,6 @@ tr46@^1.0.1:
   dependencies:
     punycode "^2.1.0"
 
-tr46@~0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/tr46/-/tr46-0.0.3.tgz#8184fd347dac9cdc185992f3a6622e14b9d9ab6a"
-  integrity sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==
-
 tree-kill@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/tree-kill/-/tree-kill-1.2.2.tgz#4ca09a9092c88b73a7cdc5e8a01b507b0790a0cc"
@@ -2270,23 +2248,10 @@ unicorn-magic@^0.1.0:
   resolved "https://registry.yarnpkg.com/unicorn-magic/-/unicorn-magic-0.1.0.tgz#1bb9a51c823aaf9d73a8bfcd3d1a23dde94b0ce4"
   integrity sha512-lRfVq8fE8gz6QMBuDM6a+LO3IAzTi05H6gCVaUpir2E1Rwpo4ZUog45KpNXKC/Mn3Yb9UDuHumeFTo9iV/D9FQ==
 
-webidl-conversions@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-3.0.1.tgz#24534275e2a7bc6be7bc86611cc16ae0a5654871"
-  integrity sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==
-
 webidl-conversions@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-4.0.2.tgz#a855980b1f0b6b359ba1d5d9fb39ae941faa63ad"
   integrity sha512-YQ+BmxuTgd6UXZW3+ICGfyqRyHXVlD5GtQr5+qjiNW7bF0cqrzX500HVXPBOvgXb5YnzDd+h0zqyv61KUD7+Sg==
-
-whatwg-url@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/whatwg-url/-/whatwg-url-5.0.0.tgz#966454e8765462e37644d3626f6742ce8b70965d"
-  integrity sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==
-  dependencies:
-    tr46 "~0.0.3"
-    webidl-conversions "^3.0.0"
 
 whatwg-url@^7.0.0:
   version "7.1.0"
@@ -2369,7 +2334,7 @@ yocto-queue@^1.0.0:
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-1.1.1.tgz#fef65ce3ac9f8a32ceac5a634f74e17e5b232110"
   integrity sha512-b4JR1PFR10y1mKjhHY9LaGo6tmrgjit7hxVIeAmyMw3jegXR4dhYqLaQF5zMXZxY7tLpMyJeLjr1C4rLmkVe8g==
 
-zod@^3.24.2:
-  version "3.24.2"
-  resolved "https://registry.yarnpkg.com/zod/-/zod-3.24.2.tgz#8efa74126287c675e92f46871cfc8d15c34372b3"
-  integrity sha512-lY7CDW43ECgW9u1TcT3IoXHflywfVqDYze4waEz812jR/bZ8FHDsl7pFQoSZTz5N+2NqRXs8GBwnAwo3ZNxqhQ==
+zod@^3.24.3:
+  version "3.24.3"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-3.24.3.tgz#1f40f750a05e477396da64438e0e1c0995dafd87"
+  integrity sha512-HhY1oqzWCQWuUqvBFnsyrtZRhyPeR7SUGv+C4+MsisMuVfSPx8HpwWqH8tRahSlt6M3PiFAcoeFhZAqIXTxoSg==

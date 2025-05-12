@@ -8,10 +8,10 @@ export type Command = {
 export function createCommand(
   name: string,
   description: string,
-  execute: Command["execute"],
+  executable: Command["execute"],
 ): Command {
   return {
     data: new SlashCommandBuilder().setName(name).setDescription(description),
-    execute: execute,
+    execute: executable,
   };
 }

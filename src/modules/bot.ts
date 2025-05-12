@@ -6,6 +6,7 @@ import {
   type Interaction,
   type InteractionReplyOptions,
 } from "discord.js";
+import type { Logger } from "pino";
 import { getCommands } from "~/commands/_index.js";
 import type { Command } from "~/modules/command.js";
 import { getLogger } from "~/modules/logger.js";
@@ -15,12 +16,13 @@ type Bot = {
   commands: Map<string, Command>;
 };
 
-const logger = getLogger();
-let client: Client;
-let commands: Map<string, Command>;
 let bot: Bot | undefined;
 
-async function interact(interaction: Interaction): Promise<void> {
+async function interact(
+  interaction: Interaction,
+  logger: Logger,
+  commands: Map<string, Command>,
+): Promise<void> {
   if (!interaction.isCommand()) {
     return;
   }
@@ -53,18 +55,25 @@ async function interact(interaction: Interaction): Promise<void> {
 }
 
 export async function getBot(): Promise<Bot> {
+  const logger = getLogger();
+  let client: Client;
+  let commands: Map<string, Command>;
+
   if (!bot) {
     client = new Client({ intents: [GatewayIntentBits.Guilds] });
     commands = await getCommands();
 
-    client.once(Events.ClientReady, (client) => {
-      logger.info(`Logged in as ${client.user.displayName}`);
+    // biome-ignore lint/nursery/useExplicitType: https://github.com/biomejs/biome/issues/5932
+    client.once(Events.ClientReady, (c) => {
+      logger.info(`Logged in as ${c.user.displayName}`);
     });
 
+    // biome-ignore lint/nursery/useExplicitType: https://github.com/biomejs/biome/issues/5932
     client.on(Events.InteractionCreate, async (interaction) => {
-      await interact(interaction);
+      await interact(interaction, logger, commands);
     });
 
+    // biome-ignore lint/nursery/useExplicitType: https://github.com/biomejs/biome/issues/5932
     client.on(Events.Error, (error) => {
       logger.error(error, "Bot error");
     });

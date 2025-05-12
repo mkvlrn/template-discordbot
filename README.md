@@ -31,11 +31,11 @@ Builds/transpiles the code to `./build`.
 
 Runs the built project.
 
-### `yarn test`, `yarn test:e2e`
+### `yarn test`
 
 Runs tests with vitest.
 
-### `yarn tidy`
+### `yarn biome-fix`
 
 Runs biome in fix mode (only [safe fixes](https://biomejs.dev/linter/#safe-fixes)) to lint and format the project.
 

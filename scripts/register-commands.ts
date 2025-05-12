@@ -54,7 +54,6 @@ async function registerCommands(): Promise<void> {
       ? Routes.applicationCommands(ENV.botClientId)
       : Routes.applicationGuildCommands(ENV.botClientId, serverId);
   const payload: RequestData = {
-    // biome-ignore lint/nursery/useExplicitType: https://github.com/biomejs/biome/issues/5932
     body: Array.from(commands, ([_, command]) => command.data.toJSON()),
   };
 

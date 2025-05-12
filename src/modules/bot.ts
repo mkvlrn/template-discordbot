@@ -63,17 +63,14 @@ export async function getBot(): Promise<Bot> {
     client = new Client({ intents: [GatewayIntentBits.Guilds] });
     commands = await getCommands();
 
-    // biome-ignore lint/nursery/useExplicitType: https://github.com/biomejs/biome/issues/5932
     client.once(Events.ClientReady, (c) => {
       logger.info(`Logged in as ${c.user.displayName}`);
     });
 
-    // biome-ignore lint/nursery/useExplicitType: https://github.com/biomejs/biome/issues/5932
     client.on(Events.InteractionCreate, async (interaction) => {
       await interact(interaction, logger, commands);
     });
 
-    // biome-ignore lint/nursery/useExplicitType: https://github.com/biomejs/biome/issues/5932
     client.on(Events.Error, (error) => {
       logger.error(error, "Bot error");
     });

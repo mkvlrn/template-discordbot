@@ -6,10 +6,9 @@ Uses:
 
 - [biome](https://github.com/biomejs/biome) for linting and formatting
 - [tsx](https://github.com/privatenumber/tsx) for running typescript code without transpiling
-- [vitest](https://github.com/vitest-dev/vitest) for tests
 - [commitlint](https://github.com/conventional-changelog/commitlint) for linting commit messages
 - [husky](https://github.com/typicode/husky) for git hooks
-- [tsup](https://github.com/egoist/tsup) for building
+- [vite](https://github.com/vitejs/vite) for building
 
 ## prerequisites
 
@@ -19,27 +18,27 @@ Uses:
 
 ## running
 
-### `yarn dev`
+### `npm run dev`
 
 Runs the project in watch mode.
 
-### `yarn build`
+### `npm run build`
 
 Builds/transpiles the code to `./build`.
 
-### `yarn start`
+### `npm start`
 
 Runs the built project.
 
-### `yarn test`
+### `npm test`
 
 Runs tests with vitest.
 
-### `yarn biome-fix`
+### `npm run biome-fix`
 
 Runs biome in fix mode (only [safe fixes](https://biomejs.dev/linter/#safe-fixes)) to lint and format the project.
 
-### `yarn typecheck`
+### `npm run typecheck`
 
 Runs type checking using tsc.
 

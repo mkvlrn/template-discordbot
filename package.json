@@ -22,32 +22,34 @@
     "node": "24.x"
   },
   "scripts": {
-    "build": "node scripts/build.ts",
+    "build": "vite build",
     "register-commands": "tsx --env-file=.env scripts/register-commands.ts",
     "dev": "tsx --env-file=.env --watch src/main.ts",
     "start": "node --env-file=.env build/main.js",
     "test": "tsx --test",
     "biome-check": "biome check --no-errors-on-unmatched",
-    "biome-fix": "yarn biome-check --write",
+    "biome-fix": "npm run biome-check --write",
     "typecheck": "tsc --noEmit",
     "prepare": "husky"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.0.0-beta.3",
+    "@biomejs/biome": "^2.0.4",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
-    "@types/node": "^22.15.17",
+    "@types/node": "^24.0.3",
     "husky": "^9.1.7",
     "pino-pretty": "^13.0.0",
+    "rollup-plugin-node-externals": "^8.0.1",
     "tsc-alias": "^1.8.16",
-    "tsup": "^8.4.0",
-    "tsx": "^4.19.4",
-    "typescript": "^5.8.3"
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vite-tsconfig-paths": "^5.1.4"
   },
   "dependencies": {
-    "@logtail/pino": "^0.5.4",
-    "discord.js": "^14.19.3",
-    "pino": "^9.6.0",
-    "zod": "^3.24.4"
+    "@logtail/pino": "^0.5.5",
+    "discord.js": "^14.20.0",
+    "pino": "^9.7.0",
+    "zod": "^3.25.67"
   }
 }

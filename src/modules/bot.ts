@@ -76,8 +76,8 @@ export async function getBot(): Promise<Bot> {
     });
 
     bot = {
-      client: client,
-      commands: commands,
+      client,
+      commands,
     };
   }
 

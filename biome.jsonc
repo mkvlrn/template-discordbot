@@ -29,7 +29,11 @@
   },
   "linter": {
     "domains": {
-      "test": "all"
+      "project": "all",
+      "test": "all",
+      "react": "none",
+      "next": "none",
+      "solid": "none"
     },
     "enabled": true,
     "rules": {
@@ -46,7 +50,7 @@
   "overrides": [
     {
       // TODO: check later
-      // noUnresolvedImports not working properly, flags stuff from node_modules as unresolved
+      // noUnresolvedImports not working properly, flags node builtins
       // useExplicitType breaking type inference
       "includes": ["**/*"],
       "linter": {
@@ -62,7 +66,13 @@
     {
       // test files, config files, and some scripts
       // export defaults from them, and also import from node
-      "includes": ["**/*.config.ts", "**/*.test.ts", "**/*.spec.ts", "**/scripts/**"],
+      "includes": [
+        "**/*.config.ts",
+        "**/*.test.ts",
+        "**/*.spec.ts",
+        "**/scripts/**",
+        "**/.vite/**"
+      ],
       "linter": {
         "rules": {
           "correctness": {
@@ -70,18 +80,6 @@
           },
           "style": {
             "noDefaultExport": "off"
-          }
-        }
-      }
-    },
-
-    {
-      // main.ts
-      "includes": ["src/main.ts"],
-      "linter": {
-        "rules": {
-          "suspicious": {
-            "noConsole": "off"
           }
         }
       }

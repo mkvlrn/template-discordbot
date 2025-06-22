@@ -1,9 +1,9 @@
 import process from "node:process";
 import { type Guild, REST, type RequestData, Routes } from "discord.js";
 import type { Logger } from "pino";
-import { getCommands } from "~/commands/_index.js";
-import { ENV } from "~/modules/envs.js";
-import { getLogger } from "~/modules/logger.js";
+import { getCommands } from "~/commands/_index.ts";
+import { ENV } from "~/modules/envs.ts";
+import { getLogger } from "~/modules/logger.ts";
 
 function getServerId(logger: Logger): string {
   const errorMessage = "Invalid arguments. Expected: 'register <serverId>' or 'register global'";

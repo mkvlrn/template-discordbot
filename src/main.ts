@@ -1,5 +1,5 @@
-import { getBot } from "~/modules/bot.js";
-import { ENV } from "~/modules/envs.js";
+import { getBot } from "#/modules/bot.js";
+import { ENV } from "#/modules/envs.js";
 
 async function main(): Promise<void> {
   const bot = await getBot();

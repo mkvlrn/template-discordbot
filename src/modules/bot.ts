@@ -7,9 +7,9 @@ import {
   type InteractionReplyOptions,
 } from "discord.js";
 import type { Logger } from "pino";
-import { getCommands } from "~/commands/_index.js";
-import type { Command } from "~/modules/command.js";
-import { getLogger } from "~/modules/logger.js";
+import { getCommands } from "#/commands/_index.js";
+import type { Command } from "#/modules/command.js";
+import { getLogger } from "#/modules/logger.js";
 
 type Bot = {
   client: Client;

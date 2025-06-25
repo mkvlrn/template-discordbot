@@ -5,8 +5,8 @@ import { getPlugins } from "./.vite/plugins.ts";
 import { getTest } from "./.vite/test.ts";
 
 const entryPoint = "src/main.ts";
-// packages to be bundled
-const internalPackages: string[] = ["@mkvlrn/result"];
+// dependencies to be internalized/bundled
+const internalPackages: string[] = [];
 
 export default defineConfig({
   build: getBuild(entryPoint),

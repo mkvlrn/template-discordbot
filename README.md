@@ -2,13 +2,16 @@
 
 A sane, opinionated template for discord bots written in typescript using the [discord.js](https://discord.js.org/#/) library.
 
+For new, node 24+ projects.
+
 Uses:
 
 - [biome](https://github.com/biomejs/biome) for linting and formatting
-- [tsx](https://github.com/privatenumber/tsx) for running typescript code without transpiling
 - [commitlint](https://github.com/conventional-changelog/commitlint) for linting commit messages
 - [husky](https://github.com/typicode/husky) for git hooks
 - [vite](https://github.com/vitejs/vite) for building
+- [vitest](https://github.com/vitest-dev/vitest) for testing
+- [tsx](https://github.com/privatenumber/tsx) for dev time typescript
 
 ## prerequisites
 
@@ -52,4 +55,6 @@ You might want to install the recommended extensions in vscode. Search for **@re
 
 If you have been using eslint and prettier and their extensions, you might want to disable eslint entirely and keep prettier as the formatter only for certain types of files.
 
-I suggest using the settings in `.vscode/settings-example.json`, that should be pasted into your own `.vscode/settings.json`. I'm not commiting the `.vscode/settings.json` proper because it shouldn't be in VCS as it contains your personal settings.
+This is done by the `.vscode/settings.json` file.
+
+Debug configurations are also included (for source using tsx and for bundle using the generated source maps).

@@ -14,6 +14,8 @@ export function getLogger(): Logger {
               colorize: true,
               ignore: "pid,hostname",
               translateTime: "yyyy-mm-dd hh:MM:ss TT",
+              levelFirst: true,
+              minimumLevel: "trace",
             }
           : { sourceToken: ENV.logtailToken },
       },

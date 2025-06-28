@@ -36,7 +36,7 @@
     "@biomejs/biome": "^2.0.6",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
-    "@types/node": "^24.0.6",
+    "@types/node": "^24.0.7",
     "husky": "^9.1.7",
     "pino-pretty": "^13.0.0",
     "rollup-plugin-node-externals": "^8.0.1",

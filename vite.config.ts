@@ -5,12 +5,15 @@ import { defineConfig } from "vitest/config";
 // application entry point
 const entry = "./src/main.ts";
 // dependencies to be internalized/bundled
-const internalPackages: string[] = [];
+const internalPackages: (string | RegExp)[] = [];
+// dependencies to be externalized forcefully
+const externalPackages: (string | RegExp)[] = [];
 
 export default defineConfig({
   plugins: [
     // externalize node builtins
     nodeExternals({
+      include: externalPackages,
       exclude: internalPackages,
     }),
     // resolve tsconfig path aliases

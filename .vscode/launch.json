@@ -12,6 +12,20 @@
       "internalConsoleOptions": "openOnSessionStart",
       "skipFiles": ["<node_internals>/**", "${workspaceFolder}/node_modules/**"],
       "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "node",
+      "name": "bundle debug",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/template-discordbot.js",
+      "runtimeArgs": ["--enable-source-maps"],
+      "console": "internalConsole",
+      "internalConsoleOptions": "openOnSessionStart",
+      "sourceMaps": true,
+      "outFiles": ["${workspaceFolder}/build/**/*.js"],
+      "skipFiles": ["<node_internals>/**", "${workspaceFolder}/node_modules/**"],
+      "envFile": "${workspaceFolder}/.env",
+      "preLaunchTask": "build"
     }
   ]
 }

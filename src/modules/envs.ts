@@ -26,7 +26,7 @@ const envFile = {
 
 const result = schema.safeParse(envFile);
 if (!result.success) {
-  throw new Error(`Invalid environment: ${result.error.errors.map((e) => e.message).join(", ")}`);
+  throw new Error(`Invalid environment: ${result.error.issues.map((i) => i.message).join(", ")}`);
 }
 
 export const ENV = result.data;

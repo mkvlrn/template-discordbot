@@ -1,10 +1,7 @@
-import { getBot } from "#/modules/bot.js";
-import { ENV } from "#/modules/envs.js";
+import { getBot } from "#/modules/bot";
+import { env } from "#/modules/env";
 
-async function main() {
-  const bot = await getBot();
+env();
 
-  await bot.client.login(ENV.botToken);
-}
-
-await main();
+const bot = await getBot();
+await bot.client.login(env("botToken"));

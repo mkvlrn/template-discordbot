@@ -1,15 +1,15 @@
 import { type Logger, pino } from "pino";
-import { ENV } from "#/modules/envs.js";
+import { env } from "#/modules/env";
 
 let logger: Logger;
 
 export function getLogger(): Logger {
   if (!logger) {
     logger = pino({
-      level: ENV.logLevel as pino.Level,
+      level: env("logLevel") as pino.Level,
       transport: {
-        target: ENV.devMode ? "pino-pretty" : "@logtail/pino",
-        options: ENV.devMode
+        target: env("devMode") ? "pino-pretty" : "@logtail/pino",
+        options: env("devMode")
           ? {
               colorize: true,
               ignore: "pid,hostname",
@@ -17,7 +17,7 @@ export function getLogger(): Logger {
               levelFirst: true,
               minimumLevel: "trace",
             }
-          : { sourceToken: ENV.logtailToken },
+          : { sourceToken: env("logtailToken") },
       },
     });
   }

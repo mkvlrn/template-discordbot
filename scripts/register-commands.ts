@@ -1,9 +1,10 @@
+/** biome-ignore-all lint/correctness/noNodejsModules: needed */
 import process from "node:process";
 import { type Guild, REST, type RequestData, Routes } from "discord.js";
 import type { Logger } from "pino";
-import { getCommands } from "#/commands/_index.ts";
-import { ENV } from "#/modules/envs.ts";
-import { getLogger } from "#/modules/logger.ts";
+import { getCommands } from "#/modules/command";
+import { env } from "#/modules/env";
+import { getLogger } from "#/modules/logger";
 
 function getServerId(logger: Logger): string {
   const errorMessage = "Invalid arguments. Expected: 'register <serverId>' or 'register global'";
@@ -46,13 +47,13 @@ async function registerCommands(): Promise<void> {
   const logger = getLogger();
   const commands = await getCommands();
   const serverId = getServerId(logger);
-  const restClient = new REST().setToken(ENV.botToken);
+  const restClient = new REST().setToken(env("botToken"));
   const target = await getTarget(logger, serverId, restClient);
 
   const route =
     serverId === "global"
-      ? Routes.applicationCommands(ENV.botClientId)
-      : Routes.applicationGuildCommands(ENV.botClientId, serverId);
+      ? Routes.applicationCommands(env("botClientId"))
+      : Routes.applicationGuildCommands(env("botClientId"), serverId);
   const payload: RequestData = {
     body: Array.from(commands, ([_, command]) => command.data.toJSON()),
   };

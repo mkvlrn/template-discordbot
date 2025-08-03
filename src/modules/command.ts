@@ -22,6 +22,8 @@ export function createCommand(
   };
 }
 
+const fileExtensionRegex = /.(t|j)s/;
+
 export async function getCommands(): Promise<Map<string, Command>> {
   if (!commands) {
     commands = new Map<string, Command>();
@@ -30,8 +32,8 @@ export async function getCommands(): Promise<Map<string, Command>> {
     const commandsDir = join(modulesDir, "../commands");
     const files = await readdir(commandsDir);
 
-    for (const file of files) {
-      const commandName = file.replace(".ts", "");
+    for (const file of files.filter((f) => !f.includes("map"))) {
+      const commandName = file.replace(fileExtensionRegex, "");
       const commandPath = pathToFileURL(join(commandsDir, file));
       const commandModule = await import(commandPath.href);
       const command = commandModule[commandName] as Command;

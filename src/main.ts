@@ -4,4 +4,4 @@ import { env } from "#/modules/env";
 env();
 
 const bot = await getBot();
-await bot.client.login(env("botToken"));
+await bot.login(env("botToken"));

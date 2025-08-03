@@ -10,12 +10,7 @@ import type { Logger } from "pino";
 import { type Command, getCommands } from "#/modules/command";
 import { getLogger } from "#/modules/logger";
 
-type Bot = {
-  client: Client;
-  commands: Map<string, Command>;
-};
-
-let bot: Bot | undefined;
+let bot: Client | undefined;
 
 async function interact(
   interaction: Interaction,
@@ -33,13 +28,14 @@ async function interact(
   }
 
   try {
+    const server = interaction.guild;
     const channel = interaction.channel as GuildChannel;
     logger.trace(
-      `Received command /${interaction.commandName} from @${interaction.user.username} in #${channel.name}`,
+      `Received /${interaction.commandName} from @${interaction.user.username} in ${server?.name}#${channel.name}`,
     );
     await command.execute(interaction);
     logger.trace(
-      `/${interaction.commandName} successfully executed by @${interaction.user.username} in #${channel.name}`,
+      `/${interaction.commandName} executed by @${interaction.user.username} in ${server?.name}#${channel.name}`,
     );
   } catch (error) {
     logger.error(error, "Command execution error");
@@ -53,31 +49,25 @@ async function interact(
   }
 }
 
-export async function getBot(): Promise<Bot> {
+export async function getBot(): Promise<Client> {
   const logger = getLogger();
-  let client: Client;
   let commands: Map<string, Command>;
 
   if (!bot) {
-    client = new Client({ intents: [GatewayIntentBits.Guilds] });
+    bot = new Client({ intents: [GatewayIntentBits.Guilds] });
     commands = await getCommands();
 
-    client.once(Events.ClientReady, (c) => {
+    bot.once(Events.ClientReady, (c) => {
       logger.info(`Logged in as ${c.user.displayName}`);
     });
 
-    client.on(Events.InteractionCreate, async (interaction) => {
+    bot.on(Events.InteractionCreate, async (interaction) => {
       await interact(interaction, logger, commands);
     });
 
-    client.on(Events.Error, (error) => {
+    bot.on(Events.Error, (error) => {
       logger.error(error, "Bot error");
     });
-
-    bot = {
-      client,
-      commands,
-    };
   }
 
   return bot;

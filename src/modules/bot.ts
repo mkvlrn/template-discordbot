@@ -6,17 +6,13 @@ import {
   type Interaction,
   type InteractionReplyOptions,
 } from "discord.js";
-import type { Logger } from "pino";
 import { type Command, getCommands } from "#/modules/command";
 import { getLogger } from "#/modules/logger";
 
 let bot: Client | undefined;
+const logger = getLogger();
 
-async function interact(
-  interaction: Interaction,
-  logger: Logger,
-  commands: Map<string, Command>,
-): Promise<void> {
+async function interact(interaction: Interaction, commands: Map<string, Command>): Promise<void> {
   if (!interaction.isCommand()) {
     return;
   }
@@ -50,7 +46,6 @@ async function interact(
 }
 
 export async function getBot(): Promise<Client> {
-  const logger = getLogger();
   let commands: Map<string, Command>;
 
   if (!bot) {
@@ -62,7 +57,7 @@ export async function getBot(): Promise<Client> {
     });
 
     bot.on(Events.InteractionCreate, async (interaction) => {
-      await interact(interaction, logger, commands);
+      await interact(interaction, commands);
     });
 
     bot.on(Events.Error, (error) => {

@@ -1,4 +1,4 @@
-import { type Logger, pino } from "pino";
+import pino, { type Logger } from "pino";
 import { env } from "#/modules/env";
 
 let logger: Logger;

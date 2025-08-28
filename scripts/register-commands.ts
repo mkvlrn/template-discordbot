@@ -1,8 +1,8 @@
 /** biome-ignore-all lint/correctness/noNodejsModules: needed */
 import process from "node:process";
 import { type Guild, REST, type RequestData, Routes } from "discord.js";
+import { ENV } from "varlock/env";
 import { getCommands } from "#/modules/command";
-import { env } from "#/modules/env";
 import { getLogger } from "#/modules/logger";
 
 const logger = getLogger();
@@ -54,13 +54,13 @@ async function registerCommands(): Promise<void> {
   const logger = getLogger();
   const commands = await getCommands();
   const { serverId, unregister } = getArgs();
-  const restClient = new REST().setToken(env("botToken"));
+  const restClient = new REST().setToken(ENV.DISCORD_CLIENT_TOKEN);
   const target = await getTarget(serverId, restClient);
 
   const route =
     serverId === "global"
-      ? Routes.applicationCommands(env("botClientId"))
-      : Routes.applicationGuildCommands(env("botClientId"), serverId);
+      ? Routes.applicationCommands(ENV.DISCORD_CLIENT_ID)
+      : Routes.applicationGuildCommands(ENV.DISCORD_CLIENT_ID, serverId);
   const payload: RequestData = {
     body: unregister ? [] : Array.from(commands, ([_, command]) => command.data.toJSON()),
   };

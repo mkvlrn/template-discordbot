@@ -13,36 +13,37 @@ Uses:
 - [vite](https://github.com/vitejs/vite) for building
 - [vitest](https://github.com/vitest-dev/vitest) for testing
 - [tsx](https://github.com/privatenumber/tsx) for dev time typescript
+- [varlock](https://github.com/dmno-dev/varlock) for env validation and parsing
 
 ## prerequisites
 
-- filled variables in `.env` file (see `.env.example`)
+- filled variables `DISCORD_CLIENT_ID` and `DISCORD_CLIENT_TOKEN` in `.env.development` file (see `.env.schema`)
 - a notion of what a discord bot is and how `discord.js` works
 - a server to test the bot on (that's where you get the server id for the env variable)
 
 ## running
 
-### `npm run dev`
+### `yarn dev`
 
 Runs the project in watch mode.
 
-### `npm run build`
+### `yarn build`
 
 Builds/transpiles the code to `./build`.
 
-### `npm start`
+### `yarn start`
 
 Runs the built project.
 
-### `npm test`
+### `yarn test`
 
 Runs tests with vitest.
 
-### `npm run biome-fix`
+### `yarn biome-fix`
 
 Runs biome in fix mode (only [safe fixes](https://biomejs.dev/linter/#safe-fixes)) to lint and format the project.
 
-### `npm run typecheck`
+### `yarn typecheck`
 
 Runs type checking using tsc.
 

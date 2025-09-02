@@ -6,74 +6,55 @@ import { getCommands } from "#/modules/command";
 import { getLogger } from "#/modules/logger";
 
 const logger = getLogger();
+const restClient = new REST().setToken(ENV.DISCORD_CLIENT_TOKEN);
 
-function getArgs(): { serverId: string; unregister: boolean } {
-  let errorMessage = "Invalid arguments:\n";
-  errorMessage += " Expected: '<serverId>' or '<serverId> --unregister'.\n";
-  errorMessage += " <serverId> must be a valid discord server id or 'global'";
+const commands = await getCommands();
+let isGlobal = true;
+let target = "globally";
+let unregister = false;
+let route = Routes.applicationCommands(ENV.DISCORD_CLIENT_ID);
 
-  const args = process.argv.slice(2);
-  if (args.length === 0 || args.length > 2) {
-    logger.error(errorMessage);
-    process.exit(1);
-  }
-
-  const serverId = args[0]?.trim();
-  if (!serverId) {
-    logger.error(errorMessage);
-    process.exit(1);
-  }
-
-  const unregister = args.length === 2 && args[1] === "--unregister";
-  if (args.length === 2 && !unregister) {
-    logger.error(errorMessage);
-    process.exit(1);
-  }
-
-  return { serverId, unregister };
+// parsing options
+const options = process.argv.slice(2);
+const validOptions = ["--global", "--unregister"];
+const invalidOptions = options.filter((arg) => !validOptions.includes(arg));
+if (invalidOptions.length > 0) {
+  logger.error("Usage: yarn register-commands [--global] [--unregister]");
+  process.exit(1);
 }
+isGlobal = options.includes("--global");
+unregister = options.includes("--unregister");
 
-async function getTarget(serverId: string, restClient: REST): Promise<string> {
-  let target = "globally";
-  if (serverId !== "global") {
-    try {
-      const guild = (await restClient.get(Routes.guild(serverId))) as Guild;
-      target = `on server '${guild.name}' (${serverId})`;
-    } catch (error) {
-      logger.error((error as Error).message);
-      process.exit(1);
-    }
+// settings for targeted register
+if (!isGlobal) {
+  if (!ENV.SERVER_ID) {
+    logger.error(
+      "Please set the SERVER_ID environment variable if not registering commands globally.",
+    );
+    process.exit(1);
   }
-
-  logger.info(`Updating commands ${target}`);
-
-  return target;
-}
-
-async function registerCommands(): Promise<void> {
-  const logger = getLogger();
-  const commands = await getCommands();
-  const { serverId, unregister } = getArgs();
-  const restClient = new REST().setToken(ENV.DISCORD_CLIENT_TOKEN);
-  const target = await getTarget(serverId, restClient);
-
-  const route =
-    serverId === "global"
-      ? Routes.applicationCommands(ENV.DISCORD_CLIENT_ID)
-      : Routes.applicationGuildCommands(ENV.DISCORD_CLIENT_ID, serverId);
-  const payload: RequestData = {
-    body: unregister ? [] : Array.from(commands, ([_, command]) => command.data.toJSON()),
-  };
 
   try {
-    await restClient.put(route, payload);
-    logger.info(
-      `Commands ${unregister ? "un" : ""}registered ${target}: ${[...commands.keys()].join(", ")}`,
-    );
+    const guild = (await restClient.get(Routes.guild(ENV.SERVER_ID))) as Guild;
+    target = `on server '${guild.name}' (${ENV.SERVER_ID})`;
+    route = Routes.applicationGuildCommands(ENV.DISCORD_CLIENT_ID, ENV.SERVER_ID);
   } catch (error) {
     logger.error((error as Error).message);
-    throw error;
+    process.exit(1);
   }
 }
 
-await registerCommands();
+// do stuff
+logger.info(`Updating commands ${target}`);
+const payload: RequestData = {
+  body: unregister ? [] : Array.from(commands, ([_, command]) => command.data.toJSON()),
+};
+try {
+  await restClient.put(route, payload);
+  logger.info(
+    `Commands ${unregister ? "un" : ""}registered ${target}: ${[...commands.keys()].join(", ")}`,
+  );
+} catch (error) {
+  logger.error((error as Error).message);
+  process.exit(1);
+}

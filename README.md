@@ -46,10 +46,6 @@ Runs biome in fix mode (only [safe fixes](https://biomejs.dev/linter/#safe-fixes
 
 Runs type checking using tsc.
 
-## that tsconfig.json seems very strict and opinionated
-
-Yup.
-
 ## vscode
 
 You might want to install the recommended extensions in vscode. Search for **@recommended** in the extensions tab, they'll show up as _"workspace recommendations"_.

@@ -706,10 +706,17 @@
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-1.0.8.tgz#958b91c991b1867ced318bedea0e215ee050726e"
   integrity sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==
 
-"@types/node@*", "@types/node@^24.3.0":
+"@types/node@*":
   version "24.3.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-24.3.0.tgz#89b09f45cb9a8ee69466f18ee5864e4c3eb84dec"
   integrity sha512-aPTXCrfwnDLj4VvXrm+UUCQjNEvJgNA8s5F1cvwQU+3KNltTOkBm1j30uNLyqqPNe7gE3KFzImYoZEfLhp4Yow==
+  dependencies:
+    undici-types "~7.10.0"
+
+"@types/node@^24.3.1":
+  version "24.3.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-24.3.1.tgz#b0a3fb2afed0ef98e8d7f06d46ef6349047709f3"
+  integrity sha512-3vXmQDXy+woz+gnrTvuvNrPzekOi+Ds0ReMxw0LzBiK3a+1k0kQn9f2NWk+lgD4rJehFUmYy2gMhJ2ZI+7YP9g==
   dependencies:
     undici-types "~7.10.0"
 
@@ -2033,10 +2040,10 @@ pino-std-serializers@^7.0.0:
   resolved "https://registry.yarnpkg.com/pino-std-serializers/-/pino-std-serializers-7.0.0.tgz#7c625038b13718dbbd84ab446bd673dc52259e3b"
   integrity sha512-e906FRY0+tV27iq4juKzSYPbUj2do2X2JX4EzSca1631EB2QJQUqGbDuERal7LCtOpxl6x3+nvo9NPZcmjkiFA==
 
-pino@^9.9.0:
-  version "9.9.0"
-  resolved "https://registry.yarnpkg.com/pino/-/pino-9.9.0.tgz#0d2667ab4a54b561a4434a321ec595f305ab9cd1"
-  integrity sha512-zxsRIQG9HzG+jEljmvmZupOMDUQ0Jpj0yAgE28jQvvrdYTlEaiGwelJpdndMl/MBuRr70heIj83QyqJUWaU8mQ==
+pino@^9.9.2:
+  version "9.9.2"
+  resolved "https://registry.yarnpkg.com/pino/-/pino-9.9.2.tgz#6a8ebe9b6a243f02169b9beae8ae0fb9d3af84e5"
+  integrity sha512-nepuunEhXfRllKa5w9PsNLjWayPsfO3jc6odPuoRaaJ/rb/YEvqhazOBZFzK0gmaHIFCMggvDSqnIcH8dfcGTA==
   dependencies:
     atomic-sleep "^1.0.0"
     fast-redact "^3.1.1"
@@ -2511,10 +2518,10 @@ unicorn-magic@^0.3.0:
   resolved "https://registry.yarnpkg.com/unicorn-magic/-/unicorn-magic-0.3.0.tgz#4efd45c85a69e0dd576d25532fbfa22aa5c8a104"
   integrity sha512-+QBBXBCvifc56fsbuxZQ6Sic3wqqc3WWaqxs58gvJrcOuN83HGTCwz3oS5phzU9LthRNE9VrJCFCLUgHeeFnfA==
 
-varlock@^0.0.11:
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/varlock/-/varlock-0.0.11.tgz#66124edd08a12f3d96cfdf83d5e44a953a28a7b5"
-  integrity sha512-IBbjTjnzmRdR3u4hM/Xq/1eMmZBj5og2UCNrv5vrmn+wXbPHyETepIEZ0Odlku3BFBNHvFSMPE+oWRilmzFrag==
+varlock@^0.0.12:
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/varlock/-/varlock-0.0.12.tgz#b3917eeb1c329fa7cab476a1db68f02b07446c58"
+  integrity sha512-QNJ92QMfH7ThJQG4V1U2T8u4OYFcvJch2yBjbS3aptmZDltcIOCfNAFfcPt5ij9c/X2C1Pjm/khlpo/L8ZwhkA==
   dependencies:
     "@env-spec/parser" "^0.0.4"
     debug "^4.4.1"

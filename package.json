@@ -37,7 +37,7 @@
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@mkvlrn/config": "^2.0.15",
-    "@types/node": "^24.3.0",
+    "@types/node": "^24.3.1",
     "@vitest/coverage-v8": "^3.2.4",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.6",
@@ -52,8 +52,8 @@
   },
   "dependencies": {
     "discord.js": "^14.22.1",
-    "pino": "^9.9.0",
-    "varlock": "^0.0.11",
+    "pino": "^9.9.2",
+    "varlock": "^0.0.12",
     "zod": "^4.1.5"
   }
 }

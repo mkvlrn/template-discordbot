@@ -22,7 +22,7 @@
     "node": "24.x"
   },
   "scripts": {
-    "build": "rimraf build && tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json -f",
+    "build": "rimraf build && tsc -p tsconfig.build.json",
     "register-commands": "varlock run -- tsx scripts/register-commands.ts",
     "dev": "varlock run -- tsx --watch src/main.ts",
     "start": "varlock run -- node build/main.js",
@@ -36,23 +36,21 @@
     "@biomejs/biome": "^2.2.2",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
-    "@mkvlrn/config": "^2.0.15",
+    "@mkvlrn/config": "^2.0.17",
     "@types/node": "^24.3.1",
     "@vitest/coverage-v8": "^3.2.4",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.6",
     "pino-pretty": "^13.1.1",
     "rimraf": "^6.0.1",
-    "tsc-alias": "^1.8.16",
     "tsc-files": "^1.1.4",
     "tsx": "^4.20.5",
     "typescript": "^5.9.2",
-    "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.2.4"
   },
   "dependencies": {
     "discord.js": "^14.22.1",
-    "pino": "^9.9.2",
+    "pino": "^9.9.4",
     "varlock": "^0.0.12",
     "zod": "^4.1.5"
   }

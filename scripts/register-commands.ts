@@ -2,8 +2,8 @@
 import process from "node:process";
 import { type Guild, REST, type RequestData, Routes } from "discord.js";
 import { ENV } from "varlock/env";
-import { getCommands } from "#/modules/command";
-import { getLogger } from "#/modules/logger";
+import { getCommands } from "../src/modules/command.ts";
+import { getLogger } from "../src/modules/logger.ts";
 
 const logger = getLogger();
 const restClient = new REST().setToken(ENV.DISCORD_CLIENT_TOKEN);

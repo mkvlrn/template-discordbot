@@ -1,3 +1,6 @@
 {
-  "extends": ["@mkvlrn/config/tsconfig-node"]
+  "extends": ["@mkvlrn/config/tsconfig-node"],
+  "compilerOptions": {
+    "noEmit": true
+  }
 }

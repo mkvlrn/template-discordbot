@@ -19,7 +19,7 @@ const options = process.argv.slice(2);
 const validOptions = ["--global", "--unregister"];
 const invalidOptions = options.filter((arg) => !validOptions.includes(arg));
 if (invalidOptions.length > 0) {
-  logger.error("Usage: yarn register-commands [--global] [--unregister]");
+  logger.error("Usage: pnpm register-commands [--global] [--unregister]");
   process.exit(1);
 }
 isGlobal = options.includes("--global");

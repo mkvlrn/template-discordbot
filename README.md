@@ -22,27 +22,27 @@ Uses:
 
 ## running
 
-### `yarn dev`
+### `pnpm dev`
 
 Runs the project in watch mode.
 
-### `yarn build`
+### `pnpm build`
 
 Builds/transpiles the code to `./build`.
 
-### `yarn start`
+### `pnpm start`
 
 Runs the built project.
 
-### `yarn test`
+### `pnpm test`
 
 Runs tests with vitest.
 
-### `yarn biome-fix`
+### `pnpm biome-fix`
 
 Runs biome in fix mode (only [safe fixes](https://biomejs.dev/linter/#safe-fixes)) to lint and format the project.
 
-### `yarn typecheck`
+### `pnpm typecheck`
 
 Runs type checking using tsc.
 

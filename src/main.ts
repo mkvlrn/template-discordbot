@@ -1,3 +1,4 @@
+import "varlock/auto-load";
 import { ENV } from "varlock/env";
 import { getBot } from "./modules/bot.ts";
 

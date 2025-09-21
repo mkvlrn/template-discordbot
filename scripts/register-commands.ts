@@ -1,4 +1,5 @@
 /** biome-ignore-all lint/correctness/noNodejsModules: needed */
+import "varlock/auto-load";
 import process from "node:process";
 import { type Guild, REST, type RequestData, Routes } from "discord.js";
 import { ENV } from "varlock/env";

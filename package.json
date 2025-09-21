@@ -23,9 +23,9 @@
   },
   "scripts": {
     "build": "rimraf build && tsc -p tsconfig.build.json",
-    "register-commands": "varlock run -- tsx scripts/register-commands.ts",
-    "dev": "varlock run -- tsx --watch src/main.ts",
-    "start": "varlock run -- node build/main.js",
+    "register-commands": "tsx scripts/register-commands.ts",
+    "dev": "tsx --watch src/main.ts",
+    "start": "node build/main.js",
     "test": "vitest",
     "biome-check": "biome check --no-errors-on-unmatched",
     "biome-fix": "pnpm biome-check --write",

@@ -1,4 +1,4 @@
-import pino, { type Logger } from "pino";
+import { type Logger, pino } from "pino";
 import { ENV } from "varlock/env";
 
 let logger: Logger;

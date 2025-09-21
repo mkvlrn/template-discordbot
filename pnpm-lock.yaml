@@ -12,14 +12,14 @@ importers:
         specifier: ^14.22.1
         version: 14.22.1
       pino:
-        specifier: ^9.10.0
-        version: 9.10.0
+        specifier: ^9.11.0
+        version: 9.11.0
       varlock:
-        specifier: ^0.0.12
-        version: 0.0.12
+        specifier: ^0.0.13
+        version: 0.0.13
       zod:
-        specifier: ^4.1.9
-        version: 4.1.9
+        specifier: ^4.1.11
+        version: 4.1.11
     devDependencies:
       '@biomejs/biome':
         specifier: ^2.2.4
@@ -31,8 +31,8 @@ importers:
         specifier: ^19.8.1
         version: 19.8.1
       '@mkvlrn/config':
-        specifier: ^2.0.21
-        version: 2.0.21
+        specifier: ^2.0.23
+        version: 2.0.23
       '@types/node':
         specifier: ^24.5.2
         version: 24.5.2
@@ -248,8 +248,8 @@ packages:
     resolution: {integrity: sha512-wPlQDxEmlDg5IxhJPuxXr3Vy9AjYq5xCvFWGJyD7w7Np8ZGu+Mc+97LCoEc/+AYCo2IDpKioiH0/c/mj5ZR9Uw==}
     engines: {node: '>=16.11.0'}
 
-  '@env-spec/parser@0.0.4':
-    resolution: {integrity: sha512-ysXTCuq9O+hznIDWD+bHQT/EPJU+C0HGdKvBsZ0LHE+ESYwOM1YXGqButXsxtHd3Dj33mNPUWLqLuVO4IhX4WA==}
+  '@env-spec/parser@0.0.5':
+    resolution: {integrity: sha512-uSq6o9ogbQhIM7TLR6mKuPpF+nVe8DxiKhE5jSykk71gmOIvbUW806Bi2wyTqF77BdmLrSiG8bNeIS6Cv0Y+0g==}
 
   '@epic-web/invariant@1.0.0':
     resolution: {integrity: sha512-lrTPqgvfFQtR/eY/qkIzp98OGdNJu0m5ji3q/nJI8v3SXkRKEnWiOxMmbvcSoAIzv/cGiuvRy57k4suKQSAdwA==}
@@ -439,8 +439,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@mkvlrn/config@2.0.21':
-    resolution: {integrity: sha512-ex59LYyx9hrwogAb8qeO6y5WmLkQUoUGagMQHT5a/zDhJB8e1LzL+Ks7u87BzTfCZjM7+aRj8vRLBWHDZyMWTQ==}
+  '@mkvlrn/config@2.0.23':
+    resolution: {integrity: sha512-m3kM8BW6rzWOZHPVdfsdaldvpIHU8UqbPgoYEINYNpEw2CTcxm5QMImMfBiFsEZWY60ofdFmCxMb5VNaYHth9w==}
     engines: {node: 24.x}
 
   '@pkgjs/parseargs@0.11.0':
@@ -1269,8 +1269,8 @@ packages:
   pino-std-serializers@7.0.0:
     resolution: {integrity: sha512-e906FRY0+tV27iq4juKzSYPbUj2do2X2JX4EzSca1631EB2QJQUqGbDuERal7LCtOpxl6x3+nvo9NPZcmjkiFA==}
 
-  pino@9.10.0:
-    resolution: {integrity: sha512-VOFxoNnxICtxaN8S3E73pR66c5MTFC+rwRcNRyHV/bV/c90dXvJqMfjkeRFsGBDXmlUN3LccJQPqGIufnaJePA==}
+  pino@9.11.0:
+    resolution: {integrity: sha512-+YIodBB9sxcWeR8PrXC2K3gEDyfkUuVEITOcbqrfcj+z5QW4ioIcqZfYFbrLTYLsmAwunbS7nfU/dpBB6PZc1g==}
     hasBin: true
 
   postcss@8.5.6:
@@ -1501,8 +1501,8 @@ packages:
     resolution: {integrity: sha512-+QBBXBCvifc56fsbuxZQ6Sic3wqqc3WWaqxs58gvJrcOuN83HGTCwz3oS5phzU9LthRNE9VrJCFCLUgHeeFnfA==}
     engines: {node: '>=18'}
 
-  varlock@0.0.12:
-    resolution: {integrity: sha512-QNJ92QMfH7ThJQG4V1U2T8u4OYFcvJch2yBjbS3aptmZDltcIOCfNAFfcPt5ij9c/X2C1Pjm/khlpo/L8ZwhkA==}
+  varlock@0.0.13:
+    resolution: {integrity: sha512-kpQTu821mX/DVsftoogXh2W5TRGshGNXdmjCuioJKz1hfYkWi6UmpYc7C22iyANVEpFbsKWrzjaKfg91p5gljw==}
     engines: {node: '>=22'}
     hasBin: true
 
@@ -1646,8 +1646,8 @@ packages:
     resolution: {integrity: sha512-CzhO+pFNo8ajLM2d2IW/R93ipy99LWjtwblvC1RsoSUMZgyLbYFr221TnSNT7GjGdYui6P459mw9JH/g/zW2ug==}
     engines: {node: '>=18'}
 
-  zod@4.1.9:
-    resolution: {integrity: sha512-HI32jTq0AUAC125z30E8bQNz0RQ+9Uc+4J7V97gLYjZVKRjeydPgGt6dvQzFrav7MYOUGFqqOGiHpA/fdbd0cQ==}
+  zod@4.1.11:
+    resolution: {integrity: sha512-WPsqwxITS2tzx1bzhIKsEs19ABD5vmCVa4xBo2tq/SrV4RNZtfws1EnCWQXM6yh8bD08a1idvkB5MZSBiZsjwg==}
 
 snapshots:
 
@@ -1869,7 +1869,7 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@env-spec/parser@0.0.4': {}
+  '@env-spec/parser@0.0.5': {}
 
   '@epic-web/invariant@1.0.0': {}
 
@@ -1982,7 +1982,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@mkvlrn/config@2.0.21': {}
+  '@mkvlrn/config@2.0.23': {}
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
@@ -2765,7 +2765,7 @@ snapshots:
 
   pino-std-serializers@7.0.0: {}
 
-  pino@9.10.0:
+  pino@9.11.0:
     dependencies:
       atomic-sleep: 1.0.0
       fast-redact: 3.5.0
@@ -2987,9 +2987,9 @@ snapshots:
 
   unicorn-magic@0.3.0: {}
 
-  varlock@0.0.12:
+  varlock@0.0.13:
     dependencies:
-      '@env-spec/parser': 0.0.4
+      '@env-spec/parser': 0.0.5
       debug: 4.4.3
       execa: 9.6.0
       which: 5.0.0
@@ -3128,4 +3128,4 @@ snapshots:
 
   yoctocolors@2.1.2: {}
 
-  zod@4.1.9: {}
+  zod@4.1.11: {}

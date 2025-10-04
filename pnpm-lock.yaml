@@ -12,11 +12,11 @@ importers:
         specifier: ^14.22.1
         version: 14.22.1
       pino:
-        specifier: ^9.13.0
-        version: 9.13.0
+        specifier: ^10.0.0
+        version: 10.0.0
       varlock:
-        specifier: ^0.0.14
-        version: 0.0.14
+        specifier: ^0.0.15
+        version: 0.0.15
       zod:
         specifier: ^4.1.11
         version: 4.1.11
@@ -31,8 +31,8 @@ importers:
         specifier: ^20.0.0
         version: 20.0.0
       '@mkvlrn/config':
-        specifier: ^2.0.23
-        version: 2.0.23
+        specifier: ^2.0.24
+        version: 2.0.24
       '@types/node':
         specifier: ^24.6.2
         version: 24.6.2
@@ -439,8 +439,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@mkvlrn/config@2.0.23':
-    resolution: {integrity: sha512-m3kM8BW6rzWOZHPVdfsdaldvpIHU8UqbPgoYEINYNpEw2CTcxm5QMImMfBiFsEZWY60ofdFmCxMb5VNaYHth9w==}
+  '@mkvlrn/config@2.0.24':
+    resolution: {integrity: sha512-xEDnGTVP7JiFMdAHQ8JQ3U1r3efrYXL7LNnPewR4uncWY7jk+gP9uAQ9VlUxab4ErdKn5nMqy+DxuPq7OkpBXQ==}
     engines: {node: 24.x}
 
   '@pkgjs/parseargs@0.11.0':
@@ -1257,8 +1257,8 @@ packages:
   pino-std-serializers@7.0.0:
     resolution: {integrity: sha512-e906FRY0+tV27iq4juKzSYPbUj2do2X2JX4EzSca1631EB2QJQUqGbDuERal7LCtOpxl6x3+nvo9NPZcmjkiFA==}
 
-  pino@9.13.0:
-    resolution: {integrity: sha512-SpTXQhkQXekIKEe7c887S3lk3v90Q+/HVRZVyNAhe98PQc++6I5ec/R0pciH8/CciXjCoVZIZfRNicbC6KZgnw==}
+  pino@10.0.0:
+    resolution: {integrity: sha512-eI9pKwWEix40kfvSzqEP6ldqOoBIN7dwD/o91TY5z8vQI12sAffpR/pOqAD1IVVwIVHDpHjkq0joBPdJD0rafA==}
     hasBin: true
 
   postcss@8.5.6:
@@ -1492,8 +1492,8 @@ packages:
     resolution: {integrity: sha512-+QBBXBCvifc56fsbuxZQ6Sic3wqqc3WWaqxs58gvJrcOuN83HGTCwz3oS5phzU9LthRNE9VrJCFCLUgHeeFnfA==}
     engines: {node: '>=18'}
 
-  varlock@0.0.14:
-    resolution: {integrity: sha512-7dqoyElr7koK0BvHWvN8UcBLCm+4GdGfIBZdu6OethPDhdpIhNgTsA6Nw6HrkIo2G46OUYhSw2dwsKx0aKZ6fg==}
+  varlock@0.0.15:
+    resolution: {integrity: sha512-msPXBPLEj3xilRdiKoKecSt93dk9/fWh9VX5UvYxyGdTj4QeaB58C7HVs2+vQqpo0WGEaR5ECQMIndNw7g81IQ==}
     engines: {node: '>=22'}
     hasBin: true
 
@@ -1973,7 +1973,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@mkvlrn/config@2.0.23': {}
+  '@mkvlrn/config@2.0.24': {}
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
@@ -2745,7 +2745,7 @@ snapshots:
 
   pino-std-serializers@7.0.0: {}
 
-  pino@9.13.0:
+  pino@10.0.0:
     dependencies:
       atomic-sleep: 1.0.0
       on-exit-leak-free: 2.1.2
@@ -2969,7 +2969,7 @@ snapshots:
 
   unicorn-magic@0.3.0: {}
 
-  varlock@0.0.14:
+  varlock@0.0.15:
     dependencies:
       '@env-spec/parser': 0.0.6
       debug: 4.4.3

@@ -2,7 +2,7 @@
 
 A sane, opinionated template for discord bots written in typescript using the [discord.js](https://discord.js.org/#/) library.
 
-For new, node 24+ projects.
+For new, node 22+ projects.
 
 Uses:
 

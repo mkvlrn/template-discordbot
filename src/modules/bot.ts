@@ -6,8 +6,8 @@ import {
   type Interaction,
   type InteractionReplyOptions,
 } from "discord.js";
-import { type Command, getCommands } from "./command.ts";
-import { getLogger } from "./logger.ts";
+import { type Command, getCommands } from "#/modules/command.ts";
+import { getLogger } from "#/modules/logger.ts";
 
 let bot: Client | undefined;
 const logger = getLogger();

@@ -13,10 +13,11 @@ Uses:
 - [vitest](https://github.com/vitest-dev/vitest) for testing
 - [tsx](https://github.com/privatenumber/tsx) for dev time typescript
 - [varlock](https://github.com/dmno-dev/varlock) for env validation and parsing
+- [tsdown](https://github.com/rolldown/tsdown) for building
 
 ## prerequisites
 
-- filled variables `DISCORD_CLIENT_ID` and `DISCORD_CLIENT_TOKEN` in `.env.development` file (see `.env.schema`)
+- filled variables `DISCORD_CLIENT_ID` and `DISCORD_CLIENT_TOKEN` in `.env` file (see `.env.schema`)
 - a notion of what a discord bot is and how `discord.js` works
 - a server to test the bot on (that's where you get the server id for the env variable)
 

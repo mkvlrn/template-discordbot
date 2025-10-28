@@ -47,6 +47,30 @@ Runs biome in fix mode (only [safe fixes](https://biomejs.dev/linter/#safe-fixes
 
 Runs type checking using tsc.
 
+## adding or removing commands
+
+Commands are imported automatically from the commands directory.
+
+**Note:** Discord requires command names to be lowercase and match the exported variable name. Use kebab-case for multi-word commands (e.g., `my-command`).
+
+1. Create a new file in `./src/commands` named `my-command.ts`
+2. Export a command using `createCommand`:
+
+```ts
+import { createCommand } from "#/modules/command";
+
+export const mycommand = createCommand("mycommand", "Does something cool", async (interaction) => {
+  await interaction.reply("Cool!");
+});
+```
+
+3. Run `pnpm register-commands [--global]` to register the command in discord
+4. Restart your bot
+
+If you don't use the `--global` flag, the command will use the `SERVER_ID` environment variable to register the command in the server. It must be set or the registration will fail.
+
+You can also unregister commands with `pnpm register-commands --unregister [--global]`.
+
 ## vscode
 
 You might want to install the recommended extensions in vscode. Search for **@recommended** in the extensions tab, they'll show up as _"workspace recommendations"_.

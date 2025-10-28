@@ -3,16 +3,12 @@ import "varlock/auto-load";
 import process from "node:process";
 import { type Guild, REST, type RequestData, Routes } from "discord.js";
 import { ENV } from "varlock/env";
-import { getCommands } from "#/modules/command.ts";
-import { getLogger } from "#/modules/logger.ts";
+import { getCommands } from "#/modules/command";
+import { getLogger } from "#/modules/logger";
 
 const logger = getLogger();
 const restClient = new REST().setToken(ENV.DISCORD_CLIENT_TOKEN);
-
-const commands = await getCommands();
-let isGlobal = true;
 let target = "globally";
-let unregister = false;
 let route = Routes.applicationCommands(ENV.DISCORD_CLIENT_ID);
 
 // parsing options
@@ -23,8 +19,9 @@ if (invalidOptions.length > 0) {
   logger.error("Usage: pnpm register-commands [--global] [--unregister]");
   process.exit(1);
 }
-isGlobal = options.includes("--global");
-unregister = options.includes("--unregister");
+const isGlobal = options.includes("--global");
+const unregister = options.includes("--unregister");
+const commands = await getCommands();
 
 // settings for targeted register
 if (!isGlobal) {

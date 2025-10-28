@@ -1,56 +1,20 @@
-import {
-  Client,
-  Events,
-  GatewayIntentBits,
-  type GuildChannel,
-  type Interaction,
-  type InteractionReplyOptions,
-} from "discord.js";
-import { type Command, getCommands } from "#/modules/command.ts";
-import { getLogger } from "#/modules/logger.ts";
+import process from "node:process";
+import { Client, Events, GatewayIntentBits } from "discord.js";
+import { type Command, getCommands } from "#/modules/command";
+import { interact } from "#/modules/interaction";
+import { getLogger } from "#/modules/logger";
 
-let bot: Client | undefined;
+let bot: Client | null = null;
+let commands: Map<string, Command>;
 const logger = getLogger();
 
-async function interact(interaction: Interaction, commands: Map<string, Command>): Promise<void> {
-  if (!interaction.isCommand()) {
-    return;
+async function getBot(): Promise<Client> {
+  if (!commands) {
+    commands = await getCommands();
   }
-
-  const command = commands.get(interaction.commandName);
-  if (!command) {
-    logger.error(`Unknown command ${interaction.commandName} received`);
-    return;
-  }
-
-  try {
-    const server = interaction.guild;
-    const channel = interaction.channel as GuildChannel;
-    logger.trace(
-      `Received /${interaction.commandName} from @${interaction.user.username} in ${server?.name}#${channel.name}`,
-    );
-    await command.execute(interaction);
-    logger.trace(
-      `/${interaction.commandName} executed by @${interaction.user.username} in ${server?.name}#${channel.name}`,
-    );
-  } catch (error) {
-    logger.error(error, "Command execution error");
-    const reply: InteractionReplyOptions = {
-      content: "There was an error while executing this command.",
-      ephemeral: true,
-    };
-    await (interaction.replied || interaction.deferred
-      ? interaction.followUp(reply)
-      : interaction.reply(reply));
-  }
-}
-
-export async function getBot(): Promise<Client> {
-  let commands: Map<string, Command>;
 
   if (!bot) {
     bot = new Client({ intents: [GatewayIntentBits.Guilds] });
-    commands = await getCommands();
 
     bot.once(Events.ClientReady, (c) => {
       logger.info(`Logged in as ${c.user.displayName}`);
@@ -66,4 +30,22 @@ export async function getBot(): Promise<Client> {
   }
 
   return bot;
+}
+
+export async function startBot(token: string) {
+  const bot = await getBot();
+  try {
+    await bot.login(token);
+  } catch (error) {
+    logger.fatal({ error }, "failed to login");
+    process.exit(1);
+  }
+
+  for (const signal of ["SIGINT", "SIGTERM"]) {
+    process.on(signal, () => {
+      logger.info(`Received ${signal}, shutting down`);
+      bot.destroy();
+      process.exit(0);
+    });
+  }
 }

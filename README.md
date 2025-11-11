@@ -64,12 +64,10 @@ export const mycommand = createCommand("mycommand", "Does something cool", async
 });
 ```
 
-3. Run `pnpm register-commands [--global]` to register the command in discord
+3. Run `pnpm registration add [--global] || [--server 123]` to register commands globally or to a specified server (`pnpm registration help` to see details about this script)
 4. Restart your bot
 
-If you don't use the `--global` flag, the command will use the `SERVER_ID` environment variable to register the command in the server. It must be set or the registration will fail.
-
-You can also unregister commands with `pnpm register-commands --unregister [--global]`.
+You can also unregister commands with `pnpm registration remove [--global] || [--server 123]`.
 
 ## vscode
 

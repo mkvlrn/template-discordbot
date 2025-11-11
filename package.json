@@ -23,7 +23,7 @@
   },
   "scripts": {
     "build": "tsdown",
-    "register-commands": "tsx scripts/register-commands.ts",
+    "registration": "tsx scripts/registration.ts",
     "dev": "tsx --watch src/main.ts | pino-pretty",
     "start": "node build/main.js",
     "test": "vitest",
@@ -44,7 +44,7 @@
     "pino-pretty": "^13.1.2",
     "rimraf": "^6.1.0",
     "tsc-files": "^1.1.4",
-    "tsdown": "^0.16.0",
+    "tsdown": "^0.16.1",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3",
     "vite-tsconfig-paths": "^5.1.4",
@@ -52,6 +52,7 @@
     "vitest-mock-extended": "^3.1.0"
   },
   "dependencies": {
+    "commander": "^14.0.2",
     "discord.js": "^14.24.2",
     "pino": "^10.1.0",
     "varlock": "^0.1.0"

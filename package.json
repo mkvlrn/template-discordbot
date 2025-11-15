@@ -23,7 +23,7 @@
   },
   "scripts": {
     "build": "tsdown",
-    "registration": "tsx scripts/registration.ts",
+    "cmd": "tsx ./src/registration/index.ts",
     "dev": "tsx --watch src/main.ts | pino-pretty",
     "start": "node build/main.js",
     "test": "vitest",
@@ -52,7 +52,6 @@
     "vitest-mock-extended": "^3.1.0"
   },
   "dependencies": {
-    "commander": "^14.0.2",
     "discord.js": "^14.24.2",
     "pino": "^10.1.0",
     "varlock": "^0.1.1"

@@ -1,18 +1,13 @@
 import process from "node:process";
 import { Client, Events, GatewayIntentBits } from "discord.js";
-import { type Command, getCommands } from "#/modules/command";
+import { commands } from "#/commands";
 import { interact } from "#/modules/interaction";
 import { getLogger } from "#/modules/logger";
 
 let bot: Client | null = null;
-let commands: Map<string, Command>;
 const logger = getLogger();
 
-async function getBot(): Promise<Client> {
-  if (!commands) {
-    commands = await getCommands();
-  }
-
+function getBot(): Client {
   if (!bot) {
     bot = new Client({ intents: [GatewayIntentBits.Guilds] });
 
@@ -33,7 +28,7 @@ async function getBot(): Promise<Client> {
 }
 
 export async function startBot(token: string) {
-  const bot = await getBot();
+  const bot = getBot();
   try {
     await bot.login(token);
   } catch (error) {

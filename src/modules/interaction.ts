@@ -1,12 +1,12 @@
 import type { Interaction, InteractionReplyOptions } from "discord.js";
-import type { Command } from "#/modules/command";
+import type { BotCommand } from "#/commands";
 import { getLogger } from "#/modules/logger";
 
 const logger = getLogger();
 
 export async function interact(
   interaction: Interaction,
-  commands: Map<string, Command>,
+  commands: Map<string, BotCommand>,
 ): Promise<void> {
   if (!interaction.isCommand()) {
     return;

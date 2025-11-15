@@ -64,10 +64,10 @@ export const mycommand = createCommand("mycommand", "Does something cool", async
 });
 ```
 
-3. Run `pnpm registration add [--global] || [--server 123]` to register commands globally or to a specified server (`pnpm registration help` to see details about this script)
-4. Restart your bot
+1. Run `pnpm cmd register global` to register commands globally or `pnpm cmd register 0000000000` to a specified server, where 0000000000 is the server id.
+2. Restart your bot
 
-You can also unregister commands with `pnpm registration remove [--global] || [--server 123]`.
+You can also unregister commands with `pnpm cmd unregister global` or `pnpm cmd unregister 0000000000`.
 
 ## vscode
 

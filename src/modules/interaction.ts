@@ -19,7 +19,16 @@ export async function interact(
   try {
     const server = interaction.guild;
     const channel = interaction.channel;
-    const channelName = channel ? ("name" in channel ? channel.name : "DM") : "unknown";
+    let channelName: string;
+    if (channel) {
+      if ("name" in channel && typeof channel.name === "string") {
+        channelName = channel.name;
+      } else {
+        channelName = "DM";
+      }
+    } else {
+      channelName = "unknown";
+    }
     const attribution = `@${interaction.user.username} in ${server?.name ?? "DM"}#${channelName}`;
     logger.trace(`Received /${interaction.commandName} from ${attribution}`);
     await command.execute(interaction);

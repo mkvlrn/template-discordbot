@@ -8,6 +8,5 @@ export function getLogger(): Logger {
   if (!logger) {
     logger = pino({ level: ENV.LOG_LEVEL });
   }
-
   return logger;
 }

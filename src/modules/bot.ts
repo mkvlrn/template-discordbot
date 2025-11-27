@@ -10,20 +10,16 @@ const logger = getLogger();
 function getBot(): Client {
   if (!bot) {
     bot = new Client({ intents: [GatewayIntentBits.Guilds] });
-
     bot.once(Events.ClientReady, (c) => {
       logger.info(`Logged in as ${c.user.displayName}`);
     });
-
     bot.on(Events.InteractionCreate, async (interaction) => {
       await interact(interaction, commands);
     });
-
     bot.on(Events.Error, (error) => {
       logger.error(error, "Bot error");
     });
   }
-
   return bot;
 }
 
@@ -35,7 +31,6 @@ export async function startBot(token: string) {
     logger.fatal({ error }, "failed to login");
     process.exit(1);
   }
-
   for (const signal of ["SIGINT", "SIGTERM"]) {
     process.on(signal, () => {
       logger.info(`Received ${signal}, shutting down`);

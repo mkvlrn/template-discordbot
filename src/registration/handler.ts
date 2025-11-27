@@ -10,7 +10,6 @@ async function prepareRequest(cli: Cli): Promise<[REST, `/${string}`, string]> {
   const restClient = new REST().setToken(ENV.DISCORD_CLIENT_TOKEN);
   let route = Routes.applicationCommands(ENV.DISCORD_CLIENT_ID);
   let target = "globally";
-
   if (cli.scope !== "global") {
     try {
       const guild = (await restClient.get(Routes.guild(cli.scope))) as Guild;
@@ -21,14 +20,12 @@ async function prepareRequest(cli: Cli): Promise<[REST, `/${string}`, string]> {
       process.exit(1);
     }
   }
-
   return [restClient, route, target];
 }
 
 export async function handleRegistration(cli: Cli) {
   const unregister = cli.action === "unregister";
   const [restClient, route, target] = await prepareRequest(cli);
-
   console.info(`Updating commands ${target}`);
   const payload: RequestData = {
     body: unregister ? [] : Array.from(commands, ([_, command]) => command.data.toJSON()),

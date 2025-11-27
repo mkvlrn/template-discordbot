@@ -53,19 +53,20 @@ Commands are imported automatically from the commands directory.
 
 **Note:** Discord requires command names to be lowercase and match the exported variable name. Use kebab-case for multi-word commands (e.g., `my-command`).
 
-1. Create a new file in `./src/commands` named `my-command.ts`
-2. Export a command using `createCommand`:
+1. Create a new directory in `./src/commands` named `my-command` with an `index.ts` file in it.
+2. Export a function that matches the type `Execute` described in `./src/commands/index.ts`:
 
 ```ts
-import { createCommand } from "#/modules/command";
+import type { CommandInteraction } from "discord.js";
 
-export const mycommand = createCommand("mycommand", "Does something cool", async (interaction) => {
-  await interaction.reply("Cool!");
-});
+export async function ping(interaction: CommandInteraction): Promise<void> {
+  await interaction.reply("Pong!");
+}
 ```
 
-1. Run `pnpm cmd register global` to register commands globally or `pnpm cmd register 0000000000` to a specified server, where 0000000000 is the server id.
-2. Restart your bot
+3. Import and add the command to the `commands` array in `./src/index.ts`
+4. Run `pnpm cmd register global` to register commands globally or `pnpm cmd register 0000000000` to a specified server, where 0000000000 is the server id.
+5. Restart your bot
 
 You can also unregister commands with `pnpm cmd unregister global` or `pnpm cmd unregister 0000000000`.
 

@@ -1,10 +1,8 @@
-/** biome-ignore-all lint/suspicious/noConsole: cli */
-
 import process from "node:process";
 import { type Guild, REST, type RequestData, Routes } from "discord.js";
 import { ENV } from "varlock/env";
-import { commands } from "#/commands";
-import type { Cli } from "#/registration/cli";
+import { commands } from "#commands/index";
+import type { Cli } from "#registration/cli";
 
 async function prepareRequest(cli: Cli): Promise<[REST, `/${string}`, string]> {
   const restClient = new REST().setToken(ENV.DISCORD_CLIENT_TOKEN);

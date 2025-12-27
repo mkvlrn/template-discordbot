@@ -1,8 +1,8 @@
 import process from "node:process";
 import { Client, Events, GatewayIntentBits } from "discord.js";
-import { commands } from "#/commands";
-import { interact } from "#/modules/interaction";
-import { getLogger } from "#/modules/logger";
+import { commands } from "#commands/index";
+import { interact } from "#modules/interaction";
+import { getLogger } from "#modules/logger";
 
 let bot: Client | null = null;
 const logger = getLogger();

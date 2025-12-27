@@ -1,5 +1,3 @@
-/** biome-ignore-all lint/suspicious/noConsole: cli */
-
 import process from "node:process";
 
 export interface Cli {

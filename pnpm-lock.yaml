@@ -28,8 +28,8 @@ importers:
         specifier: ^20.2.0
         version: 20.2.0
       '@mkvlrn/config':
-        specifier: ^3.0.0
-        version: 3.0.0
+        specifier: ^3.0.4
+        version: 3.0.4
       '@types/node':
         specifier: ^25.0.3
         version: 25.0.3
@@ -602,8 +602,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@mkvlrn/config@3.0.0':
-    resolution: {integrity: sha512-9l4l6BpbQc4bCR80rv6N8d3i49E52eYR+yRyzTLalv9tFR2HgOaDg8VaOQFyF3VGeUTIfo68aVVCGZ2Lf4BhgQ==}
+  '@mkvlrn/config@3.0.4':
+    resolution: {integrity: sha512-MiH+Br0OXTD0tLXpb8tnB+mwiMlilXT/066TFMM7X7+17fh2aUbsbk/WK7v9pAd5FMRXWi4U7s7ZK6lT4KypkA==}
     engines: {node: 22.x}
 
   '@napi-rs/wasm-runtime@1.1.0':
@@ -2392,7 +2392,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@mkvlrn/config@3.0.0': {}
+  '@mkvlrn/config@3.0.4': {}
 
   '@napi-rs/wasm-runtime@1.1.0':
     dependencies:

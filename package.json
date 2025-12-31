@@ -21,16 +21,10 @@
   "engines": {
     "node": "24"
   },
-  "imports": {
-    "#*": {
-      "dev": "./src/*.ts",
-      "default": "./build/*.js"
-    }
-  },
   "scripts": {
-    "build": "rm -rf build && tsc --project tsconfig.build.json --listEmittedFiles",
-    "cmd": "tsx -C dev ./src/registration/index.ts",
-    "dev": "tsx -C dev --watch src/main.ts | pino-pretty",
+    "build": "tsdown",
+    "cmd": "tsx ./src/registration/index.ts",
+    "dev": "tsx --watch src/main.ts | pino-pretty",
     "start": "node build/main.js",
     "test": "vitest",
     "biome-check": "biome check --diagnostic-level=warn --no-errors-on-unmatched",

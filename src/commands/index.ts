@@ -1,5 +1,5 @@
 import { type CommandInteraction, SlashCommandBuilder } from "discord.js";
-import { ping } from "#commands/ping/index";
+import { ping } from "#/commands/ping/index";
 
 type Execute = (interaction: CommandInteraction) => Promise<void>;
 

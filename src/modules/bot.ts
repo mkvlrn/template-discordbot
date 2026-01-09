@@ -4,7 +4,7 @@ import { commands } from "#/commands/index";
 import { interact } from "#/modules/interaction";
 import { getLogger } from "#/modules/logger";
 
-let bot: Client | null = null;
+let bot: Client | undefined;
 const logger = getLogger();
 
 function getBot(): Client {

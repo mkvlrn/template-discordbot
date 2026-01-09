@@ -1,7 +1,7 @@
 import process from "node:process";
 import { type Guild, REST, type RequestData, Routes } from "discord.js";
 import { ENV } from "varlock/env";
-import { commands } from "#/commands/index";
+import { commands } from "#/modules/commands";
 import type { Cli } from "#/registration/cli";
 
 async function prepareRequest(cli: Cli): Promise<[REST, `/${string}`, string]> {

@@ -1,8 +1,19 @@
 import process from "node:process";
-import { Client, Events, GatewayIntentBits } from "discord.js";
-import { commands } from "#/commands/index";
+import {
+  Client,
+  type CommandInteraction,
+  Events,
+  GatewayIntentBits,
+  type SlashCommandBuilder,
+} from "discord.js";
+import { commands } from "#/modules/commands";
 import { interact } from "#/modules/interaction";
 import { getLogger } from "#/modules/logger";
+
+export interface BotCommand {
+  data: SlashCommandBuilder;
+  execute: (interaction: CommandInteraction) => Promise<void>;
+}
 
 let bot: Client | undefined;
 const logger = getLogger();

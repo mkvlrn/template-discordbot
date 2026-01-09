@@ -1,5 +1,5 @@
 import type { CommandInteraction, Interaction, InteractionReplyOptions } from "discord.js";
-import type { BotCommand } from "#/commands/index";
+import type { BotCommand } from "#/modules/bot";
 import { getLogger } from "#/modules/logger";
 
 const logger = getLogger();

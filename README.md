@@ -17,9 +17,9 @@ Uses:
 
 ## prerequisites
 
-- filled variables `DISCORD_CLIENT_ID` and `DISCORD_CLIENT_TOKEN` in `.env` file (see `.env.schema`)
+- variables `DISCORD_CLIENT_ID`, `DISCORD_CLIENT_TOKEN`, and `LOG_LEVEL` filled in `.env` file (see `.env.schema`)
 - a notion of what a discord bot is and how `discord.js` works
-- a server to test the bot on (that's where you get the server id for the env variable)
+- a server to test the bot on
 
 ## running
 
@@ -49,23 +49,36 @@ Runs type checking using tsc.
 
 ## adding or removing commands
 
-Commands are imported automatically from the commands directory.
+Commands live in `./src/commands/` as individual files and are registered in `./src/modules/commands.ts`.
 
-**Note:** Discord requires command names to be lowercase and match the exported variable name. Use kebab-case for multi-word commands (e.g., `my-command`).
+**Note:** Discord requires command names to be lowercase. Use kebab-case for multi-word commands (e.g., `my-command`).
 
-1. Create a new directory in `./src/commands` named `my-command` with an `index.ts` file in it.
-2. Export a function that matches the type `Execute` described in `./src/commands/index.ts`:
+1. Create a new file in `./src/commands/` (e.g., `my-command.ts`)
+2. Export a typed `BotCommand` object with `data` and `execute`:
 
 ```ts
-import type { CommandInteraction } from "discord.js";
+import { type CommandInteraction, SlashCommandBuilder } from "discord.js";
+import type { BotCommand } from "#/modules/commands";
 
-export async function ping(interaction: CommandInteraction): Promise<void> {
-  await interaction.reply("Pong!");
+async function execute(interaction: CommandInteraction): Promise {
+  await interaction.reply("Hello!");
 }
+
+export const myCommand: BotCommand = {
+  data: new SlashCommandBuilder().setName("my-command").setDescription("Does something"),
+  execute,
+};
 ```
 
-3. Import and add the command to the `commands` array in `./src/index.ts`
-4. Run `pnpm cmd register global` to register commands globally or `pnpm cmd register 0000000000` to a specified server, where 0000000000 is the server id.
+3. Import and add the command to the `commands` Map in `./src/modules/commands.ts`:
+
+```ts
+import { myCommand } from "#/commands/my-command";
+
+export const commands = new Map([[myCommand.data.name, myCommand]]);
+```
+
+4. Run `pnpm cmd register global` to register commands globally or `pnpm cmd register 0000000000` to a specific server
 5. Restart your bot
 
 You can also unregister commands with `pnpm cmd unregister global` or `pnpm cmd unregister 0000000000`.

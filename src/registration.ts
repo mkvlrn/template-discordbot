@@ -1,8 +1,35 @@
+import "varlock/auto-load";
 import process from "node:process";
 import { type Guild, REST, type RequestData, Routes } from "discord.js";
 import { ENV } from "varlock/env";
 import { commands } from "#/modules/commands";
-import type { Cli } from "#/registration/cli";
+
+interface Cli {
+  action: "register" | "unregister";
+  scope: string;
+}
+
+export function handleOptions(): Cli {
+  const action = process.argv.at(2);
+  const scope = process.argv.at(3);
+  if (action === undefined || scope === undefined) {
+    console.error("missing action or scope");
+    process.exit(1);
+  }
+  if (!["register", "unregister"].includes(action)) {
+    console.error("invalid action: must be 'register' or 'unregister'");
+    process.exit(1);
+  }
+  // biome-ignore lint/performance/useTopLevelRegex: simple enough regex
+  if (scope !== "global" && !/\d+/.test(scope)) {
+    console.error("invalid scope: must be 'global' or a server ID");
+    process.exit(1);
+  }
+  return {
+    action: action as "register" | "unregister",
+    scope,
+  };
+}
 
 async function prepareRequest(cli: Cli): Promise<[REST, `/${string}`, string]> {
   const restClient = new REST().setToken(ENV.DISCORD_CLIENT_TOKEN);
@@ -38,3 +65,6 @@ export async function handleRegistration(cli: Cli) {
     process.exit(1);
   }
 }
+
+const cli = handleOptions();
+await handleRegistration(cli);

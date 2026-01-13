@@ -2,7 +2,6 @@ import { type ChatInputCommandInteraction, SlashCommandBuilder } from "discord.j
 import type { BotCommand } from "#/modules/commands";
 
 export const ping: BotCommand = {
-  register: true,
   data: new SlashCommandBuilder().setName("ping").setDescription("Ping the bot"),
   execute: async (interaction: ChatInputCommandInteraction): Promise<void> => {
     await interaction.reply("Pong!");

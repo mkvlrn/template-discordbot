@@ -8,7 +8,6 @@ function rollDie(sides: number): number {
 }
 
 export const roll: BotCommand = {
-  register: true,
   data: new SlashCommandBuilder()
     .setName("roll")
     .setDescription("Roll a die")

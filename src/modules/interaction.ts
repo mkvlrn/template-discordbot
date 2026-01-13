@@ -60,14 +60,18 @@ async function executeCommand(
   }
 }
 
-function getCommandName(interaction: Interaction): string | undefined {
+function getCommandName(interaction: Interaction): string {
   if (interaction.isChatInputCommand()) {
     return interaction.commandName;
   }
   if (interaction.isButton() || interaction.isAnySelectMenu() || interaction.isModalSubmit()) {
-    return interaction.customId.split(":")[0] || undefined;
+    const customId = interaction.customId.split(":")[0];
+    if (!customId) {
+      throw new Error("Custom ID is not valid");
+    }
+    return customId;
   }
-  return undefined;
+  throw new Error(`Unexpected interaction type: ${interaction.constructor.name}`);
 }
 
 function isFollowUpInteraction(
@@ -80,13 +84,9 @@ export async function interact(
   interaction: Interaction,
   commands: Map<string, BotCommand>,
 ): Promise<void> {
-  const commandName = getCommandName(interaction);
-  if (!commandName) {
-    return;
-  }
-  const command = commands.get(commandName);
+  const command = commands.get(getCommandName(interaction));
   if (!command) {
-    logger.error(`Unknown command ${commandName} received`);
+    logger.error("Unknown command received");
     return;
   }
   if (interaction.isChatInputCommand()) {

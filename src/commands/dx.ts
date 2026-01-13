@@ -51,7 +51,6 @@ async function followUp(
 }
 
 export const dx: BotCommand = {
-  register: true,
   data,
   execute,
   followUp,

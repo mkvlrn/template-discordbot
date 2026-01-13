@@ -11,7 +11,6 @@ import { ping } from "#/commands/ping";
 import { roll } from "#/commands/roll";
 
 export interface BotCommand {
-  register: boolean;
   data: SlashCommandBuilder | SlashCommandOptionsOnlyBuilder;
   execute: (interaction: ChatInputCommandInteraction) => Promise<void>;
   followUp?: (

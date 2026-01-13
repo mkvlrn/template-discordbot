@@ -1,7 +1,7 @@
-import { type CommandInteraction, SlashCommandBuilder } from "discord.js";
+import { type ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
 import type { BotCommand } from "#/modules/commands";
 
-async function execute(interaction: CommandInteraction): Promise<void> {
+async function execute(interaction: ChatInputCommandInteraction): Promise<void> {
   await interaction.reply("Pong!");
 }
 

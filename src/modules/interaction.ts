@@ -1,10 +1,10 @@
-import type { CommandInteraction, Interaction, InteractionReplyOptions } from "discord.js";
-import type { BotCommand } from "#/modules/bot";
+import type { ChatInputCommandInteraction, InteractionReplyOptions } from "discord.js";
+import type { BotCommand } from "#/modules/commands";
 import { getLogger } from "#/modules/logger";
 
 const logger = getLogger();
 
-function buildAttribution(interaction: CommandInteraction): string {
+function buildAttribution(interaction: ChatInputCommandInteraction): string {
   const server = interaction.guild;
   const channel = interaction.channel;
   let channelName: string;
@@ -20,7 +20,7 @@ function buildAttribution(interaction: CommandInteraction): string {
   return `@${interaction.user.username} in ${server?.name ?? "DM"}#${channelName}`;
 }
 
-async function sendErrorResponse(interaction: CommandInteraction): Promise<void> {
+async function sendErrorResponse(interaction: ChatInputCommandInteraction): Promise<void> {
   const reply: InteractionReplyOptions = {
     content: "There was an error while executing this command.",
     ephemeral: true,
@@ -32,7 +32,10 @@ async function sendErrorResponse(interaction: CommandInteraction): Promise<void>
   }
 }
 
-async function executeCommand(interaction: CommandInteraction, command: BotCommand): Promise<void> {
+async function executeCommand(
+  interaction: ChatInputCommandInteraction,
+  command: BotCommand,
+): Promise<void> {
   const attribution = buildAttribution(interaction);
   try {
     logger.trace(`Received /${interaction.commandName} from ${attribution}`);
@@ -53,10 +56,10 @@ async function executeCommand(interaction: CommandInteraction, command: BotComma
 }
 
 export async function interact(
-  interaction: Interaction,
+  interaction: ChatInputCommandInteraction,
   commands: Map<string, BotCommand>,
 ): Promise<void> {
-  if (!interaction.isCommand()) {
+  if (!interaction.isChatInputCommand()) {
     return;
   }
   const command = commands.get(interaction.commandName);

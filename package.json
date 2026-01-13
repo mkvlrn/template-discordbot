@@ -23,7 +23,8 @@
   },
   "scripts": {
     "build": "tsdown",
-    "cmd": "tsx ./src/registration.ts",
+    "register": "tsx ./src/registration.ts",
+    "unregister": "tsx ./src/registration.ts",
     "dev": "tsx --watch src/main.ts | pino-pretty",
     "start": "node build/main.js",
     "test": "vitest",

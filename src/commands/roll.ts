@@ -6,8 +6,11 @@ function rollDie(sides: number): number {
 }
 
 async function execute(interaction: ChatInputCommandInteraction): Promise<void> {
-  const answer = rollDie(interaction.options.getInteger("sides") ?? 6);
-  await interaction.reply(`You rolled: ${answer}`);
+  const sides = interaction.options.getInteger("sides");
+  if (!sides) {
+    throw new Error("Invalid sides");
+  }
+  await interaction.reply(`Your d${sides} roll: ${rollDie(sides)}`);
 }
 
 export const roll: BotCommand = {

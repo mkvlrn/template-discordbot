@@ -9,9 +9,6 @@ bot.once(Events.ClientReady, (c) => {
   logger.info(`Logged in as ${c.user.displayName}`);
 });
 bot.on(Events.InteractionCreate, async (interaction) => {
-  if (!interaction.isChatInputCommand()) {
-    return;
-  }
   await interact(interaction, commands);
 });
 bot.on(Events.Error, (error) => {

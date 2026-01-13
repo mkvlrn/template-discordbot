@@ -4,10 +4,11 @@ import type { BotCommand } from "#/modules/commands";
 const diceFaces = [4, 6, 8, 10, 12, 20];
 
 function rollDie(sides: number): number {
-  return Math.floor(Math.random() * (sides + 1));
+  return Math.floor(Math.random() * sides) + 1;
 }
 
 export const roll: BotCommand = {
+  register: true,
   data: new SlashCommandBuilder()
     .setName("roll")
     .setDescription("Roll a die")

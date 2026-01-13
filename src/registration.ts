@@ -31,13 +31,16 @@ if (scope !== "global") {
     process.exit(1);
   }
 }
+const validCommands = [...commands.values()].filter((command) => command.register === true);
 const payload: RequestData = {
-  body: unregister ? [] : Array.from(commands, ([_, command]) => command.data.toJSON()),
+  body: unregister ? [] : validCommands.map((command) => command.data.toJSON()),
 };
 try {
   await restClient.put(route, payload);
   const action = unregister ? "removed" : "registered";
-  console.info(`Commands ${action} ${target}: ${[...commands.keys()].join(", ")}`);
+  console.info(
+    `Commands ${action} ${target}: ${validCommands.map((command) => command.data.name).join(", ")}`,
+  );
 } catch (error) {
   console.error((error as Error).message);
   process.exit(1);

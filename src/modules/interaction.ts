@@ -1,4 +1,11 @@
-import type { ChatInputCommandInteraction, InteractionReplyOptions } from "discord.js";
+import type {
+  AnySelectMenuInteraction,
+  ButtonInteraction,
+  ChatInputCommandInteraction,
+  Interaction,
+  InteractionReplyOptions,
+  ModalSubmitInteraction,
+} from "discord.js";
 import type { BotCommand } from "#/modules/commands";
 import { logger } from "#/modules/logger";
 
@@ -53,17 +60,38 @@ async function executeCommand(
   }
 }
 
+function getCommandName(interaction: Interaction): string | undefined {
+  if (interaction.isChatInputCommand()) {
+    return interaction.commandName;
+  }
+  if (interaction.isButton() || interaction.isAnySelectMenu() || interaction.isModalSubmit()) {
+    return interaction.customId.split(":")[0] || undefined;
+  }
+  return undefined;
+}
+
+function isFollowUpInteraction(
+  interaction: Interaction,
+): interaction is ButtonInteraction | AnySelectMenuInteraction | ModalSubmitInteraction {
+  return interaction.isButton() || interaction.isAnySelectMenu() || interaction.isModalSubmit();
+}
+
 export async function interact(
-  interaction: ChatInputCommandInteraction,
+  interaction: Interaction,
   commands: Map<string, BotCommand>,
 ): Promise<void> {
-  if (!interaction.isChatInputCommand()) {
+  const commandName = getCommandName(interaction);
+  if (!commandName) {
     return;
   }
-  const command = commands.get(interaction.commandName);
+  const command = commands.get(commandName);
   if (!command) {
-    logger.error(`Unknown command ${interaction.commandName} received`);
+    logger.error(`Unknown command ${commandName} received`);
     return;
   }
-  await executeCommand(interaction, command);
+  if (interaction.isChatInputCommand()) {
+    await executeCommand(interaction, command);
+  } else if (isFollowUpInteraction(interaction)) {
+    await command.followUp?.(interaction);
+  }
 }

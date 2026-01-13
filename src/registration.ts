@@ -6,6 +6,12 @@ import { ENV } from "varlock/env";
 import { commands } from "#/modules/commands";
 
 const scriptName = process.env["npm_lifecycle_event"];
+if (!(scriptName && ["register", "unregister"].includes(scriptName))) {
+  console.error(
+    "invalid script name: must be 'register' or 'unregister' - don't call this directly, use the pnpm scripts instead",
+  );
+  process.exit(1);
+}
 const unregister = scriptName === "unregister";
 const scope = process.argv.at(2) ?? "global";
 if (scope !== "global" && !/^\d+$/.test(scope)) {

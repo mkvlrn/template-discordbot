@@ -1,16 +1,10 @@
 import { type ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
 import type { BotCommand } from "#/modules/commands";
 
+const diceFaces = [4, 6, 8, 10, 12, 20];
+
 function rollDie(sides: number): number {
   return Math.floor(Math.random() * (sides + 1));
-}
-
-async function execute(interaction: ChatInputCommandInteraction): Promise<void> {
-  const sides = interaction.options.getInteger("sides");
-  if (!sides) {
-    throw new Error("Invalid sides");
-  }
-  await interaction.reply(`Your d${sides} roll: ${rollDie(sides)}`);
 }
 
 export const roll: BotCommand = {
@@ -22,14 +16,13 @@ export const roll: BotCommand = {
         .setName("sides")
         .setDescription("The number of sides on the die")
         .setRequired(true)
-        .addChoices(
-          { name: "4", value: 4 },
-          { name: "6", value: 6 },
-          { name: "8", value: 8 },
-          { name: "10", value: 10 },
-          { name: "12", value: 12 },
-          { name: "20", value: 20 },
-        ),
+        .addChoices(diceFaces.map((v) => ({ name: v.toString(), value: v }))),
     ),
-  execute,
+  execute: async (interaction: ChatInputCommandInteraction): Promise<void> => {
+    const sides = interaction.options.getInteger("sides");
+    if (!sides) {
+      throw new Error("Invalid sides");
+    }
+    await interaction.reply(`Your d${sides} roll: ${rollDie(sides)}`);
+  },
 };

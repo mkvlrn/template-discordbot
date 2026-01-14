@@ -7,12 +7,7 @@ import {
   SlashCommandBuilder,
 } from "discord.js";
 import type { BotCommand, FollowUpInteraction } from "#/modules/commands";
-
-const diceFaces = [4, 6, 8, 10, 12, 20];
-
-function rollDie(sides: number): number {
-  return Math.floor(Math.random() * sides) + 1;
-}
+import { diceFaces, rollDie } from "#/utils/dice";
 
 const data = new SlashCommandBuilder().setName("dx").setDescription("Roll a dx");
 
@@ -48,8 +43,4 @@ async function followUp(interaction: FollowUpInteraction): Promise<void> {
   });
 }
 
-export const dx: BotCommand = {
-  data,
-  execute,
-  followUp,
-};
+export const dx = { data, execute, followUp } satisfies BotCommand;

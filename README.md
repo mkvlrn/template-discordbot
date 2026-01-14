@@ -57,31 +57,32 @@ Commands live in `./src/commands/` as individual files and are registered in `./
 2. Export a typed `BotCommand` object with `data` and `execute`:
 
 ```ts
-import { type CommandInteraction, SlashCommandBuilder } from "discord.js";
+import { type ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
 import type { BotCommand } from "#/modules/commands";
 
-async function execute(interaction: CommandInteraction): Promise {
+const data = new SlashCommandBuilder().setName("my-command").setDescription("Does something");
+
+async function execute(interaction: ChatInputCommandInteraction): Promise<void> {
   await interaction.reply("Hello!");
 }
 
-export const myCommand: BotCommand = {
-  data: new SlashCommandBuilder().setName("my-command").setDescription("Does something"),
-  execute,
-};
+export const myCommand = { data, execute } satisfies BotCommand;
 ```
 
-3. Import and add the command to the `commands` Map in `./src/modules/commands.ts`:
+3. Import and add the command to allCommands array in ./src/modules/commands.ts
 
 ```ts
 import { myCommand } from "#/commands/my-command";
 
-export const commands = new Map([[myCommand.data.name, myCommand]]);
+const allCommands = [/* ...existing */ myCommand] as const satisfies readonly BotCommand[];
+
+export const commands = new Map<string, BotCommand>(allCommands.map((cmd) => [cmd.data.name, cmd]));
 ```
 
-4. Run `pnpm cmd register global` to register commands globally or `pnpm cmd register 0000000000` to a specific server
+4. Run `pnpm register` to register commands globally or `pnpm register 0000000000` to a specific server
 5. Restart your bot
 
-You can also unregister commands with `pnpm cmd unregister global` or `pnpm cmd unregister 0000000000`.
+You can also unregister commands with `pnpm unregister` or `pnpm unregister 0000000000`.
 
 ## vscode
 

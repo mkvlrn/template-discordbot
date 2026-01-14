@@ -14,18 +14,20 @@ import type { BotCommand, FollowUpInteraction } from "#/modules/commands";
 import { diceFaces, rollFromExpression } from "#/utils/dice";
 import { generateDiceImage } from "#/utils/dice-img";
 
-const data = new SlashCommandBuilder().setName("dx").setDescription("Roll a dx");
+const data = new SlashCommandBuilder()
+  .setName("roll-panel")
+  .setDescription("Roll a dice using a panel");
 
 function createDieButton(sides: number, quantity = 1): ButtonBuilder {
   return new ButtonBuilder()
-    .setCustomId(`dx:${sides}:${quantity}`)
+    .setCustomId(`roll-panel:${sides}:${quantity}`)
     .setLabel(`d${sides}`)
     .setStyle(ButtonStyle.Primary);
 }
 
 function createSelect(quantity = 1): StringSelectMenuBuilder {
   return new StringSelectMenuBuilder()
-    .setCustomId("dx:quantity")
+    .setCustomId("roll-panel:quantity")
     .setPlaceholder(`${quantity}`)
     .addOptions(
       Array.from({ length: 6 }, (_, i) => ({
@@ -94,4 +96,4 @@ async function followUp(interaction: FollowUpInteraction): Promise<void> {
   }
 }
 
-export const dx = { data, execute, followUp } satisfies BotCommand;
+export const rollPanel = { data, execute, followUp } satisfies BotCommand;

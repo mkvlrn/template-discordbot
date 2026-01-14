@@ -10,7 +10,7 @@ import { rollFromExpression } from "#/utils/dice";
 import { generateDiceImage } from "#/utils/dice-img";
 
 const data = new SlashCommandBuilder()
-  .setName("rollplus")
+  .setName("roll-plus")
   .setDescription("Roll a die using an expression")
   .addStringOption((option) =>
     option
@@ -41,4 +41,4 @@ async function execute(interaction: ChatInputCommandInteraction): Promise<void> 
   });
 }
 
-export const rollplus = { data, execute } satisfies BotCommand;
+export const rollPlus = { data, execute } satisfies BotCommand;

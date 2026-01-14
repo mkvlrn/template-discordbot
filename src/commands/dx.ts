@@ -11,7 +11,7 @@ import {
   StringSelectMenuBuilder,
 } from "discord.js";
 import type { BotCommand, FollowUpInteraction } from "#/modules/commands";
-import { diceFaces, rollDie } from "#/utils/dice";
+import { diceFaces, rollFromExpression } from "#/utils/dice";
 import { generateDiceImage } from "#/utils/dice-img";
 
 const data = new SlashCommandBuilder().setName("dx").setDescription("Roll a dx");
@@ -74,13 +74,15 @@ async function followUp(interaction: FollowUpInteraction): Promise<void> {
     if (!(sides && quantity)) {
       throw new Error("Invalid customId");
     }
-    const rolls = Array.from({ length: quantity }, () => rollDie(sides));
-    const total = rolls.reduce((a, b) => a + b, 0);
+    const result = rollFromExpression(`${quantity}d${sides}`);
+    if (!result) {
+      throw new Error("Invalid expression");
+    }
     const embed = new EmbedBuilder()
       .setColor(Colors.Blurple)
       .setTitle(`🎲 ${quantity}d${sides}`)
-      .setDescription(`<@${interaction.user.id}> rolled **${total}**`);
-    const image = await generateDiceImage(rolls, total);
+      .setDescription(`<@${interaction.user.id}> rolled **${result.total}**`);
+    const image = generateDiceImage(result.values, result.total);
     const attachment = image ? new AttachmentBuilder(image, { name: "dice.png" }) : null;
     if (attachment) {
       embed.setImage("attachment://dice.png");

@@ -10,6 +10,7 @@ import type {
 import { dx } from "#/commands/dx";
 import { ping } from "#/commands/ping";
 import { roll } from "#/commands/roll";
+import { rollplus } from "#/commands/roll-plus";
 
 export type Data =
   | SlashCommandBuilder
@@ -27,6 +28,6 @@ export interface BotCommand {
   followUp?: (interaction: FollowUpInteraction) => Promise<void>;
 }
 
-const allCommands = [ping, roll, dx] as const satisfies readonly BotCommand[];
+const allCommands = [ping, roll, dx, rollplus] as const satisfies readonly BotCommand[];
 
 export const commands = new Map<string, BotCommand>(allCommands.map((cmd) => [cmd.data.name, cmd]));

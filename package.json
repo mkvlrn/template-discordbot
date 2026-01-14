@@ -38,7 +38,7 @@
     "@commitlint/cli": "^20.3.1",
     "@commitlint/config-conventional": "^20.3.1",
     "@mkvlrn/config": "^3.0.5",
-    "@types/node": "^25.0.7",
+    "@types/node": "^25.0.8",
     "@vitest/coverage-v8": "^4.0.17",
     "cross-env": "^10.1.0",
     "husky": "^9.1.7",

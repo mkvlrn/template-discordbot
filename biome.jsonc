@@ -21,10 +21,6 @@
           "correctness": {
             "noNodejsModules": "off"
           },
-          "style": {
-            // this is a silly rule
-            "useExportsLast": "off"
-          },
           "suspicious": {
             "noConsole": "info"
           }

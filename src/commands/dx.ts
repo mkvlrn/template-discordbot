@@ -1,15 +1,12 @@
 import {
   ActionRowBuilder,
-  type AnySelectMenuInteraction,
   ButtonBuilder,
-  type ButtonInteraction,
   ButtonStyle,
   type ChatInputCommandInteraction,
   MessageFlags,
-  type ModalSubmitInteraction,
   SlashCommandBuilder,
 } from "discord.js";
-import type { BotCommand } from "#/modules/commands";
+import type { BotCommand, FollowUpInteraction } from "#/modules/commands";
 
 const diceFaces = [4, 6, 8, 10, 12, 20];
 
@@ -38,9 +35,10 @@ async function execute(interaction: ChatInputCommandInteraction): Promise<void> 
   });
 }
 
-async function followUp(
-  interaction: ButtonInteraction | AnySelectMenuInteraction | ModalSubmitInteraction,
-): Promise<void> {
+async function followUp(interaction: FollowUpInteraction): Promise<void> {
+  if (!interaction.isButton()) {
+    return;
+  }
   const sides = Number(interaction.customId.split(":")[1]);
   if (!sides) {
     throw new Error("Invalid sides");

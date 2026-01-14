@@ -21,12 +21,12 @@ export type FollowUpInteraction =
   | AnySelectMenuInteraction
   | ModalSubmitInteraction;
 
-const allCommands = [ping, roll, dx] as const satisfies readonly BotCommand[];
-
 export interface BotCommand {
   data: Data;
   execute: (interaction: ChatInputCommandInteraction) => Promise<void>;
   followUp?: (interaction: FollowUpInteraction) => Promise<void>;
 }
+
+const allCommands = [ping, roll, dx] as const satisfies readonly BotCommand[];
 
 export const commands = new Map<string, BotCommand>(allCommands.map((cmd) => [cmd.data.name, cmd]));

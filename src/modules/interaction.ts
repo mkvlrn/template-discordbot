@@ -1,15 +1,8 @@
-import type {
-  AnySelectMenuInteraction,
-  ButtonInteraction,
-  ChatInputCommandInteraction,
-  Interaction,
-  InteractionReplyOptions,
-  ModalSubmitInteraction,
-} from "discord.js";
-import type { BotCommand } from "#/modules/commands";
+import type { ChatInputCommandInteraction, Interaction, InteractionReplyOptions } from "discord.js";
+import type { BotCommand, FollowUpInteraction } from "#/modules/commands";
 import { logger } from "#/modules/logger";
 
-function buildAttribution(interaction: ChatInputCommandInteraction): string {
+function buildAttribution(interaction: Interaction): string {
   const server = interaction.guild;
   const channel = interaction.channel;
   let channelName: string;
@@ -60,6 +53,27 @@ async function executeCommand(
   }
 }
 
+async function executeFollowUp(
+  interaction: FollowUpInteraction,
+  command: BotCommand,
+): Promise<void> {
+  const attribution = buildAttribution(interaction);
+  try {
+    await command.followUp?.(interaction);
+    logger.trace(`/${interaction.customId} executed by ${attribution}`);
+  } catch (error) {
+    logger.error(
+      {
+        error,
+        commandName: interaction.customId,
+        userId: interaction.user.id,
+        guildId: interaction.guild?.id,
+      },
+      "FollowUp interaction execution error",
+    );
+  }
+}
+
 function getCommandName(interaction: Interaction): string {
   if (interaction.isChatInputCommand()) {
     return interaction.commandName;
@@ -74,9 +88,7 @@ function getCommandName(interaction: Interaction): string {
   throw new Error(`Unexpected interaction type: ${interaction.constructor.name}`);
 }
 
-function isFollowUpInteraction(
-  interaction: Interaction,
-): interaction is ButtonInteraction | AnySelectMenuInteraction | ModalSubmitInteraction {
+function isFollowUpInteraction(interaction: Interaction): interaction is FollowUpInteraction {
   return interaction.isButton() || interaction.isAnySelectMenu() || interaction.isModalSubmit();
 }
 
@@ -92,6 +104,6 @@ export async function interact(
   if (interaction.isChatInputCommand()) {
     await executeCommand(interaction, command);
   } else if (isFollowUpInteraction(interaction)) {
-    await command.followUp?.(interaction);
+    await executeFollowUp(interaction, command);
   }
 }

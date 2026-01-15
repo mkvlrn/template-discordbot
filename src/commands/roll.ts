@@ -1,5 +1,5 @@
 import { type ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
-import { createBotCommand } from "#/modules/commands";
+import { createBotCommand } from "#/core/commands";
 import { diceFaces, rollDice } from "#/utils/dice";
 
 const data = new SlashCommandBuilder()

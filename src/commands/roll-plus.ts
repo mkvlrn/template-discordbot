@@ -5,7 +5,7 @@ import {
   EmbedBuilder,
   SlashCommandBuilder,
 } from "discord.js";
-import { createBotCommand } from "#/modules/commands";
+import { createBotCommand } from "#/core/commands";
 import { rollDice } from "#/utils/dice";
 import { generateDiceImage } from "#/utils/dice-img";
 

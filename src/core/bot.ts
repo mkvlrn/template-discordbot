@@ -1,8 +1,8 @@
 import process from "node:process";
 import { Client, Events, GatewayIntentBits } from "discord.js";
-import { commands, loadCommands } from "#/modules/commands";
-import { interact } from "#/modules/interaction";
-import { logger } from "#/modules/logger";
+import { commands, loadCommands } from "#/core/commands";
+import { interact } from "#/core/interaction";
+import { logger } from "#/core/logger";
 
 const bot = new Client({ intents: [GatewayIntentBits.Guilds] });
 bot.once(Events.ClientReady, (c) => {

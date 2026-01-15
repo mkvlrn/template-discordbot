@@ -10,7 +10,7 @@ import {
   SlashCommandBuilder,
   StringSelectMenuBuilder,
 } from "discord.js";
-import { createBotCommand, type FollowUpInteraction } from "#/modules/commands";
+import { createBotCommand, type FollowUpInteraction } from "#/core/commands";
 import { diceFaces, rollDice } from "#/utils/dice";
 import { generateDiceImage } from "#/utils/dice-img";
 

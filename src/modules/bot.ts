@@ -1,6 +1,6 @@
 import process from "node:process";
 import { Client, Events, GatewayIntentBits } from "discord.js";
-import { commands } from "#/modules/commands";
+import { commands, loadCommands } from "#/modules/commands";
 import { interact } from "#/modules/interaction";
 import { logger } from "#/modules/logger";
 
@@ -17,6 +17,7 @@ bot.on(Events.Error, (error) => {
 
 export async function startBot(token: string) {
   try {
+    await loadCommands();
     await bot.login(token);
     for (const signal of ["SIGINT", "SIGTERM"]) {
       process.on(signal, () => {

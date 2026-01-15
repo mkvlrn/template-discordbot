@@ -1,3 +1,4 @@
+import { readdir } from "node:fs/promises";
 import type {
   AnySelectMenuInteraction,
   ButtonInteraction,
@@ -7,12 +8,8 @@ import type {
   SlashCommandOptionsOnlyBuilder,
   SlashCommandSubcommandsOnlyBuilder,
 } from "discord.js";
-import { ping } from "#/commands/ping";
-import { roll } from "#/commands/roll";
-import { rollPanel } from "#/commands/roll-panel";
-import { rollPlus } from "#/commands/roll-plus";
 
-export type Data =
+export type BotCommandData =
   | SlashCommandBuilder
   | SlashCommandOptionsOnlyBuilder
   | SlashCommandSubcommandsOnlyBuilder;
@@ -23,11 +20,22 @@ export type FollowUpInteraction =
   | ModalSubmitInteraction;
 
 export interface BotCommand {
-  data: Data;
+  data: BotCommandData;
   execute: (interaction: ChatInputCommandInteraction) => Promise<void>;
   followUp?: (interaction: FollowUpInteraction) => Promise<void>;
 }
 
-const allCommands = [ping, roll, rollPanel, rollPlus] as const satisfies readonly BotCommand[];
+export const commands = new Map<string, BotCommand>();
 
-export const commands = new Map<string, BotCommand>(allCommands.map((cmd) => [cmd.data.name, cmd]));
+export function createBotCommand(command: BotCommand): void {
+  commands.set(command.data.name, command);
+}
+
+export async function loadCommands(): Promise<void> {
+  const files = await readdir(new URL("../commands", import.meta.url));
+  await Promise.all(
+    files
+      .filter((file) => file.endsWith(".ts") || file.endsWith(".js"))
+      .map((file) => import(`#/commands/${file.slice(0, -3)}`)),
+  );
+}

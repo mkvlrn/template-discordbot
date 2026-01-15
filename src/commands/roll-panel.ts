@@ -10,7 +10,7 @@ import {
   SlashCommandBuilder,
   StringSelectMenuBuilder,
 } from "discord.js";
-import type { BotCommand, FollowUpInteraction } from "#/modules/commands";
+import { createBotCommand, type FollowUpInteraction } from "#/modules/commands";
 import { diceFaces, rollDice } from "#/utils/dice";
 import { generateDiceImage } from "#/utils/dice-img";
 
@@ -99,4 +99,4 @@ async function followUp(interaction: FollowUpInteraction): Promise<void> {
   }
 }
 
-export const rollPanel = { data, execute, followUp } satisfies BotCommand;
+createBotCommand({ data, execute, followUp });

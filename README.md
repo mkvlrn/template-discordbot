@@ -14,6 +14,7 @@ Uses:
 - [tsx](https://github.com/privatenumber/tsx) for dev time typescript
 - [varlock](https://github.com/dmno-dev/varlock) for env validation and parsing
 - [tsdown](https://github.com/rolldown/tsdown) for building
+- [@mkvlrn/result](https://github.com/mkvlrn/tools/blob/main/packages/result/README.md) for error handling
 
 ## prerequisites
 
@@ -47,42 +48,110 @@ Runs biome in fix mode (only [safe fixes](https://biomejs.dev/linter/#safe-fixes
 
 Runs type checking using tsc.
 
+### `pnpm register [server-id]`
+
+Registers slash commands globally or to a specific server if server ID is provided.
+
+### `pnpm unregister [server-id]`
+
+Unregisters slash commands globally or from a specific server if server ID is provided.
+
 ## adding or removing commands
 
-Commands live in `./src/commands/` as individual files and are registered in `./src/modules/commands.ts`.
+Commands are **auto-loaded** from `./src/commands/`. Just create a file and call `createBotCommand`.
 
 **Note:** Discord requires command names to be lowercase. Use kebab-case for multi-word commands (e.g., `my-command`).
 
 1. Create a new file in `./src/commands/` (e.g., `my-command.ts`)
-2. Export a typed `BotCommand` object with `data` and `execute`:
+2. Call `createBotCommand` with your command definition:
 
 ```ts
-import { type ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
-import type { BotCommand } from "#/modules/commands";
+import { SlashCommandBuilder } from "discord.js";
+import { createBotCommand } from "#/modules/commands";
 
-const data = new SlashCommandBuilder().setName("my-command").setDescription("Does something");
-
-async function execute(interaction: ChatInputCommandInteraction): Promise<void> {
-  await interaction.reply("Hello!");
-}
-
-export const myCommand = { data, execute } satisfies BotCommand;
+createBotCommand({
+  data: new SlashCommandBuilder().setName("my-command").setDescription("Does something"),
+  async execute(interaction) {
+    await interaction.reply("Hello!");
+  },
+});
 ```
 
-3. Import and add the command to allCommands array in ./src/modules/commands.ts
+3. Run `pnpm register` to register commands globally (or `pnpm register <server-id>` for a specific server)
+4. Restart your bot
+
+### handling follow-up interactions
+
+For commands with buttons, select menus, or modals, add a `followUp` handler. Use a prefix in `customId` to route interactions back to your command:
 
 ```ts
-import { myCommand } from "#/commands/my-command";
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, SlashCommandBuilder } from "discord.js";
+import { createBotCommand, type FollowUpInteraction } from "#/modules/commands";
 
-const allCommands = [/* ...existing */ myCommand] as const satisfies readonly BotCommand[];
-
-export const commands = new Map<string, BotCommand>(allCommands.map((cmd) => [cmd.data.name, cmd]));
+createBotCommand({
+  data: new SlashCommandBuilder().setName("counter").setDescription("A simple counter"),
+  async execute(interaction) {
+    const button = new ButtonBuilder()
+      .setCustomId("counter:increment") // prefix must match command name
+      .setLabel("Click me")
+      .setStyle(ButtonStyle.Primary);
+    const row = new ActionRowBuilder<ButtonBuilder>().addComponents(button);
+    await interaction.reply({ content: "Count: 0", components: [row] });
+  },
+  async followUp(interaction: FollowUpInteraction) {
+    if (interaction.isButton()) {
+      await interaction.reply("Button clicked!");
+    }
+  },
+});
 ```
 
-4. Run `pnpm register` to register commands globally or `pnpm register 0000000000` to a specific server
-5. Restart your bot
+## removing commands
 
-You can also unregister commands with `pnpm unregister` or `pnpm unregister 0000000000`.
+1. Delete the file from `./src/commands/`
+2. Run `pnpm unregister` (or `pnpm unregister <server-id>`)
+3. Restart your bot
+
+## example commands
+
+The template includes several examples demonstrating different patterns:
+
+| Command      | Description                                          |
+| ------------ | ---------------------------------------------------- |
+| `ping`       | Simple reply                                         |
+| `roll`       | Slash command with options (dropdown selection)      |
+| `roll-plus`  | String input parsing with image generation           |
+| `roll-panel` | Interactive buttons and select menus with `followUp` |
+
+## architecture
+
+```bash
+src/
+├── commands/ # Drop command files here — auto-loaded
+│ ├── ping.ts
+│ ├── roll.ts
+│ ├── roll-panel.ts
+│ └── roll-plus.ts
+├── modules/
+│ ├── bot.ts # Client setup, login, graceful shutdown
+│ ├── commands.ts # createBotCommand + auto-loader
+│ ├── interaction.ts # Dispatches interactions to commands
+│ └── logger.ts # Pino logger config
+├── utils/ # Shared utilities (dice rolling, image gen)
+└── main.ts # Entry point
+```
+
+## environment variables
+
+Managed by [varlock](https://github.com/dmno-dev/varlock) with full type safety:
+
+| Variable               | Description                                                        |
+| ---------------------- | ------------------------------------------------------------------ |
+| `DISCORD_CLIENT_ID`    | Your Discord application's client ID                               |
+| `DISCORD_CLIENT_TOKEN` | Your Discord bot token                                             |
+| `LOG_LEVEL`            | Logging level (`trace`, `debug`, `info`, `warn`, `error`, `fatal`) |
+
+See `.env.schema` for the schema definition.
 
 ## vscode
 

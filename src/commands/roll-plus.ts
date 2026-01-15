@@ -5,7 +5,7 @@ import {
   EmbedBuilder,
   SlashCommandBuilder,
 } from "discord.js";
-import type { BotCommand } from "#/modules/commands";
+import { createBotCommand } from "#/modules/commands";
 import { rollDice } from "#/utils/dice";
 import { generateDiceImage } from "#/utils/dice-img";
 
@@ -41,4 +41,4 @@ async function execute(interaction: ChatInputCommandInteraction): Promise<void> 
   });
 }
 
-export const rollPlus = { data, execute } satisfies BotCommand;
+createBotCommand({ data, execute });

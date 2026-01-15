@@ -11,7 +11,7 @@ import {
   StringSelectMenuBuilder,
 } from "discord.js";
 import type { BotCommand, FollowUpInteraction } from "#/modules/commands";
-import { diceFaces, rollFromExpression } from "#/utils/dice";
+import { diceFaces, rollDice } from "#/utils/dice";
 import { generateDiceImage } from "#/utils/dice-img";
 
 const data = new SlashCommandBuilder()
@@ -63,7 +63,8 @@ async function followUp(interaction: FollowUpInteraction): Promise<void> {
   if (interaction.isStringSelectMenu()) {
     const quantity = Number(interaction.values[0]);
     if (!quantity) {
-      throw new Error("Invalid dice quantity");
+      await interaction.reply({ content: "Invalid quantity", flags: [MessageFlags.Ephemeral] });
+      return;
     }
     await interaction.update({ content: "Roll", components: createComponents(quantity) });
     return;
@@ -74,17 +75,19 @@ async function followUp(interaction: FollowUpInteraction): Promise<void> {
     const sides = Number(sidesStr);
     const quantity = Number(quantityStr);
     if (!(sides && quantity)) {
-      throw new Error("Invalid customId");
+      await interaction.reply({ content: "Invalid expression", flags: [MessageFlags.Ephemeral] });
+      return;
     }
-    const result = rollFromExpression(`${quantity}d${sides}`);
-    if (!result) {
-      throw new Error("Invalid expression");
+    const result = rollDice(`${quantity}d${sides}`);
+    if (result.isError) {
+      await interaction.reply({ content: "Invalid expression", flags: [MessageFlags.Ephemeral] });
+      return;
     }
     const embed = new EmbedBuilder()
       .setColor(Colors.Blurple)
       .setTitle(`🎲 ${quantity}d${sides}`)
-      .setDescription(`<@${interaction.user.id}> rolled **${result.total}**`);
-    const image = generateDiceImage(result.values, result.total);
+      .setDescription(`<@${interaction.user.id}> rolled **${result.value.total}**`);
+    const image = generateDiceImage(result.value);
     const attachment = image ? new AttachmentBuilder(image, { name: "dice.png" }) : null;
     if (attachment) {
       embed.setImage("attachment://dice.png");

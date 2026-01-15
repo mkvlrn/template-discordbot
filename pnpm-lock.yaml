@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@mkvlrn/result':
+        specifier: ^5.0.4
+        version: 5.0.4(@types/node@25.0.8)(jiti@2.5.1)(tsx@4.21.0)(yaml@2.8.1)
       '@napi-rs/canvas':
         specifier: ^0.1.88
         version: 0.1.88
@@ -607,6 +610,10 @@ packages:
 
   '@mkvlrn/config@3.0.6':
     resolution: {integrity: sha512-z9T11q3wNFW1oEKEc1vKJR3X39IHJLIxWIL/AuVP2aBe28D1tIRIvGXlkhGYNqqAY9NDE5iF9IfM3Ayx4uDxmQ==}
+    engines: {node: '24'}
+
+  '@mkvlrn/result@5.0.4':
+    resolution: {integrity: sha512-/8bHeHPNp0AxR8tdOhZhnELvxM2CYGODnkeyKD/4DpbHZ4RmYNsucG8lj642KXKuPD2JGUNYwgLoiHZF9Wffqw==}
     engines: {node: '24'}
 
   '@napi-rs/canvas-android-arm64@0.1.88':
@@ -2460,6 +2467,31 @@ snapshots:
       '@jridgewell/sourcemap-codec': 1.5.5
 
   '@mkvlrn/config@3.0.6': {}
+
+  '@mkvlrn/result@5.0.4(@types/node@25.0.8)(jiti@2.5.1)(tsx@4.21.0)(yaml@2.8.1)':
+    dependencies:
+      vitest: 4.0.17(@types/node@25.0.8)(jiti@2.5.1)(tsx@4.21.0)(yaml@2.8.1)
+    transitivePeerDependencies:
+      - '@edge-runtime/vm'
+      - '@opentelemetry/api'
+      - '@types/node'
+      - '@vitest/browser-playwright'
+      - '@vitest/browser-preview'
+      - '@vitest/browser-webdriverio'
+      - '@vitest/ui'
+      - happy-dom
+      - jiti
+      - jsdom
+      - less
+      - lightningcss
+      - msw
+      - sass
+      - sass-embedded
+      - stylus
+      - sugarss
+      - terser
+      - tsx
+      - yaml
 
   '@napi-rs/canvas-android-arm64@0.1.88':
     optional: true

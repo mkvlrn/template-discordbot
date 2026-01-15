@@ -1,4 +1,5 @@
 import { readdir } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
 import type {
   AnySelectMenuInteraction,
   ButtonInteraction,
@@ -32,10 +33,11 @@ export function createBotCommand(command: BotCommand): void {
 }
 
 export async function loadCommands(): Promise<void> {
-  const files = await readdir(new URL("../commands", import.meta.url));
+  const dir = new URL("../commands/", import.meta.url);
+  const files = await readdir(dir);
   await Promise.all(
     files
       .filter((file) => file.endsWith(".ts") || file.endsWith(".js"))
-      .map((file) => import(`#/commands/${file.slice(0, -3)}`)),
+      .map((file) => import(new URL(file, dir).href)),
   );
 }

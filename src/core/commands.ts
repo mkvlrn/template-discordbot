@@ -1,5 +1,4 @@
 import { readdir } from "node:fs/promises";
-import { fileURLToPath } from "node:url";
 import type {
   AnySelectMenuInteraction,
   ButtonInteraction,

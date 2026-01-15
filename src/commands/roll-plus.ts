@@ -3,6 +3,7 @@ import {
   type ChatInputCommandInteraction,
   Colors,
   EmbedBuilder,
+  MessageFlags,
   SlashCommandBuilder,
 } from "discord.js";
 import { createBotCommand } from "#/core/commands";
@@ -15,13 +16,14 @@ const data = new SlashCommandBuilder()
   .addStringOption((option) =>
     option
       .setName("expression")
-      .setDescription("a dice roll expression, such as 2d6 or 3d10")
+      .setDescription("a dice roll expression (e.g., 2d6, 3d10) — add ! to hide from channel")
       .setRequired(true),
   );
 
 async function execute(interaction: ChatInputCommandInteraction): Promise<void> {
-  const expression = interaction.options.getString("expression", true);
-  const result = rollDice(expression);
+  const expression = interaction.options.getString("expression", true).trim();
+  const hidden = expression.endsWith("!");
+  const result = rollDice(expression.replace("!", ""));
   if (result.isError) {
     await interaction.reply(`${expression} is not a valid dice roll expression. Try again!`);
     return;
@@ -38,6 +40,7 @@ async function execute(interaction: ChatInputCommandInteraction): Promise<void> 
   await interaction.reply({
     embeds: [embed],
     files: attachment ? [attachment] : [],
+    flags: hidden ? [MessageFlags.Ephemeral] : [],
   });
 }
 

@@ -3,7 +3,7 @@ import "varlock/auto-load";
 import process from "node:process";
 import { type Guild, REST, type RequestData, Routes } from "discord.js";
 import { ENV } from "varlock/env";
-import { commands } from "#/core/commands";
+import { commands, loadCommands } from "#/core/commands";
 
 const scriptName = process.env["npm_lifecycle_event"];
 if (!(scriptName && ["register", "unregister"].includes(scriptName))) {
@@ -30,6 +30,9 @@ if (scope !== "global") {
     console.error((error as Error).message);
     process.exit(1);
   }
+}
+if (!unregister) {
+  await loadCommands();
 }
 const payload: RequestData = {
   body: unregister ? [] : [...commands.values()].map((command) => command.data.toJSON()),

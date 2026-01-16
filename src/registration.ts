@@ -13,10 +13,14 @@ if (!(scriptName && ["register", "unregister"].includes(scriptName))) {
   process.exit(1);
 }
 const unregister = scriptName === "unregister";
-const scope = process.argv.at(2) ?? "global";
-if (scope !== "global" && !/^\d+$/.test(scope)) {
-  console.error("invalid scope: must be a server ID or omit for global");
-  process.exit(1);
+const isDev = process.argv.includes("--dev");
+let scope = "global";
+if (isDev) {
+  if (!ENV.DEV_SERVER) {
+    console.error("--dev flag requires DEV_SERVER environment variable to be set");
+    process.exit(1);
+  }
+  scope = ENV.DEV_SERVER;
 }
 const restClient = new REST().setToken(ENV.DISCORD_CLIENT_TOKEN);
 let route = Routes.applicationCommands(ENV.DISCORD_CLIENT_ID);
@@ -31,9 +35,7 @@ if (scope !== "global") {
     process.exit(1);
   }
 }
-if (!unregister) {
-  await loadCommands();
-}
+await loadCommands();
 const payload: RequestData = {
   body: unregister ? [] : [...commands.values()].map((command) => command.data.toJSON()),
 };

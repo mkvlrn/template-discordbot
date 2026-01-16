@@ -13,12 +13,12 @@ Uses:
 - [vitest](https://github.com/vitest-dev/vitest) for testing
 - [tsx](https://github.com/privatenumber/tsx) for dev time typescript
 - [varlock](https://github.com/dmno-dev/varlock) for env validation and parsing
-- [tsdown](https://github.com/rolldown/tsdown) for building
 - [@mkvlrn/result](https://github.com/mkvlrn/tools/blob/main/packages/result/README.md) for error handling
 
 ## prerequisites
 
 - variables `DISCORD_CLIENT_ID`, `DISCORD_CLIENT_TOKEN`, and `LOG_LEVEL` filled in `.env` file (see `.env.schema`)
+- optionally, `DEV_SERVER` with your test server ID for faster command registration during development
 - a notion of what a discord bot is and how `discord.js` works
 - a server to test the bot on
 
@@ -48,13 +48,13 @@ Runs biome in fix mode (only [safe fixes](https://biomejs.dev/linter/#safe-fixes
 
 Runs type checking using tsc.
 
-### `pnpm register [server-id]`
+### `pnpm register [--dev]`
 
-Registers slash commands globally or to a specific server if server ID is provided.
+Registers slash commands globally, or to the dev server if `--dev` flag is provided (requires `DEV_SERVER` env var).
 
-### `pnpm unregister [server-id]`
+### `pnpm unregister [--dev]`
 
-Unregisters slash commands globally or from a specific server if server ID is provided.
+Unregisters slash commands globally, or from the dev server if `--dev` flag is provided (requires `DEV_SERVER` env var).
 
 ## adding or removing commands
 
@@ -77,7 +77,7 @@ createBotCommand({
 });
 ```
 
-3. Run `pnpm register` to register commands globally (or `pnpm register <server-id>` for a specific server)
+3. Run `pnpm register` to register commands globally (or `pnpm register --dev` for your dev server)
 4. Restart your bot
 
 ### handling follow-up interactions
@@ -109,7 +109,7 @@ createBotCommand({
 ## removing commands
 
 1. Delete the file from `./src/commands/`
-2. Run `pnpm unregister` (or `pnpm unregister <server-id>`)
+2. Run `pnpm unregister` (or `pnpm unregister --dev`)
 3. Restart your bot
 
 ## example commands

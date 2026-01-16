@@ -67,7 +67,7 @@ Commands are **auto-loaded** from `./src/commands/`. Just create a file and call
 
 ```ts
 import { SlashCommandBuilder } from "discord.js";
-import { createBotCommand } from "#/modules/commands";
+import { createBotCommand } from "#modules/commands";
 
 createBotCommand({
   data: new SlashCommandBuilder().setName("my-command").setDescription("Does something"),
@@ -86,7 +86,7 @@ For commands with buttons, select menus, or modals, add a `followUp` handler. Us
 
 ```ts
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle, SlashCommandBuilder } from "discord.js";
-import { createBotCommand, type FollowUpInteraction } from "#/modules/commands";
+import { createBotCommand, type FollowUpInteraction } from "#modules/commands";
 
 createBotCommand({
   data: new SlashCommandBuilder().setName("counter").setDescription("A simple counter"),

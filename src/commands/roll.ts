@@ -1,6 +1,6 @@
 import { type ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
-import { createBotCommand } from "#/core/commands";
-import { diceFaces, rollDice } from "#/utils/dice";
+import { createBotCommand } from "#core/commands";
+import { diceFaces, rollDice } from "#utils/dice";
 
 const data = new SlashCommandBuilder()
   .setName("roll")

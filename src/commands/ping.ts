@@ -1,5 +1,5 @@
 import { type ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
-import { createBotCommand } from "#/core/commands";
+import { createBotCommand } from "#core/commands";
 
 const data = new SlashCommandBuilder().setName("ping").setDescription("Ping the bot");
 

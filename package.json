@@ -25,9 +25,9 @@
     "#*": "./src/*.ts"
   },
   "scripts": {
-    "register": "node ./src/registration.ts",
-    "unregister": "node ./src/registration.ts",
-    "dev": "node --watch src/main.ts | pino-pretty",
+    "register": "node --env-file-if-exists .env ./src/registration.ts",
+    "unregister": "node --env-file-if-exists .env ./src/registration.ts",
+    "dev": "node --env-file .env --watch src/main.ts | pino-pretty",
     "start": "node src/main.ts",
     "test": "vitest",
     "biome-check": "biome check --diagnostic-level=warn --no-errors-on-unmatched",

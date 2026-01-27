@@ -1,5 +1,4 @@
-import "varlock/auto-load";
 import { pino } from "pino";
-import { ENV } from "varlock/env";
+import { ENV } from "#env";
 
 export const logger = pino({ level: ENV.LOG_LEVEL });

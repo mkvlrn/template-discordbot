@@ -56,7 +56,7 @@
     "@mkvlrn/result": "^5.0.4",
     "@napi-rs/canvas": "^0.1.88",
     "discord.js": "^14.25.1",
-    "pino": "^10.2.0",
-    "varlock": "^0.1.5"
+    "envalid": "^8.1.1",
+    "pino": "^10.2.0"
   }
 }

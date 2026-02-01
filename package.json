@@ -53,7 +53,7 @@
     "vitest-mock-extended": "^3.1.0"
   },
   "dependencies": {
-    "@mkvlrn/result": "^5.0.4",
+    "@mkvlrn/result": "^5.0.5",
     "@napi-rs/canvas": "^0.1.89",
     "discord.js": "^14.25.1",
     "envalid": "^8.1.1",

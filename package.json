@@ -37,10 +37,10 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.13",
-    "@commitlint/cli": "^20.3.1",
-    "@commitlint/config-conventional": "^20.3.1",
-    "@mkvlrn/config": "^3.0.6",
-    "@types/node": "^25.0.10",
+    "@commitlint/cli": "^20.4.0",
+    "@commitlint/config-conventional": "^20.4.0",
+    "@mkvlrn/config": "^3.0.7",
+    "@types/node": "^25.1.0",
     "@vitest/coverage-v8": "^4.0.18",
     "cross-env": "^10.1.0",
     "husky": "^9.1.7",
@@ -54,7 +54,7 @@
   },
   "dependencies": {
     "@mkvlrn/result": "^5.0.4",
-    "@napi-rs/canvas": "^0.1.88",
+    "@napi-rs/canvas": "^0.1.89",
     "discord.js": "^14.25.1",
     "envalid": "^8.1.1",
     "pino": "^10.3.0"

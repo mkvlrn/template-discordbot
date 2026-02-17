@@ -6,9 +6,9 @@ import {
   MessageFlags,
   SlashCommandBuilder,
 } from "discord.js";
-import { createBotCommand } from "#core/commands";
-import { rollDice } from "#utils/dice";
-import { generateDiceImage } from "#utils/dice-img";
+import { createBotCommand } from "#/core/commands";
+import { rollDice } from "#/utils/dice";
+import { generateDiceImage } from "#/utils/dice-img";
 
 const data = new SlashCommandBuilder()
   .setName("roll-plus")

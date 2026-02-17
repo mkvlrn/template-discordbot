@@ -1,6 +1,6 @@
 import type { ChatInputCommandInteraction, Interaction, InteractionReplyOptions } from "discord.js";
-import type { BotCommand, FollowUpInteraction } from "#core/commands";
-import { logger } from "#core/logger";
+import type { BotCommand, FollowUpInteraction } from "#/core/commands";
+import { logger } from "#/core/logger";
 
 function buildAttribution(interaction: Interaction): string {
   const server = interaction.guild;

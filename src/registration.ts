@@ -1,8 +1,8 @@
 /** biome-ignore-all lint/suspicious/noConsole: user feedback */
 import process from "node:process";
 import { type Guild, REST, type RequestData, Routes } from "discord.js";
-import { commands, loadCommands } from "#core/commands";
-import { ENV } from "#env";
+import { commands, loadCommands } from "#/core/commands";
+import { ENV } from "#/env";
 
 const scriptName = process.env["npm_lifecycle_event"];
 if (!(scriptName && ["register", "unregister"].includes(scriptName))) {

@@ -67,7 +67,7 @@ Commands are **auto-loaded** from `./src/commands/`. Just create a file and call
 
 ```ts
 import { SlashCommandBuilder } from "discord.js";
-import { createBotCommand } from "#modules/commands";
+import { createBotCommand } from "#/modules/commands";
 
 createBotCommand({
   data: new SlashCommandBuilder().setName("my-command").setDescription("Does something"),
@@ -86,7 +86,7 @@ For commands with buttons, select menus, or modals, add a `followUp` handler. Us
 
 ```ts
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle, SlashCommandBuilder } from "discord.js";
-import { createBotCommand, type FollowUpInteraction } from "#modules/commands";
+import { createBotCommand, type FollowUpInteraction } from "#/modules/commands";
 
 createBotCommand({
   data: new SlashCommandBuilder().setName("counter").setDescription("A simple counter"),
@@ -162,3 +162,7 @@ If you have been using eslint and prettier and their extensions, you might want 
 This is done by the `.vscode/settings.json` file.
 
 Debug configurations are also included (for source using tsx and for bundle using the generated source maps).
+
+## TODO
+
+Package `dotenv-cli` is being used while https://github.com/nodejs/node/issues/57040 is not resolved to use node's `--env-file-if-exists` flag.

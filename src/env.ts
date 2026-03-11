@@ -1,7 +1,7 @@
 import process from "node:process";
 import { cleanEnv, str } from "envalid";
 
-export const ENV = cleanEnv(process.env, {
+export const env = cleanEnv(process.env, {
   DISCORD_CLIENT_ID: str(),
   DISCORD_CLIENT_TOKEN: str(),
   LOG_LEVEL: str({

@@ -1,4 +1,4 @@
 import { startBot } from "#/core/bot";
-import { ENV } from "#/env";
+import { env } from "#/env";
 
-await startBot(ENV.DISCORD_CLIENT_TOKEN);
+await startBot(env.DISCORD_CLIENT_TOKEN);

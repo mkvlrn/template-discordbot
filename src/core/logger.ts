@@ -1,4 +1,4 @@
 import { pino } from "pino";
-import { ENV } from "#/env";
+import { env } from "#/env";
 
-export const logger = pino({ level: ENV.LOG_LEVEL });
+export const logger = pino({ level: env.LOG_LEVEL });

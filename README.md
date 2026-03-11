@@ -2,7 +2,10 @@
 
 A sane, opinionated template for discord bots written in typescript using the [discord.js](https://discord.js.org/#/) library.
 
-For new, LTS (>=24.14) node projects.
+> [!NOTE]
+> This template favors [pnpm](https://pnpm.io). All instructions assume pnpm. If you insist on npm or yarn, you're on your own.
+>
+> This template targets Node.js LTS (>=24).
 
 Uses:
 
@@ -12,12 +15,14 @@ Uses:
 - [lint-staged](https://github.com/lint-staged/lint-staged) for checks on commit
 - [vitest](https://github.com/vitest-dev/vitest) for testing
 - [tsx](https://github.com/privatenumber/tsx) for dev time typescript
-- [varlock](https://github.com/dmno-dev/varlock) for env validation and parsing
+- [envalid](https://github.com/af/envalid) for env validation and parsing
 - [@mkvlrn/result](https://github.com/mkvlrn/tools/blob/main/packages/result/README.md) for error handling
+
+Subpath imports (`#/`) are used instead of relative paths, mapped in both `package.json` and `tsconfig.json`.
 
 ## prerequisites
 
-- variables `DISCORD_CLIENT_ID`, `DISCORD_CLIENT_TOKEN`, and `LOG_LEVEL` filled in `.env` file (see `.env.schema`)
+- variables `DISCORD_CLIENT_ID`, `DISCORD_CLIENT_TOKEN`, and `LOG_LEVEL` filled in `.env` file
 - optionally, `DEV_SERVER` with your test server ID for faster command registration during development
 - a notion of what a discord bot is and how `discord.js` works
 - a server to test the bot on
@@ -42,7 +47,7 @@ Runs tests with vitest.
 
 ### `pnpm biome-fix`
 
-Runs biome in fix mode (only [safe fixes](https://biomejs.dev/linter/#safe-fixes)) to lint and format the project.
+Runs biome in fix mode to lint and format the project.
 
 ### `pnpm typecheck`
 
@@ -108,9 +113,10 @@ createBotCommand({
 
 ## removing commands
 
-1. Delete the file from `./src/commands/`
-2. Run `pnpm unregister` (or `pnpm unregister --dev`)
-3. Restart your bot
+1. Run `pnpm unregister` (or `pnpm unregister --dev`) to clean the slate
+2. Delete the file from `./src/commands/`
+3. Run `pnpm register` (or `pnpm register --dev`) to register commands again
+4. Restart your bot
 
 ## example commands
 
@@ -143,15 +149,20 @@ src/
 
 ## environment variables
 
-Managed by [varlock](https://github.com/dmno-dev/varlock) with full type safety:
+Managed by [envalid](https://github.com/af/envalid) with full type safety:
 
-| Variable               | Description                                                        |
-| ---------------------- | ------------------------------------------------------------------ |
-| `DISCORD_CLIENT_ID`    | Your Discord application's client ID                               |
-| `DISCORD_CLIENT_TOKEN` | Your Discord bot token                                             |
-| `LOG_LEVEL`            | Logging level (`trace`, `debug`, `info`, `warn`, `error`, `fatal`) |
+| Variable               | Description                                                           |
+| ---------------------- | --------------------------------------------------------------------- |
+| `DISCORD_CLIENT_ID`    | Your Discord application's client ID                                  |
+| `DISCORD_CLIENT_TOKEN` | Your Discord bot token                                                |
+| `LOG_LEVEL`            | Logging level (`trace`, `debug`, `info`, `warn`, `error`, `fatal`)    |
+| `DEV_SERVER`.          | Your Discord test server (target of register/unregister with `--dev`) |
 
-See `.env.schema` for the schema definition.
+See `./src/env.ts` for the schema definition.
+
+## ci
+
+GitHub Actions runs on pushes and pull requests to `main`, executing tsc, biome check, and tests.
 
 ## vscode
 
@@ -161,7 +172,7 @@ If you have been using eslint and prettier and their extensions, you might want 
 
 This is done by the `.vscode/settings.json` file.
 
-Debug configurations are also included (for source using tsx and for bundle using the generated source maps).
+Debug configuration is also included for running the source directly with node.
 
 ## TODO
 

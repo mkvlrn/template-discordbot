@@ -26,16 +26,16 @@
     "#/*": "./src/*.ts"
   },
   "scripts": {
-    "register": "dotenv -- node ./src/registration.ts",
-    "unregister": "dotenv -- node ./src/registration.ts",
-    "dev": "dotenv -- node --watch src/main.ts | pino-pretty",
-    "start": "dotenv -- node .env src/main.ts",
+    "register": "dotenv -- node --import=./src/env.ts ./src/registration.ts",
+    "unregister": "dotenv -- node --import=./src/env.ts ./src/registration.ts",
+    "dev": "dotenv -- node --import=./src/env.ts --watch src/main.ts | pino-pretty",
+    "start": "dotenv -- node --import=./src/env.ts src/main.ts",
     "test": "vitest",
     "test-staged": "vitest related --bail=1 --reporter=github-actions",
     "test-ci": "vitest --bail=1 --reporter=github-actions",
     "biome-check": "biome check --diagnostic-level=warn --no-errors-on-unmatched",
     "biome-fix": "pnpm biome-check --write",
-    "typecheck": "tsc-files",
+    "typecheck": "tsc",
     "prepare": "husky"
   },
   "devDependencies": {

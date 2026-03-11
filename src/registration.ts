@@ -2,7 +2,7 @@
 import process from "node:process";
 import { type Guild, REST, type RequestData, Routes } from "discord.js";
 import { commands, loadCommands } from "#/core/commands";
-import { ENV } from "#/env";
+import { env } from "#/env";
 
 const scriptName = process.env["npm_lifecycle_event"];
 if (!(scriptName && ["register", "unregister"].includes(scriptName))) {
@@ -15,20 +15,20 @@ const unregister = scriptName === "unregister";
 const isDev = process.argv.includes("--dev");
 let scope = "global";
 if (isDev) {
-  if (!ENV.DEV_SERVER) {
+  if (!env.DEV_SERVER) {
     console.error("--dev flag requires DEV_SERVER environment variable to be set");
     process.exit(1);
   }
-  scope = ENV.DEV_SERVER;
+  scope = env.DEV_SERVER;
 }
-const restClient = new REST().setToken(ENV.DISCORD_CLIENT_TOKEN);
-let route = Routes.applicationCommands(ENV.DISCORD_CLIENT_ID);
+const restClient = new REST().setToken(env.DISCORD_CLIENT_TOKEN);
+let route = Routes.applicationCommands(env.DISCORD_CLIENT_ID);
 let target = "globally";
 if (scope !== "global") {
   try {
     const guild = (await restClient.get(Routes.guild(scope))) as Guild;
     target = `on server '${guild.name}' (${scope})`;
-    route = Routes.applicationGuildCommands(ENV.DISCORD_CLIENT_ID, scope);
+    route = Routes.applicationGuildCommands(env.DISCORD_CLIENT_ID, scope);
   } catch (error) {
     console.error((error as Error).message);
     process.exit(1);

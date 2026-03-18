@@ -26,10 +26,10 @@
     "#/*": "./src/*.ts"
   },
   "scripts": {
-    "register": "dotenv -- node --import=./src/env.ts ./src/registration.ts",
-    "unregister": "dotenv -- node --import=./src/env.ts ./src/registration.ts",
-    "dev": "dotenv -- node --import=./src/env.ts --watch src/main.ts | pino-pretty",
-    "start": "dotenv -- node --import=./src/env.ts src/main.ts",
+    "register": "infisical run -- node --import=./src/env.ts ./src/registration.ts",
+    "unregister": "infisical run -- node --import=./src/env.ts ./src/registration.ts",
+    "dev": "infisical run -- node --import=./src/env.ts --watch src/main.ts | pino-pretty",
+    "start": "infisical run -- node --import=./src/env.ts src/main.ts",
     "test": "vitest",
     "test-staged": "vitest related --bail=1 --reporter=github-actions",
     "test-ci": "vitest --bail=1 --reporter=github-actions",
@@ -46,7 +46,6 @@
     "@types/node": "^25.5.0",
     "@vitest/coverage-v8": "^4.1.0",
     "cross-env": "^10.1.0",
-    "dotenv-cli": "^11.0.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
     "pino-pretty": "^13.1.3",

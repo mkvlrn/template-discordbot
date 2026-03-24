@@ -25,29 +25,10 @@
   "imports": {
     "#/*": "./src/*.ts"
   },
-  "scripts": {
-    "register": "infisical run -- node --import=./src/env.ts ./src/registration.ts",
-    "unregister": "infisical run -- node --import=./src/env.ts ./src/registration.ts",
-    "dev": "infisical run -- node --import=./src/env.ts --watch src/main.ts | pino-pretty",
-    "start": "infisical run --env=prod -- node --import=./src/env.ts src/main.ts",
-    "test": "vitest",
-    "test-staged": "vitest related --bail=1 --reporter=github-actions",
-    "test-ci": "vitest --bail=1 --reporter=github-actions",
-    "biome-check": "biome check --diagnostic-level=warn --no-errors-on-unmatched",
-    "biome-fix": "pnpm biome-check --write",
-    "typecheck": "tsc",
-    "prepare": "husky"
-  },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.8",
-    "@commitlint/cli": "^20.5.0",
-    "@commitlint/config-conventional": "^20.5.0",
     "@mkvlrn/config": "^3.1.7",
     "@types/node": "^25.5.0",
     "@vitest/coverage-v8": "^4.1.1",
-    "cross-env": "^10.1.0",
-    "husky": "^9.1.7",
-    "lint-staged": "^16.4.0",
     "pino-pretty": "^13.1.3",
     "tsc-files": "^1.1.4",
     "typescript": "^6.0.2",

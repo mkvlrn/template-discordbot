@@ -4,14 +4,7 @@ import { type Guild, REST, type RequestData, Routes } from "discord.js";
 import { commands, loadCommands } from "#/core/commands";
 import { env } from "#/env";
 
-const scriptName = process.env["npm_lifecycle_event"];
-if (!(scriptName && ["register", "unregister"].includes(scriptName))) {
-  console.error(
-    "invalid script name: must be 'register' or 'unregister' - don't call this directly, use the pnpm scripts instead",
-  );
-  process.exit(1);
-}
-const unregister = scriptName === "unregister";
+const unregister = process.argv.includes("--unregister");
 const isDev = process.argv.includes("--dev");
 let scope = "global";
 if (isDev) {

@@ -25,6 +25,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
       - run: pnpm install --frozen-lockfile
-      - run: tsc
-      - run: pnpm biome-check
-      - run: pnpm test-ci
+      - run: mise typecheck
+      - run: mise lint-check
+      - run: mise test-ci

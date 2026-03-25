@@ -19,25 +19,20 @@
     {
       "matchManagers": ["github-actions"],
       "groupName": "GitHub Actions"
-    },
+    }
+  ],
+  "customManagers": [
     {
-      "matchManagers": ["mise"],
-      "matchPackageNames": ["biome"],
-      "datasource": "github-releases",
-      "packageName": "biomejs/biome"
-    },
-    {
-      "matchManagers": ["mise"],
-      "matchPackageNames": ["infisical"],
-      "datasource": "github-releases",
-      "packageName": "Infisical/cli",
-      "extractVersion": "^v?(?<version>.*)$"
-    },
-    {
-      "matchManagers": ["mise"],
-      "matchPackageNames": ["cocogitto"],
-      "datasource": "github-releases",
-      "packageName": "cocogitto/cocogitto"
+      "customType": "regex",
+      "fileMatch": ["(^|/)\\.?mise\\.toml$"],
+      "matchStrings": [
+        "biome\\s*=\\s*\"(?<currentValue>.*?)\"",
+        "cocogitto\\s*=\\s*\"(?<currentValue>.*?)\"",
+        "infisical\\s*=\\s*\"(?<currentValue>.*?)\""
+      ],
+      "depNameTemplate": "{{{arg0}}}",
+      "datasourceTemplate": "github-releases",
+      "packageNameTemplate": "{{#if (eq arg0 'biome')}}biomejs/biome{{else}}{{#if (eq arg0 'cocogitto')}}cocogitto/cocogitto{{else}}Infisical/cli{{/if}}{{/if}}"
     }
   ],
   "rangeStrategy": "bump",

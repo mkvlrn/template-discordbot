@@ -1,9 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
-  "mise": {
-    "ignorePackageNames": ["biome", "cocogitto", "infisical"]
-  },
   "packageRules": [
     {
       "matchPackageNames": ["node", "pnpm"],
@@ -13,6 +10,11 @@
       "matchManagers": ["mise"],
       "groupName": "Toolchain (mise)",
       "excludePackageNames": ["node", "pnpm"]
+    },
+    {
+      "matchManagers": ["mise"],
+      "matchPackageNames": ["biome", "cocogitto", "infisical"],
+      "enabled": false
     },
     {
       "matchManagers": ["npm"],

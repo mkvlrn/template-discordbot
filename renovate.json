@@ -9,7 +9,7 @@
     {
       "matchManagers": ["mise"],
       "groupName": "Toolchain (mise)",
-      "excludePackageNames": ["node", "pnpm"]
+      "excludePackageNames": ["node", "pnpm", "biome", "infisical", "cocogitto"]
     },
     {
       "matchManagers": ["npm"],
@@ -19,10 +19,19 @@
     {
       "matchManagers": ["github-actions"],
       "groupName": "GitHub Actions"
-    },
+    }
+  ],
+  "customManagers": [
     {
-      "matchDepNames": ["biome"],
-      "extractVersion": "cli/(?<version>.+)"
+      "customType": "regex",
+      "fileMatch": ["(^|/)\\.?mise\\.toml$"],
+      "matchStrings": [
+        "biome\\s*=\\s*\"(?<currentValue>.*?)\"",
+        "cocogitto\\s*=\\s*\"(?<currentValue>.*?)\"",
+        "infisical\\s*=\\s*\"(?<currentValue>.*?)\""
+      ],
+      "groupName": "Toolchain (mise)",
+      "datasourceTemplate": "github-releases"
     }
   ],
   "rangeStrategy": "bump",

@@ -9,7 +9,7 @@
     {
       "matchManagers": ["mise"],
       "groupName": "Toolchain (mise)",
-      "excludePackageNames": ["node", "pnpm", "biome", "aqua:biomejs/biome"]
+      "excludePackageNames": ["node", "pnpm"]
     },
     {
       "matchManagers": ["npm"],
@@ -21,7 +21,7 @@
       "groupName": "GitHub Actions"
     },
     {
-      "matchDepNames": ["aqua:biomejs/biome"],
+      "matchDepNames": ["biome"],
       "extractVersion": "cli/(?<version>.+)"
     }
   ],

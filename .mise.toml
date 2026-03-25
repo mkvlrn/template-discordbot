@@ -1,15 +1,15 @@
 [tools]
 node = "24.14.1"
 pnpm = "10.33.0"
-"npm:npm-check-updates" = "19.6.5"
 lefthook = "2.1.4"
+"npm:npm-check-updates" = "19.6.5"
 "github:biomejs/biome" = { version = "2.4.8", version_prefix = "@biomejs/biome@" }
 "github:cocogitto/cocogitto" = { version = "7.0.0" }
 "github:Infisical/cli" = { version = "0.43.61" }
 
 [tasks.setup]
 description = "puts everything in its place"
-run = ["mise trust --yes", "mise install", "pnpm install", "lefthook install"]
+run = ["mise trust -y", "mise install", "pnpm install", "lefthook install"]
 [tasks.dev]
 description = "runs in watch mode"
 run = "infisical run -- node --watch src/main.ts | npx pino-pretty"

@@ -5,7 +5,7 @@ pnpm = "10.33.0"
 lefthook = "2.1.4"
 "github:biomejs/biome" = { version = "2.4.8", version_prefix = "@biomejs/biome@" }
 "github:cocogitto/cocogitto" = { version = "7.0.0" }
-infisical = "0.43.60"
+"github:Infisical/cli" = { version = "0.43.60" }
 
 [tasks.setup]
 description = "puts everything in its place"

@@ -1,6 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
+  "mise": {
+    "ignorePackageNames": ["biome", "cocogitto", "infisical"]
+  },
   "packageRules": [
     {
       "matchPackageNames": ["node", "pnpm"],
@@ -9,7 +12,7 @@
     {
       "matchManagers": ["mise"],
       "groupName": "Toolchain (mise)",
-      "excludePackageNames": ["node", "pnpm", "biome", "infisical", "cocogitto"]
+      "excludePackageNames": ["node", "pnpm"]
     },
     {
       "matchManagers": ["npm"],
@@ -25,13 +28,10 @@
     {
       "customType": "regex",
       "fileMatch": ["(^|/)\\.?mise\\.toml$"],
-      "matchStrings": [
-        "biome\\s*=\\s*\"(?<currentValue>.*?)\"",
-        "cocogitto\\s*=\\s*\"(?<currentValue>.*?)\"",
-        "infisical\\s*=\\s*\"(?<currentValue>.*?)\""
-      ],
+      "matchStrings": ["(?<depName>biome|cocogitto|infisical)\\s*=\\s*\"(?<currentValue>.*?)\""],
       "groupName": "Toolchain (mise)",
-      "datasourceTemplate": "github-releases"
+      "datasourceTemplate": "github-releases",
+      "packageNameTemplate": "{{#if (eq depName 'biome')}}biomejs/biome{{else}}{{#if (eq depName 'cocogitto')}}cocogitto/cocogitto{{else}}Infisical/cli{{/if}}{{/if}}"
     }
   ],
   "rangeStrategy": "bump",

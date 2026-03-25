@@ -19,6 +19,24 @@
     {
       "matchManagers": ["github-actions"],
       "groupName": "GitHub Actions"
+    },
+    {
+      "matchManagers": ["mise"],
+      "matchPackageNames": ["biome"],
+      "datasource": "github-releases",
+      "packageName": "biomejs/biome"
+    },
+    {
+      "matchManagers": ["mise"],
+      "matchPackageNames": ["infisical"],
+      "datasource": "github-releases",
+      "packageName": "Infisical/cli"
+    },
+    {
+      "matchManagers": ["mise"],
+      "matchPackageNames": ["cocogitto"],
+      "datasource": "github-releases",
+      "packageName": "cocogitto/cocogitto"
     }
   ],
   "rangeStrategy": "bump",

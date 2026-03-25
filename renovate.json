@@ -7,11 +7,7 @@
       "groupName": "engine-sync"
     },
     {
-      "matchPackageNames": [
-        "github:biomejs/biome",
-        "github:cocogitto/cocogitto",
-        "github:Infisical/cli"
-      ],
+      "matchPackageNames": ["github:**"],
       "groupName": "Toolchain (mise)"
     },
     {

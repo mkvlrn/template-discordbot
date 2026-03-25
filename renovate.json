@@ -1,20 +1,25 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
+  "mise": {
+    "enabled": false
+  },
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["(^|/)\\.?mise\\.toml$"],
+      "matchStrings": [
+        "(?<depName>node|pnpm|biome|cocogitto|infisical)\\s*=\\s*\"(?<currentValue>.*?)\""
+      ],
+      "groupName": "Toolchain (mise)",
+      "datasourceTemplate": "{{#if (or (eq depName 'node') (eq depName 'pnpm'))}}npm{{else}}github-releases{{/if}}",
+      "packageNameTemplate": "{{#if (eq depName 'biome')}}biomejs/biome{{else}}{{#if (eq depName 'cocogitto')}}cocogitto/cocogitto{{else}}{{#if (eq depName 'infisical')}}Infisical/cli{{else}}{{{depName}}}{{/if}}{{/if}}{{/if}}"
+    }
+  ],
   "packageRules": [
     {
       "matchPackageNames": ["node", "pnpm"],
       "groupName": "engine-sync"
-    },
-    {
-      "matchManagers": ["mise"],
-      "groupName": "Toolchain (mise)",
-      "excludePackageNames": ["node", "pnpm"]
-    },
-    {
-      "matchManagers": ["mise"],
-      "matchPackageNames": ["biome", "cocogitto", "infisical"],
-      "enabled": false
     },
     {
       "matchManagers": ["npm"],
@@ -24,16 +29,6 @@
     {
       "matchManagers": ["github-actions"],
       "groupName": "GitHub Actions"
-    }
-  ],
-  "customManagers": [
-    {
-      "customType": "regex",
-      "fileMatch": ["(^|/)\\.?mise\\.toml$"],
-      "matchStrings": ["(?<depName>biome|cocogitto|infisical)\\s*=\\s*\"(?<currentValue>.*?)\""],
-      "groupName": "Toolchain (mise)",
-      "datasourceTemplate": "github-releases",
-      "packageNameTemplate": "{{#if (eq depName 'biome')}}biomejs/biome{{else}}{{#if (eq depName 'cocogitto')}}cocogitto/cocogitto{{else}}Infisical/cli{{/if}}{{/if}}"
     }
   ],
   "rangeStrategy": "bump",

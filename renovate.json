@@ -30,7 +30,8 @@
       "matchManagers": ["mise"],
       "matchPackageNames": ["infisical"],
       "datasource": "github-releases",
-      "packageName": "Infisical/cli"
+      "packageName": "Infisical/cli",
+      "extractVersion": "^v?(?<version>.*)$"
     },
     {
       "matchManagers": ["mise"],

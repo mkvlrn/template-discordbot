@@ -40,11 +40,11 @@
     "prepare": "lefthook install"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.10",
+    "@biomejs/biome": "^2.4.11",
     "@commitlint/cli": "^20.5.0",
     "@commitlint/config-conventional": "^20.5.0",
-    "@mkvlrn/config": "^3.1.11",
-    "@types/node": "^25.5.2",
+    "@mkvlrn/config": "^3.1.12",
+    "@types/node": "^25.6.0",
     "@vitest/coverage-v8": "^4.1.4",
     "lefthook": "^2.1.5",
     "pino-pretty": "^13.1.3",

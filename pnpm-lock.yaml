@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@mkvlrn/result':
-        specifier: ^5.0.8
-        version: 5.0.8
+        specifier: ^6.0.0
+        version: 6.0.0
       '@napi-rs/canvas':
         specifier: ^1.0.2
         version: 1.0.2
@@ -428,8 +428,8 @@ packages:
   '@mkvlrn/config@4.0.4':
     resolution: {integrity: sha512-TWDsHaS547D7wmvdTip8HEldcWckwyKusyLWUTO4JsaOfYZjEUakMeI1d5FugBT2eV/aIm1YS8LD0gTlKhSzdA==}
 
-  '@mkvlrn/result@5.0.8':
-    resolution: {integrity: sha512-UIMy4Qj+fatNlHeC6hYFT91FAFkyHYJI01B8eVqSdpXSBKDnNKcC+A+rfbuQlWO57F/HJcBpPzP2Wyg62Ed8Mg==}
+  '@mkvlrn/result@6.0.0':
+    resolution: {integrity: sha512-3540knsdaM69/u8bSvOnPoG5+xondSek9G7/pzQn1o7TY3fHK5ODlpnETAkTPhfZdY7fWrpWDG7NXvNqDEHs5A==}
 
   '@napi-rs/canvas-android-arm64@1.0.2':
     resolution: {integrity: sha512-IMXKVQod0ol4vt3gmClUfXz4JAgHYESGPCUqmH3lQxBoL0K/2greJaQE1HVBVxWWFKfLc4OLZVdxg7kXVyXv+g==}
@@ -1771,7 +1771,7 @@ snapshots:
 
   '@mkvlrn/config@4.0.4': {}
 
-  '@mkvlrn/result@5.0.8': {}
+  '@mkvlrn/result@6.0.0': {}
 
   '@napi-rs/canvas-android-arm64@1.0.2':
     optional: true

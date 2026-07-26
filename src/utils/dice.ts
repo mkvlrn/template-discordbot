@@ -1,4 +1,4 @@
-import { err, ok, type Result } from "@mkvlrn/result";
+import { errResult, okResult, type Result } from "@mkvlrn/result";
 
 export interface RollResult {
   die: number;
@@ -14,11 +14,11 @@ export function rollDice(expression: string): Result<RollResult, Error> {
   const rollRegexp = new RegExp(`^([1-${maxDiceQuantity}])d(${diceFaces.join("|")})$`);
   const match = expression.match(rollRegexp);
   if (!match) {
-    return err(new Error("Invalid dice roll expression"));
+    return errResult(new Error("Invalid dice roll expression"));
   }
   const [_, quantity, sides] = match.map(Number) as [never, number, number];
   const values = Array.from({ length: quantity }, () => Math.floor(Math.random() * sides) + 1);
-  return ok({
+  return okResult({
     die: Number(sides),
     quantity: Number(quantity),
     values,

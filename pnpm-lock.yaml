@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@mkvlrn/result':
-        specifier: jsr:^0.2.4
-        version: '@jsr/mkvlrn__result@0.2.4'
+        specifier: npm:@jsr/mkvlrn__result@^0.2.7
+        version: '@jsr/mkvlrn__result@0.2.7'
       '@napi-rs/canvas':
         specifier: ^1.0.2
         version: 1.0.2
@@ -34,8 +34,8 @@ importers:
         specifier: ^21.2.0
         version: 21.2.0
       '@mkvlrn/config':
-        specifier: jsr:^0.0.3
-        version: '@jsr/mkvlrn__config@0.0.3'
+        specifier: npm:@jsr/mkvlrn__config@^0.1.9
+        version: '@jsr/mkvlrn__config@0.1.9'
       '@types/node':
         specifier: ^26.1.1
         version: 26.1.1
@@ -425,11 +425,11 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@jsr/mkvlrn__config@0.0.3':
-    resolution: {integrity: sha512-eeybHfsFXfA89mMYyV89YxSg8CPWsm+3jB9M79v0r4jA6WveA/MjuT5A34Y9WuEr09GHJ9zsm9h1GEg4aMOY5Q==, tarball: https://npm.jsr.io/~/11/@jsr/mkvlrn__config/0.0.3.tgz}
+  '@jsr/mkvlrn__config@0.1.9':
+    resolution: {integrity: sha512-NHs6+vxTF3N0n3LOHyRpkHZZ/sWFuYdjfbeDXzxvig7ioqlUeRYwRRUgLRS9HlTXrk3hkSEVhU10F4EwzQRVWA==, tarball: https://npm.jsr.io/~/11/@jsr/mkvlrn__config/0.1.9.tgz}
 
-  '@jsr/mkvlrn__result@0.2.4':
-    resolution: {integrity: sha512-1MA9A82v6hiVBly+WY+I24Y6pAA72hheYUEh75Fk5kmmyWZfdw2a5+/kwlrC1cWJTpBd11pOEIxjATFfK4Uflw==, tarball: https://npm.jsr.io/~/11/@jsr/mkvlrn__result/0.2.4.tgz}
+  '@jsr/mkvlrn__result@0.2.7':
+    resolution: {integrity: sha512-K4/NvLJUlybufMPMylrkhHEt9Jfx2PPMQYyKW0OkfyqPVaWN83iMqXXdeuJpGxgyJPY+a4Zsq4cQp2+rR3RnHA==, tarball: https://npm.jsr.io/~/11/@jsr/mkvlrn__result/0.2.7.tgz}
 
   '@napi-rs/canvas-android-arm64@1.0.2':
     resolution: {integrity: sha512-IMXKVQod0ol4vt3gmClUfXz4JAgHYESGPCUqmH3lQxBoL0K/2greJaQE1HVBVxWWFKfLc4OLZVdxg7kXVyXv+g==}
@@ -1769,9 +1769,9 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@jsr/mkvlrn__config@0.0.3': {}
+  '@jsr/mkvlrn__config@0.1.9': {}
 
-  '@jsr/mkvlrn__result@0.2.4': {}
+  '@jsr/mkvlrn__result@0.2.7': {}
 
   '@napi-rs/canvas-android-arm64@1.0.2':
     optional: true

@@ -48,10 +48,8 @@ function drawTotalBox(ctx: SKRSContext2D, x: number, y: number, value: string): 
 export function generateDiceImage(roll: RollResult): Buffer {
   const width = roll.values.length * (boxSize + padding) + padding + boxSize + padding;
   const height = boxSize + 20;
-
   const canvas = createCanvas(width, height);
   const ctx = canvas.getContext("2d");
-
   const yOffset = 10;
 
   roll.values.forEach((value, i) => {

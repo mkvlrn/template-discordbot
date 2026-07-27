@@ -1,14 +1,12 @@
 import {
-  AttachmentBuilder,
   type ChatInputCommandInteraction,
-  Colors,
-  EmbedBuilder,
   MessageFlags,
+  type MessageFlagsBitField,
   SlashCommandBuilder,
 } from "discord.js";
-import { createBotCommand } from "#/core/commands";
+import { createEmbedResult } from "#/commands/roll.helpers";
+import type { BotCommand } from "#/core/commands";
 import { rollDice } from "#/utils/dice";
-import { generateDiceImage } from "#/utils/dice-img";
 
 const data = new SlashCommandBuilder()
   .setName("roll-plus")
@@ -22,26 +20,22 @@ const data = new SlashCommandBuilder()
 
 async function execute(interaction: ChatInputCommandInteraction): Promise<void> {
   const expression = interaction.options.getString("expression", true).trim();
-  const hidden = expression.endsWith("!");
   const result = rollDice(expression.replace("!", ""));
   if (result.isError) {
     await interaction.reply(`${expression} is not a valid dice roll expression. Try again!`);
     return;
   }
-  const embed = new EmbedBuilder()
-    .setColor(Colors.Blurple)
-    .setTitle(`🎲 ${result.value.quantity}d${result.value.die}`)
-    .setDescription(`<@${interaction.user.id}> rolled **${result.value.total}**`);
-  const image = generateDiceImage(result.value);
-  const attachment = image ? new AttachmentBuilder(image, { name: "dice.png" }) : null;
-  if (attachment) {
-    embed.setImage("attachment://dice.png");
+
+  const [embeds, files] = createEmbedResult(interaction.user.id, result.value);
+  const flags: ReturnType<typeof MessageFlagsBitField.resolve>[] = [];
+  if (expression.endsWith("!")) {
+    flags.push(MessageFlags.Ephemeral);
   }
-  await interaction.reply({
-    embeds: [embed],
-    files: attachment ? [attachment] : [],
-    flags: hidden ? [MessageFlags.Ephemeral] : [],
-  });
+
+  await interaction.reply({ embeds, files, flags });
 }
 
-createBotCommand({ data, execute });
+export const rollPlus = {
+  data,
+  execute,
+} satisfies BotCommand;

@@ -1,5 +1,5 @@
 import { type ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
-import { createBotCommand } from "#/core/commands";
+import type { BotCommand } from "#/core/commands";
 import { diceFaces, rollDice } from "#/utils/dice";
 
 const data = new SlashCommandBuilder()
@@ -19,12 +19,17 @@ async function execute(interaction: ChatInputCommandInteraction): Promise<void> 
     await interaction.reply("Invalid sides");
     return;
   }
+
   const result = rollDice(`1d${sides}`);
   if (result.isError) {
     await interaction.reply("Invalid sides");
     return;
   }
+
   await interaction.reply(`Your d${sides} roll: ${result.value.total}`);
 }
 
-createBotCommand({ data, execute });
+export const roll = {
+  data,
+  execute,
+} satisfies BotCommand;

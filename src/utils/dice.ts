@@ -16,8 +16,10 @@ export function rollDice(expression: string): Result<RollResult, Error> {
   if (!match) {
     return errResult(new Error("Invalid dice roll expression"));
   }
+
   const [_, quantity, sides] = match.map(Number) as [never, number, number];
   const values = Array.from({ length: quantity }, () => Math.floor(Math.random() * sides) + 1);
+
   return okResult({
     die: Number(sides),
     quantity: Number(quantity),

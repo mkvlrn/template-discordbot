@@ -1,4 +1,3 @@
-import { readdir } from "node:fs/promises";
 import type {
   AnySelectMenuInteraction,
   ButtonInteraction,
@@ -8,6 +7,10 @@ import type {
   SlashCommandOptionsOnlyBuilder,
   SlashCommandSubcommandsOnlyBuilder,
 } from "discord.js";
+import { ping } from "#/commands/ping";
+import { roll } from "#/commands/roll";
+import { rollPanel } from "#/commands/roll-panel";
+import { rollPlus } from "#/commands/roll-plus";
 
 export type BotCommandData =
   | SlashCommandBuilder
@@ -25,18 +28,9 @@ export interface BotCommand {
   followUp?: (interaction: FollowUpInteraction) => Promise<void>;
 }
 
-export const commands = new Map<string, BotCommand>();
-
-export function createBotCommand(command: BotCommand): void {
-  commands.set(command.data.name, command);
-}
-
-export async function loadCommands(): Promise<void> {
-  const dir = new URL("../commands/", import.meta.url);
-  const files = await readdir(dir);
-  await Promise.all(
-    files
-      .filter((file) => file.endsWith(".ts") || file.endsWith(".js"))
-      .map((file) => import(new URL(file, dir).href)),
-  );
-}
+export const commands = new Map<string, BotCommand>([
+  ["ping", ping],
+  ["roll", roll],
+  ["roll-plus", rollPlus],
+  ["roll-panel", rollPanel],
+]);

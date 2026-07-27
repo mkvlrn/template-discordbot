@@ -4,8 +4,9 @@ import { logger } from "#/core/logger";
 
 function buildAttribution(interaction: Interaction): string {
   const server = interaction.guild;
-  const channel = interaction.channel;
+  const { channel } = interaction;
   let channelName: string;
+
   if (channel) {
     if ("name" in channel && typeof channel.name === "string") {
       channelName = channel.name;
@@ -15,6 +16,7 @@ function buildAttribution(interaction: Interaction): string {
   } else {
     channelName = "unknown";
   }
+
   return `@${interaction.user.username} in ${server?.name ?? "DM"}#${channelName}`;
 }
 
@@ -23,6 +25,7 @@ async function sendErrorResponse(interaction: ChatInputCommandInteraction): Prom
     content: "There was an error while executing this command.",
     ephemeral: true,
   };
+
   if (interaction.replied || interaction.deferred) {
     await interaction.followUp(reply);
   } else {
@@ -35,9 +38,12 @@ async function executeCommand(
   command: BotCommand,
 ): Promise<void> {
   const attribution = buildAttribution(interaction);
+
   try {
     logger.trace(`Received /${interaction.commandName} from ${attribution}`);
+
     await command.execute(interaction);
+
     logger.trace(`/${interaction.commandName} executed by ${attribution}`);
   } catch (error) {
     logger.error(
@@ -49,6 +55,7 @@ async function executeCommand(
       },
       "Command execution error",
     );
+
     await sendErrorResponse(interaction);
   }
 }
@@ -60,6 +67,7 @@ async function executeFollowUp(
   const attribution = buildAttribution(interaction);
   try {
     await command.followUp?.(interaction);
+
     logger.trace(`/${interaction.customId} executed by ${attribution}`);
   } catch (error) {
     logger.error(
@@ -78,13 +86,16 @@ function getCommandName(interaction: Interaction): string {
   if (interaction.isChatInputCommand()) {
     return interaction.commandName;
   }
+
   if (interaction.isButton() || interaction.isAnySelectMenu() || interaction.isModalSubmit()) {
-    const customId = interaction.customId.split(":")[0];
+    const [customId] = interaction.customId.split(":");
     if (!customId) {
       throw new Error("Custom ID is not valid");
     }
+
     return customId;
   }
+
   throw new Error(`Unexpected interaction type: ${interaction.constructor.name}`);
 }
 
@@ -101,6 +112,7 @@ export async function interact(
     logger.error("Unknown command received");
     return;
   }
+
   if (interaction.isChatInputCommand()) {
     await executeCommand(interaction, command);
   } else if (isFollowUpInteraction(interaction)) {

@@ -1,6 +1,6 @@
 import process from "node:process";
 import { Client, Events, GatewayIntentBits } from "discord.js";
-import { commands, loadCommands } from "#/core/commands";
+import { commands } from "#/core/commands";
 import { interact } from "#/core/interaction";
 import { logger } from "#/core/logger";
 
@@ -17,8 +17,8 @@ bot.on(Events.Error, (error) => {
 
 export async function startBot(token: string) {
   try {
-    await loadCommands();
     await bot.login(token);
+
     for (const signal of ["SIGINT", "SIGTERM"]) {
       process.on(signal, () => {
         logger.info(`Received ${signal}, shutting down`);

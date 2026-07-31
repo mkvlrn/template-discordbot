@@ -1,8 +1,9 @@
+saveExact: true
 allowBuilds:
   esbuild: true
   lefthook: true
 minimumReleaseAgeExclude:
-  - '@types/node@25.9.1'
+  - "@types/node@25.9.1"
   - lefthook-darwin-arm64@2.1.8
   - lefthook-darwin-x64@2.1.8
   - lefthook-freebsd-arm64@2.1.8
@@ -14,8 +15,8 @@ minimumReleaseAgeExclude:
   - lefthook-windows-arm64@2.1.8
   - lefthook-windows-x64@2.1.8
   - lefthook@2.1.8
-  - '@mkvlrn/config@4.0.3 || 4.0.4'
+  - "@mkvlrn/config@4.0.3 || 4.0.4"
   - envalid@8.2.0
   - vitest-mock-extended@5.1.0
-  - '@jsr/mkvlrn__result@0.2.4 || 0.2.7'
-  - '@jsr/mkvlrn__config@0.0.3 || 0.1.9'
+  - "@jsr/mkvlrn__result@0.2.4 || 0.2.7"
+  - "@jsr/mkvlrn__config@0.0.3 || 0.1.9"

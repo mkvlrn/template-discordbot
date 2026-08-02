@@ -2,6 +2,23 @@ import type { ChatInputCommandInteraction, Interaction, InteractionReplyOptions 
 import type { BotCommand, FollowUpInteraction } from "#/core/commands";
 import { logger } from "#/core/logger";
 
+export async function interact(
+  interaction: Interaction,
+  commands: Map<string, BotCommand>,
+): Promise<void> {
+  const command = commands.get(getCommandName(interaction));
+  if (!command) {
+    logger.error("Unknown command received");
+    return;
+  }
+
+  if (interaction.isChatInputCommand()) {
+    await executeCommand(interaction, command);
+  } else if (isFollowUpInteraction(interaction)) {
+    await executeFollowUp(interaction, command);
+  }
+}
+
 function buildAttribution(interaction: Interaction): string {
   const server = interaction.guild;
   const { channel } = interaction;
@@ -101,21 +118,4 @@ function getCommandName(interaction: Interaction): string {
 
 function isFollowUpInteraction(interaction: Interaction): interaction is FollowUpInteraction {
   return interaction.isButton() || interaction.isAnySelectMenu() || interaction.isModalSubmit();
-}
-
-export async function interact(
-  interaction: Interaction,
-  commands: Map<string, BotCommand>,
-): Promise<void> {
-  const command = commands.get(getCommandName(interaction));
-  if (!command) {
-    logger.error("Unknown command received");
-    return;
-  }
-
-  if (interaction.isChatInputCommand()) {
-    await executeCommand(interaction, command);
-  } else if (isFollowUpInteraction(interaction)) {
-    await executeFollowUp(interaction, command);
-  }
 }

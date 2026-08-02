@@ -1,4 +1,5 @@
+import "varlock/auto-load";
+import { ENV } from "varlock/env";
 import { startBot } from "#/core/bot";
-import { env } from "#/env";
 
-await startBot(env.DISCORD_CLIENT_TOKEN);
+await startBot(ENV.DISCORD_CLIENT_TOKEN);

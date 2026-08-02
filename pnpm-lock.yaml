@@ -216,12 +216,12 @@ importers:
       discord.js:
         specifier: 14.27.0
         version: 14.27.0
-      envalid:
-        specifier: 8.2.0
-        version: 8.2.0
       pino:
         specifier: 10.3.1
         version: 10.3.1
+      varlock:
+        specifier: 1.16.0
+        version: 1.16.0
     devDependencies:
       '@mkvlrn/config':
         specifier: npm:@jsr/mkvlrn__config@0.2.1
@@ -736,10 +736,6 @@ packages:
   end-of-stream@1.4.5:
     resolution: {integrity: sha512-ooEGc6HP26xXq/N+GCGOT0JKCLDGrq2bQUZrQ7gyrJiZANJ/8YDTxTpQBXGMn+WbIQXNVpyWymm7KYVICQnyOg==}
 
-  envalid@8.2.0:
-    resolution: {integrity: sha512-CkPvea95dwMYE1wnKX5mQXkOpiMs9O+ncv8NqZy+gW7FuzpUp06KTdUHb18xFG8CqQHmfmRqGLF5DuGaBWNrSw==}
-    engines: {node: '>=18'}
-
   es-module-lexer@2.3.1:
     resolution: {integrity: sha512-shc1dbU90Yl/xq1QrC7QRtfcwURZuVRfPhZbDoldJ1cn1gzDvBaBWlv0eFolj5+0znnPJz5TXLxsN77X/12KTA==}
 
@@ -1039,6 +1035,11 @@ packages:
   undici@6.28.0:
     resolution: {integrity: sha512-LIY910g9TI13YS95lrMFrs8Rm/u/irgHeTWoKCoteeJ04CUJ92eEfj0rVn+7VKMPBpUPiUoBKfhNyLI23EE/KA==}
     engines: {node: '>=18.17'}
+
+  varlock@1.16.0:
+    resolution: {integrity: sha512-iDc3DHXDHL5753B+5QrFZNM3z7tafMr6iz7oR3xoXnnSw9Is+YCwKK4cnhVLn5tj5iLBhYYPuSM+T8QkVCeiuA==}
+    engines: {bun: '>=1.3.3', node: '>=22.3.0'}
+    hasBin: true
 
   vite@8.2.0:
     resolution: {integrity: sha512-pn+CFpM0lwDeKwmOq1ZaBK/9sjorZcgqxki6MbY/jPEVd9vichIlmlD4HmQ5wdP5EgqQCFRaACBxMC7uEGc6lQ==}
@@ -1543,10 +1544,6 @@ snapshots:
     dependencies:
       once: 1.4.0
 
-  envalid@8.2.0:
-    dependencies:
-      tslib: 2.8.1
-
   es-module-lexer@2.3.1: {}
 
   estree-walker@3.0.3:
@@ -1825,6 +1822,8 @@ snapshots:
   undici-types@8.3.0: {}
 
   undici@6.28.0: {}
+
+  varlock@1.16.0: {}
 
   vite@8.2.0(@types/node@26.1.2):
     dependencies:

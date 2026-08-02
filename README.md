@@ -55,61 +55,73 @@ Create a project there setting the following secrets:
 
 The `dev`, `register`, and `unregister` npm scripts use the `.env` file by default, although you should probably use something else for secret management, such as [doppler](https://www.doppler.com/) or others.
 
-This is just a low friction setup.
+Varlock is used to validate these vars and you should [read more about it](https://varlock.dev/getting-started/introduction/) if you care about how it works precisely, but just having an `.env` file with the correct values is enough to just use it as is.
 
 ## running
 
-### `pnpm dev`
+### `mise dev`
 
 Runs the project in watch mode.
 
-### `pnpm start`
+### `mise test`
 
-Runs the built project.
+Runs tests.
 
-### `pnpm test`
-
-Runs tests with vitest.
-
-### `pnpm biome-fix`
+### `mise lint-fix`
 
 Runs biome in fix mode to lint and format the project.
 
-### `pnpm typecheck`
+### `mise typecheck`
 
 Runs type checking using tsc.
 
-### `pnpm register [--dev]`
+### `mise register [--dev]`
 
 Registers slash commands globally, or to the dev server if `--dev` flag is provided
 
-### `pnpm unregister [--dev]`
+### `mise unregister [--dev]`
 
 Unregisters slash commands globally, or from the dev server if `--dev` flag is provided
 
 ## adding or removing commands
 
-Commands are **auto-loaded** from `./src/commands/`. Just create a file and call `createBotCommand`.
+Commands are _**not**_ auto-loaded from `./src/commands/`, they are exported and imported like any other typescript module..
 
 **Note:** Discord requires command names to be lowercase. Use kebab-case for multi-word commands (e.g., `my-command`).
 
 1. Create a new file in `./src/commands/` (e.g., `my-command.ts`)
-2. Call `createBotCommand` with your command definition:
+2. Create your command definition (which should satisfy `BotCommand`) and export it.
 
 ```ts
+// src/commands/my-command.ts
 import { SlashCommandBuilder } from "discord.js";
-import { createBotCommand } from "#/modules/commands";
+import type { BotCommand } from "#/core/commands";
 
-createBotCommand({
-  data: new SlashCommandBuilder().setName("my-command").setDescription("Does something"),
-  async execute(interaction) {
-    await interaction.reply("Hello!");
-  },
-});
+const data = new SlashCommandBuilder().setName("my-command").setDescription("Does something");
+
+async function execute(interaction: ChatInputCommandInteraction): Promise<void> {
+  await interaction.reply("Something");
+}
+
+export const myCommand = {
+  data,
+  execute,
+} satisfies BotCommand;
 ```
 
-3. Run `pnpm register` to register commands globally (or `pnpm register --dev` for your dev server)
-4. Restart your bot
+3. Import the command into `./src/core/commands.ts` and add it to the commands Map
+
+```ts
+// src/core/commands.ts
+import { myCommand } from "#/commands/my-command";
+
+// ...
+
+export const commands = new Map<string, BotCommand>([["my-command", myCommand]]);
+```
+
+4. Run `pnpm register` to register commands globally (or `pnpm register --dev` for your dev server)
+5. Restart your bot
 
 ### handling follow-up interactions
 

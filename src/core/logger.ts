@@ -1,4 +1,4 @@
 import { pino } from "pino";
-import { env } from "#/env";
+import { ENV } from "varlock/env";
 
-export const logger = pino({ level: env.LOG_LEVEL });
+export const logger = pino({ level: ENV.LOG_LEVEL });

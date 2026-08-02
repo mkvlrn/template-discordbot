@@ -18,42 +18,29 @@
     "bot",
     "template"
   ],
-  "engines": {
-    "node": "26",
-    "pnpm": "11"
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "24.18.1"
+    },
+    "packageManager": {
+      "name": "pnpm",
+      "version": "11.19.0"
+    }
   },
   "imports": {
     "#/*": "./src/*.ts"
   },
-  "scripts": {
-    "dev": "node --env-file=.env --watch ./src/main.ts | pino-pretty",
-    "start": "node --env-file=.env ./src/main.ts",
-    "lint": "pnpm lint-check --write",
-    "lint-check": "biome check --diagnostic-level=warn --no-errors-on-unmatched",
-    "typecheck": "tsc",
-    "typecheck-staged": "tsc-files",
-    "test": "vitest",
-    "test-staged": "vitest related --bail=1 --reporter=github-actions",
-    "test-ci": "vitest --bail=1 --reporter=github-actions",
-    "register": "node --env-file=.env ./src/registration.ts",
-    "unregister": "node --env-file=.env ./src/registration.ts --unregister",
-    "prepare": "lefthook install"
-  },
   "devDependencies": {
-    "@biomejs/biome": "2.5.6",
-    "@commitlint/cli": "21.2.1",
-    "@commitlint/config-conventional": "21.2.0",
-    "@mkvlrn/config": "npm:@jsr/mkvlrn__config@0.2.0",
+    "@mkvlrn/config": "npm:@jsr/mkvlrn__config@0.2.1",
     "@types/node": "26.1.2",
     "@vitest/coverage-v8": "4.1.10",
-    "lefthook": "2.1.10",
     "pino-pretty": "13.1.3",
-    "tsc-files": "1.1.4",
     "typescript": "7.0.2",
     "vitest": "4.1.10"
   },
   "dependencies": {
-    "@mkvlrn/result": "npm:@jsr/mkvlrn__result@0.3.0",
+    "@mkvlrn/result": "npm:@jsr/mkvlrn__result@0.3.1",
     "@napi-rs/canvas": "1.0.3",
     "discord.js": "14.27.0",
     "envalid": "8.2.0",

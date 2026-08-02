@@ -5,10 +5,12 @@
 [![mise](https://mise-versions.jdx.dev/badge.svg)](https://mise.jdx.dev)
 ![license](https://img.shields.io/github/license/mkvlrn/template-discordbot?style=flat)
 
-A sane, opinionated template for discord bots written in typescript using the [discord.js](https://discord.js.org/#/) library. It doesn't rely on transpilation - typescript is ran directly by node.
+A sane, opinionated template for discord bots written in typescript using the [discord.js](https://discord.js.org/#/) library. It doesn't rely on transpilation - typescript is executed directly by node.
 
-> [!NOTE]
-> This template provides a [mise](https://mise.jdx.dev) configuration to make it easy to keep node and pnpm versions in sync.
+> [!CAUTION]
+> This template requires [mise](https://mise.jdx.dev) to manage runtimes, tools, and tasks in a single workflow, providing a lightweight alternative to devcontainers.
+>
+> You must [install mise](https://mise.jdx.dev/installing-mise.html) before starting. If you prefer a less opinionated setup, this template isn't for you.
 
 Uses, among other tools/packages:
 
@@ -16,38 +18,28 @@ Uses, among other tools/packages:
 - [biome](https://github.com/biomejs/biome) for code linting and formatting
 - [lefthook](https://github.com/evilmartians/lefthook) for git hooks
 - [commitlint](https://github.com/conventional-changelog/commitlint) for commit message linting
-- [vitest](https://github.com/vitest-dev/vitest) for testingypescript
-- [envalid](https://github.com/af/envalid) for env validation and parsing
-- [@mkvlrn/result](https://github.com/mkvlrn/tools/blob/main/packages/result/README.md) for error handling
+- [vitest](https://github.com/vitest-dev/vitest) for testing
+- [varlock](https://github.com/dmno-dev/varlock) for env validation and parsing
 
 ## requirements and dependencies
 
-If you use [mise](https://mise.jdx.dev) and run `mise install` in the project root, you'll have the correct node and pnpm versions installed.
+As noted at the top, you need [mise](https://mise.jdx.dev) to get started with this template. Run `mise install` in the project root to fetch the pinned versions of Node and other tools locally.
 
-This is _by far_ the easiest way to keep your environment consistent across different machines and team members, no matter the frequency of version updates. I'm not affiliated with mise but I wholeheartedly recommend it, so check it here: https://mise.jdx.dev.
+This is _by far_ the easiest way to keep your environment consistent across different machines and team members, no matter the frequency of version updates.
 
-If not using mise, make sure you have:
-
-- node 26+ installed
-- pnpm 11+ installed
-
-Then, install dependencies with:
-
-```bash
-pnpm install
-```
+Once the tooling is installed, you can install the Node dependencies with `pnpm install`.
 
 > [!NOTE]
 > Git hooks are in place to make sure both the tooling managed by mise and the project dependencies are synced with each checkout and merge.
 
 ## subpath imports
 
-Subpath imports (`#/`) are used instead of relative paths, mapped in both `package.json` and `tsconfig.json`.
+Subpath imports (`#/`) are used instead of relative paths, mapped via the `imports` field in `package.json` (allowing native Node resolution at runtime without extra build tools) and mirrored in `tsconfig.json` for IDE support.
 
 **Example**:
 
 ```ts
-import { add } from "#/math/basic"; // this points to ./src/math/basic.ts
+import { add } from "#/lib/math"; // this points to ./src/lib/math.ts
 ```
 
 ## secrets
@@ -61,7 +53,7 @@ Create a project there setting the following secrets:
 - `DEV_SERVER`
 - `LOG_LEVEL`
 
-The `dev`, `start`, `register`, and `unregister` npm scripts use the `.env` file by default, although you should probably use something else for secret management, such as [doppler](https://www.doppler.com/) or others.
+The `dev`, `register`, and `unregister` npm scripts use the `.env` file by default, although you should probably use something else for secret management, such as [doppler](https://www.doppler.com/) or others.
 
 This is just a low friction setup.
 

@@ -1,2 +1,6 @@
 minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  - "@mkvlrn/app-error"
+  - "@mkvlrn/config"
+  - "@mkvlrn/result"
 saveExact: true

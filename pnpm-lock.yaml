@@ -208,8 +208,8 @@ importers:
   .:
     dependencies:
       '@mkvlrn/result':
-        specifier: npm:@jsr/mkvlrn__result@0.3.1
-        version: '@jsr/mkvlrn__result@0.3.1'
+        specifier: npm:@jsr/mkvlrn__result@0.3.2
+        version: '@jsr/mkvlrn__result@0.3.2'
       '@napi-rs/canvas':
         specifier: 1.0.3
         version: 1.0.3
@@ -224,8 +224,8 @@ importers:
         version: 1.16.0
     devDependencies:
       '@mkvlrn/config':
-        specifier: npm:@jsr/mkvlrn__config@0.2.1
-        version: '@jsr/mkvlrn__config@0.2.1'
+        specifier: npm:@jsr/mkvlrn__config@0.3.1
+        version: '@jsr/mkvlrn__config@0.3.1'
       '@types/node':
         specifier: 26.1.2
         version: 26.1.2
@@ -312,11 +312,11 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@jsr/mkvlrn__config@0.2.1':
-    resolution: {integrity: sha512-DeTblNivf9cWZhmrUEuuswFIl17rNbdu6zMRXnCiBj4HE05ydZNIESkkZyBGx9aqu2YdErScyYEappjR3uSkBw==, tarball: https://npm.jsr.io/~/11/@jsr/mkvlrn__config/0.2.1.tgz}
+  '@jsr/mkvlrn__config@0.3.1':
+    resolution: {integrity: sha512-G5K8meXpuDVhS6M6dWYMPiNt4AXU327ESW//hSuDWvlaJ9L7DAprGpJM0JvPEp6K95kuWyy1DOo0PnwHCQgMTA==, tarball: https://npm.jsr.io/~/11/@jsr/mkvlrn__config/0.3.1.tgz}
 
-  '@jsr/mkvlrn__result@0.3.1':
-    resolution: {integrity: sha512-5sDMzKJDdDnZ3V58r3kJ4Q71H9Mm18Xvc4noMCRdUG2KJh/qxmr6viglyXc0Is4UvfAKvbQT4b6d53Mtf5kLpw==, tarball: https://npm.jsr.io/~/11/@jsr/mkvlrn__result/0.3.1.tgz}
+  '@jsr/mkvlrn__result@0.3.2':
+    resolution: {integrity: sha512-XngGDQ3UJxAszCc+YvHOX4OzMMiTy/rh/NtaqxB2ycVwE8VjqMkZiPgecp5ciX3PT+LKenfnpmUWgp57UASoRQ==, tarball: https://npm.jsr.io/~/11/@jsr/mkvlrn__result/0.3.2.tgz}
 
   '@napi-rs/canvas-android-arm64@1.0.3':
     resolution: {integrity: sha512-7kSCdUhoXiO+AaIMXdBGdtp6EctZNkmF62Rea/BmVQlwKaM3bBhOzyGUzxyxz9dv5vdBfpyAaxhSRSJF4kqK4A==}
@@ -1236,9 +1236,9 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@jsr/mkvlrn__config@0.2.1': {}
+  '@jsr/mkvlrn__config@0.3.1': {}
 
-  '@jsr/mkvlrn__result@0.3.1': {}
+  '@jsr/mkvlrn__result@0.3.2': {}
 
   '@napi-rs/canvas-android-arm64@1.0.3':
     optional: true

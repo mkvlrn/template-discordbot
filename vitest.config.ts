@@ -1,4 +1,4 @@
 import baseConfig from "@mkvlrn/config/vitest";
 import { defineConfig, mergeConfig } from "vitest/config";
 
-export default defineConfig((configEnv) => mergeConfig(baseConfig(configEnv), defineConfig({})));
+export default mergeConfig(baseConfig, defineConfig({}));

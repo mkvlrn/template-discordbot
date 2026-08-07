@@ -224,8 +224,8 @@ importers:
         version: 1.16.0
     devDependencies:
       '@mkvlrn/config':
-        specifier: npm:@jsr/mkvlrn__config@0.4.2
-        version: '@jsr/mkvlrn__config@0.4.2(@types/node@26.1.2)(@vitest/coverage-v8@4.1.10)(vite@8.2.0(@types/node@26.1.2))'
+        specifier: npm:@jsr/mkvlrn__config@0.4.3
+        version: '@jsr/mkvlrn__config@0.4.3(@types/node@26.1.2)(@vitest/coverage-v8@4.1.10)(vite@8.2.0(@types/node@26.1.2))'
       '@types/node':
         specifier: 26.1.2
         version: 26.1.2
@@ -312,8 +312,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@jsr/mkvlrn__config@0.4.2':
-    resolution: {integrity: sha512-eDI34aN1JF88ijSJnyvcDSMguWrcnioi9+iFlq3ytCfqpYxuoomD/u1HA5Si3897zYUMFxqdygkp1Zgksw9Hfg==, tarball: https://npm.jsr.io/~/11/@jsr/mkvlrn__config/0.4.2.tgz}
+  '@jsr/mkvlrn__config@0.4.3':
+    resolution: {integrity: sha512-AWtr6T1ziypgj4L0W7sq8GUSDYQULnCdXv8Kd+UxRdpdc9yGtFoGECYvhbt4yh4gQv/7zlVWWs2JdGgOv99QoA==, tarball: https://npm.jsr.io/~/11/@jsr/mkvlrn__config/0.4.3.tgz}
 
   '@jsr/mkvlrn__result@0.3.2':
     resolution: {integrity: sha512-XngGDQ3UJxAszCc+YvHOX4OzMMiTy/rh/NtaqxB2ycVwE8VjqMkZiPgecp5ciX3PT+LKenfnpmUWgp57UASoRQ==, tarball: https://npm.jsr.io/~/11/@jsr/mkvlrn__result/0.3.2.tgz}
@@ -1236,7 +1236,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@jsr/mkvlrn__config@0.4.2(@types/node@26.1.2)(@vitest/coverage-v8@4.1.10)(vite@8.2.0(@types/node@26.1.2))':
+  '@jsr/mkvlrn__config@0.4.3(@types/node@26.1.2)(@vitest/coverage-v8@4.1.10)(vite@8.2.0(@types/node@26.1.2))':
     dependencies:
       vitest: 4.1.10(@types/node@26.1.2)(@vitest/coverage-v8@4.1.10)(vite@8.2.0(@types/node@26.1.2))
     transitivePeerDependencies:

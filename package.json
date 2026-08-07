@@ -25,14 +25,14 @@
     },
     "packageManager": {
       "name": "pnpm",
-      "version": "11.19.0"
+      "version": "11.20.0"
     }
   },
   "imports": {
     "#/*": "./src/*.ts"
   },
   "devDependencies": {
-    "@mkvlrn/config": "npm:@jsr/mkvlrn__config@0.3.1",
+    "@mkvlrn/config": "npm:@jsr/mkvlrn__config@0.4.2",
     "@types/node": "26.1.2",
     "@vitest/coverage-v8": "4.1.10",
     "pino-pretty": "13.1.3",

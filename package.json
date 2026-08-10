@@ -41,9 +41,9 @@
   },
   "dependencies": {
     "@mkvlrn/result": "0.3.4",
-    "@napi-rs/canvas": "1.0.3",
+    "@napi-rs/canvas": "1.0.5",
     "discord.js": "14.27.0",
     "pino": "10.3.1",
-    "varlock": "1.16.0"
+    "varlock": "1.16.1"
   }
 }

@@ -32,18 +32,18 @@
     "#/*": "./src/*.ts"
   },
   "devDependencies": {
-    "@mkvlrn/config": "0.4.6",
+    "@mkvlrn/config": "0.4.7",
     "@types/node": "26.2.0",
-    "@vitest/coverage-v8": "4.1.10",
+    "@vitest/coverage-v8": "4.1.11",
     "pino-pretty": "13.1.3",
     "typescript": "7.0.2",
-    "vitest": "4.1.10"
+    "vitest": "4.1.11"
   },
   "dependencies": {
     "@mkvlrn/result": "0.3.4",
-    "@napi-rs/canvas": "1.0.3",
+    "@napi-rs/canvas": "1.0.7",
     "discord.js": "14.27.0",
     "pino": "10.3.1",
-    "varlock": "1.16.0"
+    "varlock": "1.17.0"
   }
 }

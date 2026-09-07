@@ -56,6 +56,6 @@ run = "node --env-file=.env ./src/registration.ts --unregister"
 description = "Sync package manager deps"
 run = """
 mise prune -y
-bun install --frozen-lockfile
+pnpm install --frozen-lockfile
 lefthook install
 """

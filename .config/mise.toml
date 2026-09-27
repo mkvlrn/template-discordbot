@@ -10,6 +10,9 @@ postinstall = "lefthook install"
 
 [env]
 _.path = ["./node_modules/.bin"]
+DISCORD_CLIENT_ID = "$DISCORD_CLIENT_ID_DEV"
+DISCORD_CLIENT_TOKEN = "$DISCORD_TOKEN_DEV"
+DEV_SERVER = "$DISCORD_DEV_SERVER"
 
 [settings]
 disable_backends = ["asdf"]

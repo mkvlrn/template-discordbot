@@ -7,8 +7,15 @@ export interface RollResult {
   total: number;
 }
 
-export const maxDiceQuantity = 6;
-export const diceFaces = [4, 6, 8, 10, 12, 20] as const;
+const d4 = 4;
+const d6 = 6;
+const d8 = 8;
+const d10 = 10;
+const d12 = 12;
+const d20 = 20;
+
+export const maxDiceQuantity = d6;
+export const diceFaces = [d4, d6, d8, d10, d12, d20] as const;
 
 export function rollDice(expression: string): Result<RollResult, Error> {
   const rollRegexp = new RegExp(`^([1-${maxDiceQuantity}])d(${diceFaces.join("|")})$`);

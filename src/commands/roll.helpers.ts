@@ -9,8 +9,10 @@ import {
   type JSONEncodable,
   StringSelectMenuBuilder,
 } from "discord.js";
-import { diceFaces, type RollResult } from "#/utils/dice";
+import { diceFaces, maxDiceQuantity, type RollResult } from "#/utils/dice";
 import { generateDiceImage } from "#/utils/dice-img";
+
+const diceFacesPerRow = 3;
 
 export function createEmbedResult(
   userId: string,
@@ -43,11 +45,19 @@ export function createRollPanelSelect(quantity = 1): StringSelectMenuBuilder {
     .setCustomId("roll-panel:quantity")
     .setPlaceholder(`${quantity}`)
     .addOptions(
-      Array.from({ length: 6 }, (_, i) => ({
-        label: `${i + 1}`,
-        value: `${i + 1}`,
-        description: `Roll ${i + 1} ${i === 0 ? "die" : "dice"}`,
-      })),
+      Array.from({ length: maxDiceQuantity }, (_, i) => {
+        const optionQuantity = i + 1;
+        let dieName = "dice";
+        if (optionQuantity === 1) {
+          dieName = "die";
+        }
+
+        return {
+          label: `${optionQuantity}`,
+          value: `${optionQuantity}`,
+          description: `Roll ${optionQuantity} ${dieName}`,
+        };
+      }),
     );
 }
 
@@ -55,10 +65,10 @@ export function createRollPanelComponents(quantity = 1) {
   return [
     new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(createRollPanelSelect(quantity)),
     new ActionRowBuilder<ButtonBuilder>().addComponents(
-      diceFaces.slice(0, 3).map((s) => createRollPanelDieButton(s, quantity)),
+      diceFaces.slice(0, diceFacesPerRow).map((s) => createRollPanelDieButton(s, quantity)),
     ),
     new ActionRowBuilder<ButtonBuilder>().addComponents(
-      diceFaces.slice(3).map((s) => createRollPanelDieButton(s, quantity)),
+      diceFaces.slice(diceFacesPerRow).map((s) => createRollPanelDieButton(s, quantity)),
     ),
   ];
 }

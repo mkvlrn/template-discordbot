@@ -3,11 +3,14 @@ import type { RollResult } from "#/utils/dice";
 
 const boxSize = 80;
 const padding = 10;
+const cornerRadius = 12;
+const borderWidth = 3;
+const imageBottomPadding = 20;
 
 function drawBox(ctx: SKRSContext2D, x: number, y: number, value: string): void {
   ctx.fillStyle = "#4754F2";
   ctx.beginPath();
-  ctx.roundRect(x, y, boxSize, boxSize, 12);
+  ctx.roundRect(x, y, boxSize, boxSize, cornerRadius);
   ctx.fill();
 
   ctx.strokeStyle = "#ffffff";
@@ -34,7 +37,7 @@ function drawTotalBox(ctx: SKRSContext2D, x: number, y: number, value: string): 
 
   // White border
   ctx.strokeStyle = "#ffffff";
-  ctx.lineWidth = 3;
+  ctx.lineWidth = borderWidth;
   ctx.stroke();
 
   // White text
@@ -47,7 +50,7 @@ function drawTotalBox(ctx: SKRSContext2D, x: number, y: number, value: string): 
 
 export function generateDiceImage(roll: RollResult): Buffer {
   const width = roll.values.length * (boxSize + padding) + padding + boxSize + padding;
-  const height = boxSize + 20;
+  const height = boxSize + imageBottomPadding;
   const canvas = createCanvas(width, height);
   const ctx = canvas.getContext("2d");
   const yOffset = 10;

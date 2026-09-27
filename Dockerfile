@@ -8,6 +8,8 @@ RUN npm i -g pnpm
 COPY pnpm-*.yaml ./
 RUN pnpm install --frozen-lockfile --prod --ignore-scripts
 COPY src/ ./src/
+COPY .env.schema ./
+COPY env.d.ts ./
 USER node
 
 CMD ["node", "src/main.ts"]

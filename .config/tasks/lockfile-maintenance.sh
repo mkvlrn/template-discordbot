@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 #MISE description="Regenerate dependency lockfiles"
 
-rm -f pnpm-lock.yaml
-mise exec -- pnpm install
+rm -f bun.lock
+mise exec -- bun install
 
-git add pnpm-lock.yaml
+git add bun.lock
 
-if git diff --cached --quiet -- pnpm-lock.yaml; then
+if git diff --cached --quiet -- bun.lock; then
   echo "Lockfile unchanged; nothing to commit."
   exit 0
 fi

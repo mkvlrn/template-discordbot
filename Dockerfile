@@ -1,15 +1,13 @@
-FROM node:26.10.0-alpine@sha256:0b36e8c136b94cd4fcf02188228e76c31ad5872eef3fec8cbd2eee500cfd9e80
+FROM oven/bun:1.4.2-alpine@sha256:d888c0ae6c86d7866ff10c5aafdd9077b36aee6455b33dd270fb93c0dd5cef6f
 
 WORKDIR /app
 ENV NODE_ENV=production
 
-COPY package.json ./
-RUN npm i -g pnpm
-COPY pnpm-*.yaml ./
-RUN pnpm install --frozen-lockfile --prod --ignore-scripts
+COPY package.json tsconfig.json bun.lock bunfig.toml ./
+RUN bun install --frozen-lockfile --production --ignore-scripts
 COPY src/ ./src/
 COPY .env.schema ./
 COPY env.d.ts ./
-USER node
+USER bun
 
-CMD ["node", "src/main.ts"]
+CMD ["bun", "src/main.ts"]

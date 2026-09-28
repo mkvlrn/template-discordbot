@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 #MISE description="Run tests on staged files"
 
-mise exec -- vitest related --bail=1 --reporter=github-actions "$@"
+mise exec -- bun test --pass-with-no-tests --changed --bail --reporter=dots "$@"

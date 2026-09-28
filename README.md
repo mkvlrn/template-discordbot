@@ -14,12 +14,12 @@ A sane, opinionated template for Discord bots written in TypeScript with [discor
 
 Uses, among other tools/packages:
 
-- [pnpm](https://github.com/pnpm/pnpm) as package manager
+- [Bun](https://bun.sh) as runtime and package manager
 - [discord.js](https://github.com/discordjs/discord.js) for the Discord API
 - [Biome](https://github.com/biomejs/biome) for linting and formatting
 - [Lefthook](https://github.com/evilmartians/lefthook) for Git hooks
 - [Cocogitto](https://github.com/cocogitto/cocogitto) for commit message linting
-- [Vitest](https://github.com/vitest-dev/vitest) for testing
+- Bun's built-in test runner for testing
 
 ## requirements and dependencies
 
@@ -34,7 +34,7 @@ The SSH agent is forwarded into the container for Git authentication and commit 
 Once inside the container, install the project dependencies:
 
 ```sh
-pnpm install
+bun install
 ```
 
 The project-specific runtimes and development tools are managed by `mise`.
@@ -80,7 +80,7 @@ It runs:
 
 - Biome linting and formatting checks
 - TypeScript type checking
-- Vitest tests
+- Bun tests
 
 ## license
 

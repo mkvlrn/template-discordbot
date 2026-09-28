@@ -32,7 +32,7 @@
     "#/*": "./src/*.ts"
   },
   "devDependencies": {
-    "@mkvlrn/config": "0.6.1",
+    "@mkvlrn/config": "0.7.0",
     "@types/node": "26.6.3",
     "@vitest/coverage-v8": "5.0.2",
     "pino-pretty": "13.1.3",

@@ -25,8 +25,8 @@ importers:
         version: 1.21.0
     devDependencies:
       '@mkvlrn/config':
-        specifier: 0.6.1
-        version: 0.6.1
+        specifier: 0.7.0
+        version: 0.7.0
       '@types/node':
         specifier: 26.6.3
         version: 26.6.3
@@ -104,8 +104,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@mkvlrn/config@0.6.1':
-    resolution: {integrity: sha512-GvtNfyE1wyeNkzP+QuQ5/zTVqzpVgm6BZ3xjoMlCFz/B7G+SouXwkxW+WeUdymVKYLGYAIfPEHcIAcfpiipNew==}
+  '@mkvlrn/config@0.7.0':
+    resolution: {integrity: sha512-7uCZeiqxwqIbKFd0CWVC2d3Pp6Dgn5MVhr0SYD0xZ8ZliT7om5cx8EKTY18ENZugYE0+HxSgEjpioweS6uKB/g==}
 
   '@mkvlrn/result@0.3.5':
     resolution: {integrity: sha512-VkWOUNdUgObjb+z00Pcd2BzIH+ygXzpvBOVMwoNGyz6ulSybSkkqrFiF8xP91u3Opmh20xGF7uGX0ix77NxfeA==}
@@ -969,7 +969,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.6.0
 
-  '@mkvlrn/config@0.6.1': {}
+  '@mkvlrn/config@0.7.0': {}
 
   '@mkvlrn/result@0.3.5': {}
 

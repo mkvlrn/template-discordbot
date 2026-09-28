@@ -25,7 +25,7 @@
     },
     "packageManager": {
       "name": "pnpm",
-      "version": "12.5.1"
+      "version": "12.6.0"
     }
   },
   "imports": {

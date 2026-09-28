@@ -6,7 +6,7 @@ node = "26.10.0"
 pnpm = "12.6.0"
 
 [hooks]
-postinstall = "mise exec -- lefthook install"
+postinstall = "mise run postinstall-hook"
 
 [env]
 _.path = ["./node_modules/.bin"]
@@ -20,4 +20,4 @@ use_versions_host = false
 minimum_release_age = "1d"
 
 [task_config]
-includes = ["./.config/tasks.toml"]
+includes = [".config/tasks"]

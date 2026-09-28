@@ -56,19 +56,19 @@ Set the required Discord application values before running the bot.
 
 ## running
 
-### `mise dev`
+### `mise run dev`
 
 Runs the bot in development mode.
 
-### `mise test`
+### `mise run test`
 
 Runs the tests.
 
-### `mise lint-fix`
+### `mise run lint-fix`
 
 Runs Biome in fix mode to lint and format the project.
 
-### `mise typecheck`
+### `mise run typecheck`
 
 Runs TypeScript type checking.
 

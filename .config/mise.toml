@@ -1,7 +1,4 @@
 [tools]
-biome = "2.5.14"
-cocogitto = "7.0.0"
-lefthook = "2.1.14"
 bun = "1.4.2"
 
 [hooks]

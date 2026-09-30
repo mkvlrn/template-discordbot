@@ -3,4 +3,4 @@
 
 mise install
 mise prune -y
-mise exec -- pnpm install --frozen-lockfile
+mise exec -- bun install --frozen-lockfile

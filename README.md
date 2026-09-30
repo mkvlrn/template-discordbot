@@ -7,10 +7,10 @@
 
 A sane, opinionated template for Discord bots written in TypeScript with [discord.js](https://discord.js.org).
 
-> [!NOTE]
-> This template includes an Arch Linux Dev Container based on [mise-devcontainers](https://github.com/mkvlrn/mise-devcontainers), providing a consistent development environment with [mise](https://mise.jdx.dev) preconfigured.
+> [!TIP]
+> Using [mise](https://mise.jdx.dev) locally is the path of least friction: it manages the project-specific runtimes, tools, and tasks without requiring a container.
 >
-> `mise` manages the project-specific runtimes, tools, and tasks inside the container, so it does not need to be installed on the host.
+> This template also includes an optional Arch Linux Dev Container based on [mise-devcontainers](https://github.com/mkvlrn/mise-devcontainers). It is suggested if you do not normally use `mise` or want a consistent, preconfigured development environment.
 
 Uses, among other tools/packages:
 
@@ -18,12 +18,14 @@ Uses, among other tools/packages:
 - [discord.js](https://github.com/discordjs/discord.js) for the Discord API
 - [Biome](https://github.com/biomejs/biome) for linting and formatting
 - [Lefthook](https://github.com/evilmartians/lefthook) for Git hooks
-- [Cocogitto](https://github.com/cocogitto/cocogitto) for commit message linting
+- [Commitlint](https://commitlint.js.org) with [config-conventional](https://github.com/conventional-changelog/commitlint/tree/master/@commitlint/config-conventional) for commit message linting
 - Bun's built-in test runner for testing
 
 ## requirements and dependencies
 
-To use the included Dev Container you need:
+Using `mise` locally is recommended and provides the least-friction setup. If you do not normally use `mise`, the included Dev Container is an optional way to get a consistent development environment with everything preconfigured.
+
+To use the Dev Container you need:
 
 - Docker or a compatible container runtime
 - a Dev Container-compatible editor or the [Dev Container CLI](https://github.com/devcontainers/cli)
@@ -31,15 +33,20 @@ To use the included Dev Container you need:
 
 The SSH agent is forwarded into the container for Git authentication and commit signing. Private keys remain on the host.
 
-Once inside the container, install the project dependencies:
+The project-specific runtime and development tools are managed by `mise`.
+
+If you use the Dev Container, once inside it, install the project dependencies:
 
 ```sh
 bun install
 ```
 
-The project-specific runtimes and development tools are managed by `mise`.
+If you do not use the Dev Container, install [mise](https://mise.jdx.dev) locally and run `mise install` before installing the project dependencies:
 
-If you prefer not to use the Dev Container, install [mise](https://mise.jdx.dev) locally and run `mise install` before installing the project dependencies.
+```sh
+mise install
+bun install
+```
 
 > [!NOTE]
 > Git hooks keep the tooling managed by mise and the project dependencies synchronized after checkouts and merges.

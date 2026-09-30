@@ -4,6 +4,7 @@
     "noEmit": true,
     "paths": {
       "#/*": ["./src/*"]
-    }
+    },
+    "types": ["bun"]
   }
 }

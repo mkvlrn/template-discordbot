@@ -47,7 +47,7 @@
     "@mkvlrn/result": "0.4.2",
     "@napi-rs/canvas": "1.0.10",
     "discord.js": "14.27.0",
-    "pino": "10.3.1",
+    "pino": "10.4.0",
     "varlock": "1.21.1"
   }
 }

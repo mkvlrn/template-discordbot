@@ -344,7 +344,7 @@
 
     "semver": ["semver@7.8.5", "", { "bin": { "semver": "bin/semver.js" } }, "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA=="],
 
-    "sonic-boom": ["sonic-boom@5.0.1", "", { "dependencies": { "atomic-sleep": "^1.0.0" } }, "sha512-I1E9tHuKe6SdS/Uab4bl2o1ZUBm2SCTDFF9eQ66ehyVcFIBixfecy9DlwXCtnRF8CUzPw7Q4Dn6JQE/8iVl/FQ=="],
+    "sonic-boom": ["sonic-boom@5.0.2", "", { "dependencies": { "atomic-sleep": "^1.0.0" } }, "sha512-/JEruzo6yhNVhsLblTRchgTQHIt7SsdJP0YyrfWaNKjIOQDfrdZv9gwYraYCAsmKV39/LAdV31FLL5NCDpoL/A=="],
 
     "split2": ["split2@4.2.0", "", {}, "sha512-UcjcJOWknrNkF6PLX83qcHM6KHgVKNkV62Y8a5uYDVv9ydGQVwAHMKqHdJje1VTWpljG0WYpCDhrCdAOYH4TWg=="],
 
